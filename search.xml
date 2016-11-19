@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[Swift随机颜色]]></title>
+      <url>http://BESTDing.github.io/2016/10/23/Swift%E9%9A%8F%E6%9C%BA%E9%A2%9C%E8%89%B2/</url>
+      <content type="html"><![CDATA[<p>我们利用arc4randomuniform()产生三个随机值，再用UIColor构造方法返回一个随机颜色实例，你可以将下面一段代码拖入代码段以便随时服用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">randomColor</span><span class="params">()</span></span> -&gt; <span class="type">UIColor</span> &#123;</div><div class="line">      <span class="keyword">let</span> red = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">let</span> green = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">let</span> blue = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">return</span> <span class="type">UIColor</span>(red: red, green: green, blue: blue, alpha: <span class="number">1.0</span>)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.z4a.net/image/jlH3f" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/10/23/2016-10-2311.28.43.png" alt="2016-10-2311.28.43.png"></a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Swift中的Pragma mark]]></title>
+      <url>http://BESTDing.github.io/2016/10/17/Swift%E4%B8%AD%E7%9A%84pragmamark/</url>
+      <content type="html"><![CDATA[<p>之前写OC时都是用#pragma mark-生成分割线，用#pragma mark 生成函数说明</p>
+<p>在Swift中发现这个语法不管用了，Google了一下发现有了新的用法，</p>
+<p>//// MARK: - 生成分隔线</p>
+<p>// MARK: 说明</p>
+<p><strong>冒号不要丢</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS学习-NSLayoutConstraint-Swift3]]></title>
+      <url>http://BESTDing.github.io/2016/10/17/iOS%E5%AD%A6%E4%B9%A0-NSLayoutConstraint-Swift3/</url>
+      <content type="html"><![CDATA[<p>约束是定义两个组件之间的布局关系，必须满足基本的系统布局约束，每个约束都有以下形式</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">item1.attribute1 = multiplier × item2.attribute2 + constant</div></pre></td></tr></table></figure>
+<p>意思就是item1的布局属性等于item2的布局属性*multiplier再加上一个常量</p>
+<p><em>In this equation, attribute1 and attribute2 are the variables that Auto Layout can adjust when solving these constraints. The other values are defined when you create the constraint. For example, If you’re defining the relative position of two buttons, you might say “the leading edge of the second button should be 8 points after the trailing edge of the first button.” The linear equation for this relationship is shown below:</em></p>
+<p><strong>在这个方程中，attribute1和attribute2是Auto Layout在求解这些约束时可以调整的变量。 其他值是在创建约束时定义的。 例如，如果要定义两个按钮的相对位置，可以说“第二个按钮的前缘应该在第一个按钮的后缘之后8个点”。这种关系的线性方程如下所示：</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button2.leading = <span class="number">1.0</span> * button1.trailing + <span class="number">8.0</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>*Auto Layout then modifies the values of the specified leading and trailing edges until both sides of the equation are equal. Note that Auto Layout does not simply assign the value of the right side of this equation to the left side. Instead, the system can modify either attribute or both attributes as needed to solve for this constraint.</p>
+<p>The fact that constraints are equations (and not assignment operators) means that you can switch the order of the items in the equation as needed to more clearly express the desired relationship. However, if you switch the order, you must also invert the multiplier and constant. For example, the following two equations produce identical constraints:<br>*</p>
+<p><strong>然后自动布局修改指定的前沿和后沿的值，直到等式的两边相等。 请注意，自动布局不会简单地将该公式右侧的值分配给左侧。 相反，系统可以根据需要修改任一属性或两个属性以解决该约束。<br>约束是方程（而不是赋值运算符）意味着您可以根据需要切换方程中项的顺序，以更清楚地表达所需的关系。 但是，如果切换顺序，还必须反转乘数和常数。 例如，以下两个方程产生相同的约束：</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// These equations produce identical constraints</span></div><div class="line">button2.leading = <span class="number">1.0</span> × button1.trailing + <span class="number">8.0</span></div><div class="line">button1.trailing = <span class="number">1.0</span> × button2.leading - <span class="number">8.0</span></div></pre></td></tr></table></figure>
+<p><em>A valid layout is defined as a set constraints with one and only one possible solution. Valid layouts are also referred to as a nonambiguous, nonconflicting layouts. Constraints with more than one solution are ambiguous. Constraints with no valid solutions are conflicting. For more information on resolving ambiguous and conflicting constraints, see Types of Errors in Auto Layout Guide.
+</em></p>
+<p><em>Additionally, constraints are not limited to equality relationships. They can also use greater than or equal to (&gt;=) or less than or equal to (&lt;=) to describe the relationship between the two attributes. Constraints also have priorities between 1 and 1,000. Constraints with a priority of 1,000 are required. All priorities less than 1,000 are optional. By default, all constraints are required (priority = 1,000).</em></p>
+<p><em>After solving for the required constraints, Auto Layout tries to solve all the optional constraints in priority order from highest to lowest. If it cannot solve for an optional constraint, it tries to come as close as possible to the desired result, and then moves on to the next constraint.</em></p>
+<p><em>This combination of inequalities, equalities, and priorities gives you a great amount of flexibility and power. By combining multiple constraints, you can define layouts that dynamically adapt as the size and location of the elements in your user interface change. For some example layouts, see Stack Views in Auto Layout Guide.</em></p>
+<p><strong>有效布局被定义为具有一个且仅一个可能解决方案的集合约束。有效的布局也称为无歧义，不冲突的布局。使用多个解决方案的约束是模糊的。没有有效解决方案的约束是冲突的。有关解决模糊和冲突约束的更多信息，请参阅自动布局指南中的错误类型。</strong></p>
+<p><strong>另外，约束不限于等式关系。它们还可以使用大于或等于（&gt; =）或小于或等于（&lt;=）来描述这两个属性之间的关系。约束的优先级也在1到1,000之间。需要优先级为1,000的约束。所有优先级小于1,000是可选的。默认情况下，所有约束都是必需的（priority = 1,000）。
+</strong></p>
+<p><strong>解决所需的约束后，Auto Layout会尝试按优先级顺序从最高到最低解决所有可选约束。如果它不能解决可选的约束，它会尽可能接近所需的结果，然后移动到下一个约束。</strong></p>
+<p><strong>这种不等式，平等性和优先级的组合为您提供了大量的灵活性和强大的功能。通过组合多个约束，您可以定义随用户界面中元素的大小和位置更改而动态适应的布局。有关布局的一些示例，请参阅自动布局指南中的堆栈视图。</strong></p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">open <span class="class"><span class="keyword">class</span> <span class="title">NSLayoutConstraint</span> : <span class="title">NSObject</span> </span>&#123;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="comment">/* Create an array of constraints using an ASCII art-like visual format string.</span></div><div class="line">     */</div><div class="line">    open <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">constraints</span>(<span class="title">withVisualFormat</span> <span class="title">format</span>: <span class="title">String</span>, <span class="title">options</span> <span class="title">opts</span>: <span class="title">NSLayoutFormatOptions</span> = [], <span class="title">metrics</span>: [<span class="title">String</span> : <span class="title">Any</span>]?, <span class="title">views</span>: [<span class="title">String</span> : <span class="title">Any</span>]) -&gt; [<span class="title">NSLayoutConstraint</span>]</span></div><div class="line"></div><div class="line">    </div><div class="line">    /* <span class="title">This</span> <span class="title">macro</span> <span class="title">is</span> <span class="title">a</span> <span class="title">helper</span> <span class="title">for</span> <span class="title">making</span> <span class="title">view</span> <span class="title">dictionaries</span> <span class="title">for</span> +<span class="title">constraintsWithVisualFormat</span>:<span class="title">options</span>:<span class="title">metrics</span>:<span class="title">views</span>:.  </div><div class="line">     <span class="title">NSDictionaryOfVariableBindings</span>(<span class="title">v1</span>, <span class="title">v2</span>, <span class="title">v3</span>) <span class="title">is</span> <span class="title">equivalent</span> <span class="title">to</span> [<span class="title">NSDictionary</span> <span class="title">dictionaryWithObjectsAndKeys</span>:<span class="title">v1</span>, @"<span class="title">v1</span>", <span class="title">v2</span>, @"<span class="title">v2</span>", <span class="title">v3</span>, @"<span class="title">v3</span>", <span class="title">nil</span>];</div><div class="line">     */</div><div class="line">    </div><div class="line">    // <span class="title">not</span> <span class="title">for</span> <span class="title">direct</span> <span class="title">use</span></div><div class="line">    </div><div class="line">    /* <span class="title">Create</span> <span class="title">constraints</span> <span class="title">explicitly</span>.  <span class="title">Constraints</span> <span class="title">are</span> <span class="title">of</span> <span class="title">the</span> <span class="title">form</span> "<span class="title">view1</span>.<span class="title">attr1</span> = <span class="title">view2</span>.<span class="title">attr2</span> * <span class="title">multiplier</span> + <span class="title">constant</span>" </div><div class="line">     <span class="title">If</span> <span class="title">your</span> <span class="title">equation</span> <span class="title">does</span> <span class="title">not</span> <span class="title">have</span> <span class="title">a</span> <span class="title">second</span> <span class="title">view</span> <span class="title">and</span> <span class="title">attribute</span>, <span class="title">use</span> <span class="title">nil</span> <span class="title">and</span> <span class="title">NSLayoutAttributeNotAnAttribute</span>.</div><div class="line">     */</div><div class="line">    <span class="title">public</span> <span class="title">convenience</span> <span class="title">init</span>(<span class="title">item</span> <span class="title">view1</span>: <span class="title">Any</span>, <span class="title">attribute</span> <span class="title">attr1</span>: <span class="title">NSLayoutAttribute</span>, <span class="title">relatedBy</span> <span class="title">relation</span>: <span class="title">NSLayoutRelation</span>, <span class="title">toItem</span> <span class="title">view2</span>: <span class="title">Any</span>?, <span class="title">attribute</span> <span class="title">attr2</span>: <span class="title">NSLayoutAttribute</span>, <span class="title">multiplier</span>: <span class="title">CGFloat</span>, <span class="title">constant</span> <span class="title">c</span>: <span class="title">CGFloat</span>)</div><div class="line"></div><div class="line">    </div><div class="line">    /* <span class="title">If</span> <span class="title">a</span> <span class="title">constraint</span>'<span class="title">s</span> <span class="title">priority</span> <span class="title">level</span> <span class="title">is</span> <span class="title">less</span> <span class="title">than</span> <span class="title">UILayoutPriorityRequired</span>, <span class="title">then</span> <span class="title">it</span> <span class="title">is</span> <span class="title">optional</span>.  <span class="title">Higher</span> <span class="title">priority</span> <span class="title">constraints</span> <span class="title">are</span> <span class="title">met</span> <span class="title">before</span> <span class="title">lower</span> <span class="title">priority</span> <span class="title">constraints</span>.</div><div class="line">     <span class="title">Constraint</span> <span class="title">satisfaction</span> <span class="title">is</span> <span class="title">not</span> <span class="title">all</span> <span class="title">or</span> <span class="title">nothing</span>.  <span class="title">If</span> <span class="title">a</span> <span class="title">constraint</span> '<span class="title">a</span> == <span class="title">b</span>' <span class="title">is</span> <span class="title">optional</span>, <span class="title">that</span> <span class="title">means</span> <span class="title">we</span> <span class="title">will</span> <span class="title">attempt</span> <span class="title">to</span> <span class="title">minimize</span> '<span class="title">abs</span>(<span class="title">a</span>-<span class="title">b</span>)'.</div><div class="line">     <span class="title">This</span> <span class="title">property</span> <span class="title">may</span> <span class="title">only</span> <span class="title">be</span> <span class="title">modified</span> <span class="title">as</span> <span class="title">part</span> <span class="title">of</span> <span class="title">initial</span> <span class="title">set</span> <span class="title">up</span> <span class="title">or</span> <span class="title">when</span> <span class="title">optional</span>.  <span class="title">After</span> <span class="title">a</span> <span class="title">constraint</span> <span class="title">has</span> <span class="title">been</span> <span class="title">added</span> <span class="title">to</span> <span class="title">a</span> <span class="title">view</span>, <span class="title">an</span> <span class="title">exception</span> <span class="title">will</span> <span class="title">be</span> <span class="title">thrown</span> <span class="title">if</span> <span class="title">the</span> <span class="title">priority</span> <span class="title">is</span> <span class="title">changed</span> <span class="title">from</span>/<span class="title">to</span> <span class="title">NSLayoutPriorityRequired</span>.</div><div class="line">     */</div><div class="line">    <span class="title">open</span> <span class="title">var</span> <span class="title">priority</span>: <span class="title">UILayoutPriority</span></div><div class="line"></div><div class="line">    </div><div class="line">    /* <span class="title">When</span> <span class="title">a</span> <span class="title">view</span> <span class="title">is</span> <span class="title">archived</span>, <span class="title">it</span> <span class="title">archives</span> <span class="title">some</span> <span class="title">but</span> <span class="title">not</span> <span class="title">all</span> <span class="title">constraints</span> <span class="title">in</span> <span class="title">its</span> -<span class="title">constraints</span> <span class="title">array</span>.  <span class="title">The</span> <span class="title">value</span> <span class="title">of</span> <span class="title">shouldBeArchived</span> <span class="title">informs</span> <span class="title">UIView</span> <span class="title">if</span> <span class="title">a</span> <span class="title">particular</span> <span class="title">constraint</span> <span class="title">should</span> <span class="title">be</span> <span class="title">archived</span> <span class="title">by</span> <span class="title">UIView</span>.</div><div class="line">     <span class="title">If</span> <span class="title">a</span> <span class="title">constraint</span> <span class="title">is</span> <span class="title">created</span> <span class="title">at</span> <span class="title">runtime</span> <span class="title">in</span> <span class="title">response</span> <span class="title">to</span> <span class="title">the</span> <span class="title">state</span> <span class="title">of</span> <span class="title">the</span> <span class="title">object</span>, <span class="title">it</span> <span class="title">isn</span>'<span class="title">t</span> <span class="title">appropriate</span> <span class="title">to</span> <span class="title">archive</span> <span class="title">the</span> <span class="title">constraint</span> - <span class="title">rather</span> <span class="title">you</span> <span class="title">archive</span> <span class="title">the</span> <span class="title">state</span> <span class="title">that</span> <span class="title">gives</span> <span class="title">rise</span> <span class="title">to</span> <span class="title">the</span> <span class="title">constraint</span>.  <span class="title">Since</span> <span class="title">the</span> <span class="title">majority</span> <span class="title">of</span> <span class="title">constraints</span> <span class="title">that</span> <span class="title">should</span> <span class="title">be</span> <span class="title">archived</span> <span class="title">are</span> <span class="title">created</span> <span class="title">in</span> <span class="title">Interface</span> <span class="title">Builder</span> (<span class="title">which</span> <span class="title">is</span> <span class="title">smart</span> <span class="title">enough</span> <span class="title">to</span> <span class="title">set</span> <span class="title">this</span> <span class="title">prop</span> <span class="title">to</span> <span class="title">YES</span>), <span class="title">the</span> <span class="title">default</span> <span class="title">value</span> <span class="title">for</span> <span class="title">this</span> <span class="title">property</span> <span class="title">is</span> <span class="title">NO</span>.</div><div class="line">     */</div><div class="line">    <span class="title">open</span> <span class="title">var</span> <span class="title">shouldBeArchived</span>: <span class="title">Bool</span></div><div class="line"></div><div class="line">    </div><div class="line">    /* <span class="title">accessors</span></div><div class="line">     <span class="title">firstItem</span>.<span class="title">firstAttribute</span> &#123;==,&lt;=,&gt;=&#125; secondItem.secondAttribute * multiplier + constant</div><div class="line">     <span class="type">Access</span> to these properties <span class="keyword">is</span> not recommended. <span class="type">Use</span> the `firstAnchor` and `secondAnchor` properties instead.</div><div class="line">     */</div><div class="line">    <span class="keyword">unowned</span>(unsafe) open <span class="keyword">var</span> firstItem: <span class="type">AnyObject</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    open <span class="keyword">var</span> firstAttribute: <span class="type">NSLayoutAttribute</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    <span class="keyword">unowned</span>(unsafe) open <span class="keyword">var</span> secondItem: <span class="type">AnyObject</span>? &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    open <span class="keyword">var</span> secondAttribute: <span class="type">NSLayoutAttribute</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="comment">/* accessors</span></div><div class="line">     firstAnchor&#123;==,&lt;=,&gt;=&#125; secondAnchor * multiplier + constant</div><div class="line">     */</div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">10.0</span>, *)</div><div class="line">    <span class="meta">@NSCopying</span> open <span class="keyword">var</span> firstAnchor: <span class="type">NSLayoutAnchor</span>&lt;<span class="type">AnyObject</span>&gt; &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">10.0</span>, *)</div><div class="line">    <span class="meta">@NSCopying</span> open <span class="keyword">var</span> secondAnchor: <span class="type">NSLayoutAnchor</span>&lt;<span class="type">AnyObject</span>&gt;? &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    open <span class="keyword">var</span> relation: <span class="type">NSLayoutRelation</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    open <span class="keyword">var</span> multiplier: <span class="type">CGFloat</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="comment">/* Unlike the other properties, the constant may be modified after constraint creation.  Setting the constant on an existing constraint performs much better than removing the constraint and adding a new one that's just like the old but for having a new constant.</span></div><div class="line">     */</div><div class="line">    open <span class="keyword">var</span> constant: <span class="type">CGFloat</span></div><div class="line"></div><div class="line">    </div><div class="line">    <span class="comment">/* The receiver may be activated or deactivated by manipulating this property.  Only active constraints affect the calculated layout.  Attempting to activate a constraint whose items have no common ancestor will cause an exception to be thrown.  Defaults to NO for newly created constraints. */</span></div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">8.0</span>, *)</div><div class="line">    open <span class="keyword">var</span> isActive: <span class="type">Bool</span></div><div class="line"></div><div class="line">    </div><div class="line">    <span class="comment">/* Convenience method that activates each constraint in the contained array, in the same manner as setting active=YES. This is often more efficient than activating each constraint individually. */</span></div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">8.0</span>, *)</div><div class="line">    open <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">activate</span>(<span class="title">_</span> <span class="title">constraints</span>: [<span class="title">NSLayoutConstraint</span>])</span></div><div class="line"></div><div class="line">    </div><div class="line">    /* <span class="title">Convenience</span> <span class="title">method</span> <span class="title">that</span> <span class="title">deactivates</span> <span class="title">each</span> <span class="title">constraint</span> <span class="title">in</span> <span class="title">the</span> <span class="title">contained</span> <span class="title">array</span>, <span class="title">in</span> <span class="title">the</span> <span class="title">same</span> <span class="title">manner</span> <span class="title">as</span> <span class="title">setting</span> <span class="title">active</span>=<span class="title">NO</span>. <span class="title">This</span> <span class="title">is</span> <span class="title">often</span> <span class="title">more</span> <span class="title">efficient</span> <span class="title">than</span> <span class="title">deactivating</span> <span class="title">each</span> <span class="title">constraint</span> <span class="title">individually</span>. */</div><div class="line">    @<span class="title">available</span>(<span class="title">iOS</span> 8.0, *)</div><div class="line">    <span class="title">open</span> <span class="title">class</span> <span class="title">func</span> <span class="title">deactivate</span>(<span class="title">_</span> <span class="title">constraints</span>: [<span class="title">NSLayoutConstraint</span>])</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="title">extension</span> <span class="title">NSLayoutConstraint</span> &#123;</div><div class="line"></div><div class="line">    <span class="comment">/* For ease in debugging, name a constraint by setting its identifier, which will be printed in the constraint's description.</span></div><div class="line">     Identifiers starting with UI and NS are reserved by the system.</div><div class="line">     */</div><div class="line">    <span class="meta">@available</span>(iOS <span class="number">7.0</span>, *)</div><div class="line">    open <span class="keyword">var</span> identifier: <span class="type">String</span>?</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="方法说明"><a href="#方法说明" class="headerlink" title="方法说明"></a>方法说明</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">public</span> <span class="keyword">convenience</span> <span class="keyword">init</span>(item view1: <span class="type">Any</span>, attribute attr1: <span class="type">NSLayoutAttribute</span>, relatedBy relation: <span class="type">NSLayoutRelation</span>, toItem view2: <span class="type">Any</span>?, attribute attr2: <span class="type">NSLayoutAttribute</span>, multiplier: <span class="type">CGFloat</span>, constant <span class="built_in">c</span>: <span class="type">CGFloat</span>)</div><div class="line"></div><div class="line">创建一个约束</div></pre></td></tr></table></figure>
+<h3 id="属性说明"><a href="#属性说明" class="headerlink" title="属性说明"></a>属性说明</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一个view</span></div><div class="line"> <span class="keyword">unowned</span>(unsafe) open <span class="keyword">var</span> firstItem: <span class="type">AnyObject</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    open <span class="keyword">var</span> firstAttribute: <span class="type">NSLayoutAttribute</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"><span class="comment">//第二个view</span></div><div class="line">    <span class="keyword">unowned</span>(unsafe) open <span class="keyword">var</span> secondItem: <span class="type">AnyObject</span>? &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line">    open <span class="keyword">var</span> secondAttribute: <span class="type">NSLayoutAttribute</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line"> open <span class="keyword">var</span> relation: <span class="type">NSLayoutRelation</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line"> open <span class="keyword">var</span> multiplier: <span class="type">CGFloat</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"> </div><div class="line"> open <span class="keyword">var</span> constant: <span class="type">CGFloat</span></div><div class="line"><span class="comment">/*与其他属性不同，常数可以在约束创建后修改。 在现有约束上设置常量比删除约束并添加一个新的约束更好，这与旧的约束相同，但是具有一个新的常量。*/</span></div></pre></td></tr></table></figure>
+<h3 id="创建约束"><a href="#创建约束" class="headerlink" title="创建约束"></a>创建约束</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> thirdView: <span class="type">UIView</span>?</div><div class="line">    <span class="keyword">var</span> fourView: <span class="type">UIView</span>?</div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> fifth: <span class="type">UIView</span>!</div><div class="line"><span class="comment">//    @IBOutlet weak var secondeView: UIView!</span></div><div class="line"><span class="comment">//    @IBOutlet weak var firstView: UIView!</span></div><div class="line">       <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line"><span class="comment">//            self.firstView.backgroundColor = UIColor.red</span></div><div class="line">            <span class="keyword">self</span>.thirdView = <span class="type">UIView</span>()</div><div class="line">            <span class="keyword">self</span>.fourView  = <span class="type">UIView</span>()</div><div class="line">            <span class="keyword">self</span>.thirdView?.backgroundColor = <span class="type">UIColor</span>.gray</div><div class="line">            <span class="keyword">self</span>.fourView?.backgroundColor = <span class="type">UIColor</span>.brown</div><div class="line">            <span class="keyword">self</span>.fifth.backgroundColor = <span class="type">UIColor</span>.green</div><div class="line">            <span class="keyword">self</span>.fifth.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></div><div class="line">            <span class="keyword">self</span>.view.addSubview(<span class="keyword">self</span>.thirdView!)</div><div class="line">            <span class="keyword">self</span>.thirdView?.addSubview(<span class="keyword">self</span>.fourView!)</div><div class="line">        <span class="comment">//使用自动布局时必须设置为false</span></div><div class="line">            <span class="keyword">self</span>.fourView?.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></div><div class="line">            <span class="keyword">self</span>.thirdView?.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></div><div class="line">            <span class="keyword">let</span> thirdViewWidthContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.width, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.view, attribute: <span class="type">NSLayoutAttribute</span>.width, multiplier: <span class="number">0.5</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="keyword">let</span> thirdViewHeightContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.height, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.view, attribute: <span class="type">NSLayoutAttribute</span>.height, multiplier: <span class="number">0.5</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="keyword">let</span> thirdViewCXContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.centerX, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.view, attribute: <span class="type">NSLayoutAttribute</span>.centerX, multiplier: <span class="number">1.0</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="keyword">let</span> thirdViewYContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.centerY, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.view, attribute: <span class="type">NSLayoutAttribute</span>.centerY, multiplier: <span class="number">1.0</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="keyword">self</span>.view.addConstraints([thirdViewWidthContraint, thirdViewCXContraint, thirdViewHeightContraint, thirdViewYContraint])</div><div class="line">            <span class="comment">/**</span></div><div class="line">             *给fourView添加自动布局属性</div><div class="line">             *</div><div class="line">             */</div><div class="line">            <span class="keyword">let</span> widthContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.fourView!, attribute: <span class="type">NSLayoutAttribute</span>.width, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.width, multiplier: <span class="number">0.5</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="keyword">let</span> heightContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.fourView!, attribute: <span class="type">NSLayoutAttribute</span>.height, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.height, multiplier: <span class="number">0.5</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="keyword">let</span> firstCenterXContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.fourView!, attribute: <span class="type">NSLayoutAttribute</span>.centerX, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.centerX, multiplier: <span class="number">1.0</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="keyword">let</span> firstTopContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.fourView!, attribute: <span class="type">NSLayoutAttribute</span>.centerY, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.centerY, multiplier: <span class="number">1.0</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="comment">//NSLayoutConstraint.activate([widthContraint, heightContraint, firstCenterXContraint, firstTopContraint])</span></div><div class="line">        </div><div class="line">            <span class="keyword">self</span>.thirdView?.addConstraint(firstTopContraint)</div><div class="line">            <span class="keyword">self</span>.thirdView?.addConstraint(firstCenterXContraint)</div><div class="line">            <span class="keyword">self</span>.thirdView?.addConstraint(widthContraint)</div><div class="line">            <span class="keyword">self</span>.thirdView?.addConstraint(heightContraint)</div><div class="line">            <span class="comment">/**</span></div><div class="line">             *IBOutlet fifth添加自动布局属性</div><div class="line">             *使用了自动布局属性后就不能再使用frame改变视图大小了，</div><div class="line">             */</div><div class="line">            fifth.frame.size.width = <span class="number">100</span></div><div class="line">            fifth.frame.size.height = <span class="number">100</span></div><div class="line">            <span class="keyword">let</span> fifthWidthContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.fifth, attribute: <span class="type">NSLayoutAttribute</span>.width, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="literal">nil</span>, attribute: <span class="type">NSLayoutAttribute</span>.width, multiplier: <span class="number">1.0</span>, constant: <span class="number">100.0</span>)</div><div class="line">            <span class="keyword">let</span> fifthHeightContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.fifth, attribute: <span class="type">NSLayoutAttribute</span>.height, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="literal">nil</span>, attribute: <span class="type">NSLayoutAttribute</span>.height, multiplier: <span class="number">1.0</span>, constant: <span class="number">100.0</span>)</div><div class="line">            <span class="keyword">let</span> fifthTopContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.fifth, attribute: <span class="type">NSLayoutAttribute</span>.top, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.thirdView!, attribute: <span class="type">NSLayoutAttribute</span>.bottom, multiplier: <span class="number">1.0</span>, constant: <span class="number">50.0</span>)</div><div class="line">            <span class="keyword">let</span> fifthXContraint = <span class="type">NSLayoutConstraint</span>(item: <span class="keyword">self</span>.fifth, attribute: <span class="type">NSLayoutAttribute</span>.centerX, relatedBy: <span class="type">NSLayoutRelation</span>.<span class="built_in">equal</span>, toItem: <span class="keyword">self</span>.thirdView, attribute: <span class="type">NSLayoutAttribute</span>.centerX, multiplier: <span class="number">1.0</span>, constant: <span class="number">0.0</span>)</div><div class="line">            <span class="comment">/**</span></div><div class="line">             *添加宽高属性直接如果约束建立在父视图和子视图上，则添加到父视图上；如果约束建立在两个兄弟视图上，则添加到两个兄弟视图的父视图上。</div><div class="line">             */</div><div class="line">            <span class="keyword">self</span>.view.addConstraints([fifthTopContraint, fifthXContraint])</div><div class="line">            <span class="keyword">self</span>.fifth?.addConstraints([fifthWidthContraint, fifthHeightContraint])</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如下图</p>
+<p><a href="http://www.z4a.net/image/jnulP" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/10/17/2016-10-179.22.56.png" alt="2016-10-179.22.56.png"></a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS广播NotificationCenter-Swift3]]></title>
+      <url>http://BESTDing.github.io/2016/10/16/iOS%E5%B9%BF%E6%92%ADNotificationCenter-Swift3/</url>
+      <content type="html"><![CDATA[<p>NSNotificationCenter对象（或简称为通知中心）提供用于在程序内广播信息的机制。 NSNotificationCenter对象实质上是一个通知转发表。</p>
+<p><em>Objects register with a notification center to receive notifications (NSNotification objects) using the addObserver(_:selector:name:object:) or addObserver(forName:object:queue:using:) methods. Each invocation of this method specifies a set of notifications. Therefore, objects may register as observers of different notification sets by calling these methods several times.<br>Each running Cocoa program has a default notification center. You typically don’t create your own. An NSNotificationCenter object can deliver notifications only within a single program. If you want to post a notification to other processes or receive notifications from other processes, use an instance of DistributedNotificationCenter.</em></p>
+<p>**类实例使用addObserver（_：selector：name：object :)或addObserver（forName：object：queue：using :)在通知中心注册，接收通知（NSNotification对象）。 每次调用此方法都会指定一组通知。 因此，对象可以通过多次调用这些方法来注册为不同通知集的观察者。</p>
+<p>每个运行的Cocoa程序都有一个默认的通知中心。 您通常不需要自己创建。 NSNotificationCenter对象只能在单个程序中传递通知。 如果要将通知发布到其他进程或从其他进程接收通知，请使用DistributedNotificationCenter的实例。**</p>
+<a id="more"></a>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">open class NotificationCenter : NSObject &#123;</div><div class="line"></div><div class="line">    </div><div class="line">    open class var `default`: NotificationCenter &#123; get &#125;</div><div class="line">//返回一个NotificationCenter对象</div><div class="line">    </div><div class="line">    open func addObserver(_ observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?)</div><div class="line"></div><div class="line">    </div><div class="line">    open func post(_ notification: Notification)</div><div class="line"></div><div class="line">    open func post(name aName: NSNotification.Name, object anObject: Any?)</div><div class="line"></div><div class="line">    open func post(name aName: NSNotification.Name, object anObject: Any?, userInfo aUserInfo: [AnyHashable : Any]? = nil)</div><div class="line"></div><div class="line">    </div><div class="line">    open func removeObserver(_ observer: Any)</div><div class="line"></div><div class="line">    open func removeObserver(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?)</div><div class="line"></div><div class="line">    </div><div class="line">    @available(iOS 4.0, *)</div><div class="line">    open func addObserver(<span class="keyword">for</span>Name name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -&gt; Swift.Void) -&gt; NSObjectProtocol</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="实例添加键盘监听"><a href="#实例添加键盘监听" class="headerlink" title="实例添加键盘监听"></a>实例添加键盘监听</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//指定键盘弹起时处理的方法</span></div><div class="line"> <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(<span class="keyword">self</span>.keyBoardWillShow(nstification:)), name: <span class="type">NSNotification</span>.<span class="type">Name</span>.<span class="type">UIKeyboardWillShow</span>, object: <span class="literal">nil</span>)</div><div class="line"><span class="comment">//指定键盘收起时的处理方法</span></div><div class="line"><span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(<span class="keyword">self</span>.keyBoardWillHide(nstification:)), name: <span class="type">NSNotification</span>.<span class="type">Name</span>.<span class="type">UIKeyboardDidHide</span>, object: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Swift代码修改Xib或storyboard中添加的自动布局约束]]></title>
+      <url>http://BESTDing.github.io/2016/10/16/Swift%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9Xib%E6%88%96storyboard%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%9A%84%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E7%BA%A6%E6%9D%9F/</url>
+      <content type="html"><![CDATA[<p>很多次在xib或storyboard中添加了自动布局约束想要修改约束，但是不知道怎么修改，偶然在简书看到一篇文章才知道原来约束也是可以添加为IBoutlet.</p>
+<p><a href="http://www.jianshu.com/p/5ae4d59abc4a" target="_blank" rel="external">参考文章</a></p>
+<p><strong>登录框根据键盘弹起调整布局</strong></p>
+<p><img src="http://www.z4a.net/images/2016/10/16/2016-10-1611.48.36.png" alt="2016-10-1611.48.36.png"></p>
+<p>由于logo在最上方，只要修改logo的top约束就可以了</p>
+<ul>
+<li>创建logo top约束的IBoutlet</li>
+</ul>
+<p><img src="http://www.z4a.net/images/2016/10/16/2016-10-1611.52.49.png" alt="2016-10-1611.52.49.png"></p>
+<a id="more"></a>
+<ul>
+<li>修改约束添加动画</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实现UITextField代理方法</span></div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">textFieldDidBeginEditing</span><span class="params">(<span class="number">_</span> textField: UITextField)</span></span> &#123;</div><div class="line">      <span class="comment">/**  self.logoButoon.snp.updateConstraints &#123; (make) -&gt; Void in</span></div><div class="line">            make.top.equalTo(120)</div><div class="line">         </div><div class="line">        &#125;</div><div class="line">      */</div><div class="line">        <span class="type">UIView</span>.animate(withDuration: <span class="number">1.0</span>, delay: <span class="number">0.0</span>, options: <span class="type">UIViewAnimationOptions</span>.curveEaseInOut, animations: &#123;</div><div class="line">                <span class="keyword">self</span>.logoButtonTopContraint.constant = <span class="number">70.0</span></div><div class="line">            &#125;, completion: <span class="literal">nil</span>)</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面这种方法有个bug，换一种监听键盘的方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> logoButtonTopContraint: <span class="type">NSLayoutConstraint</span>!</div><div class="line"> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">     <span class="keyword">super</span>.viewDidLoad()</div><div class="line">     logoButoon = &#123;</div><div class="line">         logoButoon.isEnabled = <span class="literal">false</span></div><div class="line">         logoButoon.setBackgroundImage(<span class="type">UIImage</span>(named: <span class="string">"logo"</span>), <span class="keyword">for</span>: <span class="type">UIControlState</span>.disabled)</div><div class="line">         logoButoon.setTitle(<span class="string">""</span>, <span class="keyword">for</span>: <span class="type">UIControlState</span>.disabled)</div><div class="line">         userNameTextField.delegate = <span class="keyword">self</span></div><div class="line">         <span class="keyword">return</span> $<span class="number">0</span></div><div class="line">     &#125;(<span class="type">UIButton</span>())</div><div class="line">     <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(<span class="keyword">self</span>.keyBoardWillShow(nstification:)), name: <span class="type">NSNotification</span>.<span class="type">Name</span>.<span class="type">UIKeyboardWillShow</span>, object: <span class="literal">nil</span>)</div><div class="line">     <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(<span class="keyword">self</span>.keyBoardWillHide(nstification:)), name: <span class="type">NSNotification</span>.<span class="type">Name</span>.<span class="type">UIKeyboardDidHide</span>, object: <span class="literal">nil</span>)</div><div class="line">     <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">keyBoardWillShow</span><span class="params">(nstification: NSNotification)</span></span>  &#123;</div><div class="line">     <span class="keyword">let</span> userInfo = nstification.userInfo</div><div class="line">     <span class="keyword">let</span> keyBoardValue = (userInfo?[<span class="string">"UIKeyboardFrameEndUserInfoKey"</span>] <span class="keyword">as</span> <span class="type">AnyObject</span>).cgRectValue</div><div class="line">     <span class="keyword">let</span> duration: <span class="type">TimeInterval</span> = (userInfo?[<span class="string">"UIKeyboardAnimationDurationUserInfoKey"</span>] <span class="keyword">as</span> <span class="type">AnyObject</span>) <span class="keyword">as</span>! <span class="type">TimeInterval</span></div><div class="line">     <span class="type">UIView</span>.animate(withDuration: duration, delay: <span class="number">0.0</span>, options: <span class="type">UIViewAnimationOptions</span>.curveEaseInOut, animations: &#123;</div><div class="line">         <span class="keyword">self</span>.logoButtonTopContraint.constant = <span class="number">70.0</span></div><div class="line">         &#125;, completion: <span class="literal">nil</span>)</div><div class="line">     </div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">keyBoardWillHide</span><span class="params">(nstification: NSNotification)</span></span> &#123;</div><div class="line">     <span class="keyword">let</span> userInfo = nstification.userInfo</div><div class="line">     <span class="keyword">let</span> duration: <span class="type">TimeInterval</span> = (userInfo![<span class="type">UIKeyboardAnimationDurationUserInfoKey</span>] <span class="keyword">as</span> <span class="type">AnyObject</span>) <span class="keyword">as</span>! <span class="type">TimeInterval</span></div><div class="line">     <span class="type">UIView</span>.animate(withDuration: duration, delay: <span class="number">0.0</span>, options: <span class="type">UIViewAnimationOptions</span>.curveEaseInOut, animations: &#123;</div><div class="line">         <span class="keyword">self</span>.logoButtonTopContraint.constant = <span class="number">144.0</span></div><div class="line">         &#125;, completion: <span class="literal">nil</span>)</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Swift学习之UserDefaults]]></title>
+      <url>http://BESTDing.github.io/2016/10/16/Swift%E5%AD%A6%E4%B9%A0%E4%B9%8BUserDefaults/</url>
+      <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下<code>UserDefaults</code>这个类。</p>
+<p><img src="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png" alt="96d92204gw1f8tb4m5obvj20iw09u40i.png"></p>
+<p>官方文档里是这样介绍的</p>
+<p><em>The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an application to customize its behavior to match a user’s preferences. For example, you can allow users to determine what units of measurement your application displays or how often documents are automatically saved. Applications record such preferences by assigning values to a set of parameters in a user’s defaults database. The parameters are referred to as defaults since they’re commonly used to determine an application’s default state at startup or the way it acts by default.</em></p>
+<p><strong>NSUserDefaults 类为与默认系统交互提供了一个编程接口。默认值系统允许应用程序自定义其行为以匹配用户的首选项。例如，您可以允许用户以确定显示那些组件或多久文件会自动保存。应用程序通过将值分配给一组用户的默认数据库参数记录这些用户偏好设置。因为他们常用来确定应用程序在启动时的默认状态或它的默认行为。</strong></p>
+<p><em>At runtime, you use an NSUserDefaults object to read the defaults that your application uses from a user’s defaults database. NSUserDefaults caches the information to avoid having to open the user’s defaults database each time you need a default value. The synchronize() method, which is automatically invoked at periodic intervals, keeps the in-memory cache in sync with a user’s defaults database.</em></p>
+<p><strong>在运行时，您使用NSUserDefaults对象从用户的默认数据库读取应用程序使用的默认值。 NSUserDefaults缓存信息，以避免在每次需要默认值时都必须打开用户的默认数据库。 以周期性间隔自动调用的synchronize（）方法使内存中缓存与用户的默认数据库保持同步。</strong></p>
+<p><em>The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData. For more details, see Preferences and Settings Programming Guide.</em></p>
+<p><strong>NSUserDefaults类提供了方便的方法来访问常见类型，如浮点数，双精度，整数，布尔值和URL。 默认对象必须是属性列表，也就是说，一个实例（或集合的实例组合）：NSData，NSString，NSNumber，NSDate，NSArray或NSDictionary。 如果要存储任何其他类型的对象，通常应该将其存档以创建NSData的实例。 有关详细信息，请参阅首选项和设置编程指南。
+</strong></p>
+<a id="more"></a>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p><strong>类方法</strong></p>
+<ul>
+<li><code>class func resetStandardUserDefaults()</code></li>
+</ul>
+<p>同步所有更改，并在内存中释放UserDefaults</p>
+<p><em>+resetStandardUserDefaults releases the standardUserDefaults and sets it to nil. A new standardUserDefaults will be created the next time it’s accessed. The only visible effect this has is that all KVO observers of the previous standardUserDefaults will no longer be observing it.</em></p>
+<p><strong>resetStandardUserDefaults释放standardUserDefaults并将其设置为nil。 新的standardUserDefaults将在下次访问时创建。 唯一可见的效果是，所有以前的standardUserDefaults的KVO观察者将不再观察它。</strong></p>
+<p><strong>初始化方法</strong></p>
+<ul>
+<li><code>init()</code></li>
+<li><code>init?(suiteName: String?)</code></li>
+</ul>
+<p><strong>get方法</strong></p>
+<blockquote>
+<ul>
+<li><code>func array(forKey: String)</code><br>Returns the array associated with the specified key.</li>
+<li><code>func bool(forKey: String)</code><br>Returns the Boolean value associated with the specified key.</li>
+<li><code>func data(forKey: String)</code><br>Returns the data object associated with the specified key.</li>
+<li><code>func dictionary(forKey: String)</code><br>Returns the dictionary object associated with the specified key.</li>
+<li><code>func float(forKey: String)</code><br>Returns the floating-point value associated with the specified key.</li>
+<li><code>func integer(forKey: String)</code><br>Returns the integer value associated with the specified key..</li>
+<li><code>func object(forKey: String)</code><br>Returns the object associated with the first occurrence of the specified default.</li>
+<li><code>func stringArray(forKey: String)</code><br>Returns the array of strings associated with the specified key.</li>
+<li><code>func string(forKey: String)</code><br>Returns the string associated with the specified key.</li>
+<li><code>func double(forKey: String)</code><br>Returns the double value associated with the specified key.</li>
+<li><code>func url(forKey: String)</code><br>Returns the NSURL instance associated with the specified key.</li>
+</ul>
+</blockquote>
+<p><strong>Set方法</strong></p>
+<blockquote>
+<ul>
+<li><code>func set(Bool, forKey: String)</code><br>Sets the value of the specified default key to the specified Boolean value.</li>
+<li><code>func set(Float, forKey: String)</code><br>Sets the value of the specified default key to the specified floating-point value.</li>
+<li><code>func set(Int, forKey: String)</code><br>Sets the value of the specified default key to the specified integer value.</li>
+<li><code>func set(Any?, forKey: String)</code><br>Sets the value of the specified default key in the standard application domain.</li>
+<li><code>func set(Double, forKey: String)</code><br>Sets the value of the specified default key to the double value.</li>
+<li><code>func set(URL?, forKey: String)</code><br>Sets the value of the specified default key to the specified URL.</li>
+</ul>
+</blockquote>
+<p><strong>remove方法</strong></p>
+<blockquote>
+<ul>
+<li><code>func removeObject(forKey: String)</code><br>Removes the value of the specified default key in the standard application domain.</li>
+</ul>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[linux磁盘管理之df和du命令]]></title>
+      <url>http://BESTDing.github.io/2016/10/15/linux%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E4%B9%8Bdf%E5%92%8Cdu%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<blockquote>
+<ul>
+<li>df</li>
+<li>du</li>
+<li>umount</li>
+<li>mount</li>
+</ul>
+</blockquote>
+<h3 id="df"><a href="#df" class="headerlink" title="df"></a>df</h3><p><strong>参数说明</strong></p>
+<blockquote>
+<ul>
+<li>-h –human-readable 使用人类可读的格式(预设值是不加这个选项的…)</li>
+<li>-i, –inodes 列出 inode 资讯，不列出已使用 block</li>
+<li>-k, –kilobytes 就像是 –block-size=1024</li>
+<li>文件–block-size={SIZE} 使用 {SIZE} 大小的 Blocks</li>
+<li>文件-t, –type=TYPE 限制列出文件系统的 TYPE</li>
+<li>文件-T, –print-type 显示文件系统的形式</li>
+</ul>
+</blockquote>
+<p><strong>实例</strong></p>
+<ul>
+<li>以可读的形式列出当前系统磁盘使用情况</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -h</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>显示inode的信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -ih</div></pre></td></tr></table></figure>
+<p><img src="http://www.z4a.net/images/2016/10/08/2016-10-0810.58.47.png" alt="2016-10-0810.58.47.png"></p>
+<h3 id="du-显示指定目录或文件的大小"><a href="#du-显示指定目录或文件的大小" class="headerlink" title="du 显示指定目录或文件的大小"></a>du 显示指定目录或文件的大小</h3><p><strong>参数说明</strong></p>
+<blockquote>
+<ul>
+<li>-a 显示当前目录下的所有文件的大小</li>
+<li>-b 大小用bytes表示，默认为k bytes</li>
+<li>-c 最后加上所有问价的总大小</li>
+<li>-s 只显示各档案大小的总合 (summarize) </li>
+<li>-x 或–one-file-xystem 以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过。</li>
+<li>L  计算所有档案的大小</li>
+<li>-h 或–human-readable 以K，M，G为单位，提高信息的可读性。</li>
+</ul>
+</blockquote>
+<p><strong>实例</strong></p>
+<ul>
+<li>显示指定文件（lock文件）的大小</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h lock</div></pre></td></tr></table></figure>
+<h3 id="磁盘挂载-mount-与卸载-umount"><a href="#磁盘挂载-mount-与卸载-umount" class="headerlink" title="磁盘挂载(mount)与卸载(umount)"></a>磁盘挂载(mount)与卸载(umount)</h3><p><strong>umount</strong></p>
+<p>参数说明</p>
+<blockquote>
+<ul>
+<li>-a 卸除/etc/mtab中记录的所有文件系统。</li>
+<li>-h 显示帮助。</li>
+<li>-n 卸除时不要将信息存入/etc/mtab文件中。</li>
+<li>-r 若无法成功卸除，则尝试以只读的方式重新挂入文件系统。</li>
+<li>-t&lt;文件系统类型&gt; 仅卸除选项中所指定的文件系统。</li>
+<li>-v 执行时显示详细的信息。</li>
+<li>-V 显示版本信息。</li>
+</ul>
+</blockquote>
+<ul>
+<li>卸载挂载在指定挂载点的磁盘</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unmount -v /home</div></pre></td></tr></table></figure>
+<ul>
+<li>通过指定设备名卸载磁盘</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">umount -v /dev/sda1</div></pre></td></tr></table></figure>
+<p><strong>mount挂载磁盘</strong></p>
+<p>命令格式</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount 参数 device(挂载的设备) dir(指定挂载的目录)</div></pre></td></tr></table></figure>
+<p>参数说明</p>
+<blockquote>
+<ul>
+<li>-o ro(只读方式挂载)</li>
+<li>-o rw(读写方式挂载)</li>
+<li>-t 指定档案系统的型态，通常不必指定。mount 会自动选择正确的型态。</li>
+</ul>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mount /dev/disk2s3 /home</div><div class="line"><span class="comment">#将设备 /dev/disk2s3挂载到 /home目录下</span></div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[linux输出重定向]]></title>
+      <url>http://BESTDing.github.io/2016/10/06/linux/linux%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</url>
+      <content type="html"><![CDATA[<p>一般情况下，每个 Unix/Linux 命令运行时都会打开三个文件：</p>
+<ul>
+<li>标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。</li>
+<li>标准输出文件(stdout)：stdout 的文件描述符为1，Unix程序默认向stdout输出数据。</li>
+<li>标准错误文件(stderr)：stderr的文件描述符为2，Unix程序会向stderr流中写入错误信息。</li>
+</ul>
+<h4 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h4><p>可以把命令的输出重定向到一个文件像下面这种格式</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span>&gt;file</div><div class="line">//who命令输出重定向到users文件内</div><div class="line">who&gt;users</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="输出重定向会覆盖源文件的内容"><a href="#输出重定向会覆盖源文件的内容" class="headerlink" title="输出重定向会覆盖源文件的内容"></a>输出重定向会覆盖源文件的内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> line 1 &gt; users</div><div class="line">cat users //line 1</div></pre></td></tr></table></figure>
+<p>如果不希望文件被覆盖可以使用<code>&gt;&gt;</code>添加到文件末尾</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> line2 &gt; users</div><div class="line">cat users </div><div class="line">/**</div><div class="line">   line1</div><div class="line">	line2</div><div class="line">*/</div></pre></td></tr></table></figure>
+<h4 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h4><p>同输出定向一样也linux命令也可以从文件获取输入</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span> &lt; file</div><div class="line">wc <span class="_">-l</span> &lt; users</div><div class="line"><span class="comment">#输出2</span></div></pre></td></tr></table></figure>
+<p>前面说到不仅有标准输入输出还有标准错误。用下面命令格式处理标准错误的重定向</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span> 2 &gt; file</div><div class="line"><span class="built_in">command</span> &gt; file 2&gt;&amp;1</div><div class="line"><span class="comment">#将 stdout 和 stderr 合并后重定向到 file</span></div><div class="line"><span class="built_in">command</span> &lt; file1 &gt;file2</div><div class="line"><span class="comment">#输入输出都重定向</span></div></pre></td></tr></table></figure>
+<h4 id="Here-Document"><a href="#Here-Document" class="headerlink" title="Here Document"></a>Here Document</h4><p>Here Document 是 Shell 中的一种特殊的重定向方式，它的基本的形式如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span> &lt;&lt; delimiter(分隔符)</div><div class="line">    document</div><div class="line">delimiter</div></pre></td></tr></table></figure>
+<p>将两个delimiter之间的内容作为输入传递给命令</p>
+<p>注意：</p>
+<ul>
+<li>结尾的delimiter 一定要顶格写，前面不能有任何字符，后面也不能有任何字符，包括空格和 tab 缩进。</li>
+<li>开始的delimiter前后的空格会被忽略掉。</li>
+</ul>
+<h4 id="dev-null"><a href="#dev-null" class="headerlink" title="/dev/null"></a>/dev/null</h4><p>如果希望执行某个命令，但又不希望在屏幕上显示输出结果，那么可以将输出重定向到 /dev/null：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">command</span> &gt; /dev/null</div></pre></td></tr></table></figure>
+<p>/dev/null 是一个特殊的文件，写入到它的内容都会被丢弃；如果尝试从该文件读取内容，那么什么也读不到。但是 /dev/null 文件非常有用，将命令的输出重定向到它，会起到”禁止输出“的效果。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[linux命令杂记]]></title>
+      <url>http://BESTDing.github.io/2016/10/05/linux/who%E5%92%8Cwc%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<blockquote>
+<ol>
+<li>who命令</li>
+</ol>
+</blockquote>
+<h3 id="who命令"><a href="#who命令" class="headerlink" title="who命令"></a>who命令</h3><p>who命令是用来打印出当前系统登录的用户的信息，显示的资料包含了使用者 ID、使用的终端机、从哪边连上来的、上线时间、呆滞时间、CPU 使用量、动作等等。</p>
+<h3 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h3><p>Linux wc命令用于计算字数。<br>利用wc指令我们可以计算文件的Byte数、字数、或是列数，若不指定文件名称、或是所给予的文件名为”-“，则wc指令会从标准输入设备读取数据。<br><a id="more"></a></p>
+<ul>
+<li>c或–bytes或–chars 只显示Bytes数。</li>
+<li>l或–lines 只显示列数。</li>
+<li>w或–words 只显示字数。</li>
+</ul>
+<p>在默认的情况下，wc将计算指定文件的行数、字数，以及字节数。</p>
+<h5 id="实例统计我之前一篇日志的行数、字数、字节数、"><a href="#实例统计我之前一篇日志的行数、字数、字节数、" class="headerlink" title="实例统计我之前一篇日志的行数、字数、字节数、"></a>实例统计我之前一篇日志的行数、字数、字节数、</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wc vim学习笔记-基本操作.md</div><div class="line">//输出 </div><div class="line"> 172     375    3875 vim学习笔记-基本操作.md</div></pre></td></tr></table></figure>
+<p>利用以上两个命令我们可以统计系统当前登录的用户数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">who | wc <span class="_">-l</span></div><div class="line">输出当前登录用户数量</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[技嘉z170x-ud3 i7-6700k黑苹果教程]]></title>
+      <url>http://BESTDing.github.io/2016/10/03/%E6%8A%80%E5%98%89z170x-ud3%20i7-6700K%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%95%99%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<p><a href="http://bbs.pcbeta.com/viewthread-1707541-1-1.html" target="_blank" rel="external">感谢远景坛友翻译和搬运:</a></p>
+<p><a href="https://www.tonymacx86.com/threads/guide-el-capitan-on-the-ga-z170x-ud3.180618/" target="_blank" rel="external">原贴地址</a></p>
+<h2 id="电脑配置"><a href="#电脑配置" class="headerlink" title="电脑配置"></a>电脑配置</h2><blockquote>
+<ul>
+<li>BIOS F5b <a href="http://www.gigabyte.cn/products/product-page.aspx?pid=5891#bios" target="_blank" rel="external">下载</a></li>
+<li>CPU i7-6700k</li>
+<li>主板 技嘉 z170x-ud3 ultra</li>
+<li>内存 金士顿骇客神条 8GB DDR4 2400 MHz</li>
+<li>显卡 技嘉GTX770 4G (免驱具体怎么设置后面会说到)</li>
+<li>显示器 戴尔 u2414h</li>
+<li>声卡 Realtek ALC1150</li>
+<li>以太网卡 Intel I219V2</li>
+<li>无线网卡 AR9380</li>
+</ul>
+</blockquote>
+<h3 id="已经驱动的设备"><a href="#已经驱动的设备" class="headerlink" title="已经驱动的设备"></a>已经驱动的设备</h3><ul>
+<li>SATA</li>
+<li>USB 2.0 和 USB 3.0</li>
+<li>声卡</li>
+<li>CPU 变频(未使用DSDT)</li>
+<li>显卡 变频正常</li>
+<li>睡眠正常</li>
+<li>网卡內建</li>
+<li>固态硬盘开启TRIM</li>
+<li>HD530 免驱</li>
+</ul>
+<h3 id="未驱动设备"><a href="#未驱动设备" class="headerlink" title="未驱动设备"></a>未驱动设备</h3><blockquote>
+<ul>
+<li>USB 3.1 TypeA可以供电不可以挂载设备</li>
+<li>USB 3.1 TypeC可以供电不可以挂载设备，我的安卓手机插上只能充电不能挂载。</li>
+</ul>
+</blockquote>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><a id="more"></a>
+<h3 id="下载-Sierra安装镜像"><a href="#下载-Sierra安装镜像" class="headerlink" title="下载 Sierra安装镜像"></a>下载 Sierra安装镜像</h3><p>这个直接去AppStore下载就好了</p>
+<h3 id="需要下载的文件"><a href="#需要下载的文件" class="headerlink" title="需要下载的文件"></a>需要下载的文件</h3><ul>
+<li>Clover Files.zip</li>
+<li>HFSPlus.efi</li>
+<li>Clover Installer</li>
+<li>audio cloverAlc-120.command.zip</li>
+<li>audio cloverHDMI-110.command</li>
+<li>ssdtPRGen (CPU PWM) (Left click and “Download Linked File”)</li>
+<li>freqVectorsEdit.sh</li>
+<li>USB-SSDT.zip</li>
+<li>Nvidia drivers for Sierra</li>
+</ul>
+<p><a href="https://yunpan.cn/cka38Is9Rp83r" target="_blank" rel="external">打包下载360云盘提取码:（提取码：2a19）</a></p>
+<h3 id="BIOS-设置-很重要"><a href="#BIOS-设置-很重要" class="headerlink" title="BIOS 设置(很重要)"></a>BIOS 设置(很重要)</h3><p>一下设置不同BIOS版本可能会不同，但是你只要BIOS上有的就按照下面的设置。有坑的地方我会在下面说明的。</p>
+<blockquote>
+<h3 id="In-BIOS-Features。"><a href="#In-BIOS-Features。" class="headerlink" title="In BIOS Features。"></a>In BIOS Features。</h3><blockquote>
+<ul>
+<li>Fast Boot: Disabled</li>
+<li>Windows 8/10 Fatures: Windows 8/10</li>
+<li>CSM Support: Disabled</li>
+<li>Network Stack: Disabled </li>
+</ul>
+</blockquote>
+<h3 id="In-Peripherals"><a href="#In-Peripherals" class="headerlink" title="In Peripherals:"></a>In Peripherals:</h3><blockquote>
+<ul>
+<li>ntel Platform Trust Technology: Disabled</li>
+<li>Initial Display Output: PCIe 1 Slot (Or whatever slot your GFX is in)</li>
+<li>Legacy USB Support: Enabled</li>
+<li>XHCI Hand-off: Enabled</li>
+<li>Port 60/64 Emulation: Disabled</li>
+<li>In Super IO Configuration:</li>
+<li>Serial Port 1: Disabled </li>
+</ul>
+</blockquote>
+<h3 id="In-Chipset"><a href="#In-Chipset" class="headerlink" title="In Chipset:"></a>In Chipset:</h3><blockquote>
+<ul>
+<li>VT-d: Disabled</li>
+<li>Internal Graphics: Disabled(如果你用核显的话这一项设置成Auto设置成Disabled就把核显关了，另外如果你有独显这个一定要设置成Auto或者Disabled不然独显无法驱动)</li>
+<li>Audio Controller: Enabled</li>
+<li>PCH LAN Controller: Enabled</li>
+<li>IOAPIC 24-119 Entries: Enabled</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="设置USB接口"><a href="#设置USB接口" class="headerlink" title="设置USB接口"></a>设置USB接口</h3><p>这个直接去原贴看一下吧！！</p>
+<h2 id="从10-11升级到10-12-亲测"><a href="#从10-11升级到10-12-亲测" class="headerlink" title="从10.11升级到10.12(亲测)"></a>从10.11升级到10.12(亲测)</h2><h3 id="升级前的一些准备"><a href="#升级前的一些准备" class="headerlink" title="升级前的一些准备"></a>升级前的一些准备</h3><ol>
+<li>下载Clover（上面打包下载）</li>
+<li>移除一下文件从EFI文件夹中：<ul>
+<li>/EFI/CLOVER/kexts/Other/AppleALC.kext (Currently causes unbootable system on Sierra导致无法启动)</li>
+</ul>
+</li>
+<li>用上面下载的 <code>Clover Files-10.12.zip</code>中的一下文件替换现有EFI中的文件：<ul>
+<li>SSDT-HDEF-HDAS-1.aml (/EFI/CLOVER/ACPI/patched)</li>
+<li>IntelMausiEthernet.kext (/EFI/CLOVER/kext/Other)</li>
+</ul>
+</li>
+<li>Set CsrActiveConfig to 0x67 (Disable SIP关闭SIP).</li>
+</ol>
+<h3 id="开始更新"><a href="#开始更新" class="headerlink" title="开始更新"></a>开始更新</h3><ol>
+<li>运行 macOS Sierra.app选择要安装磁盘</li>
+<li>重启后选择从安装盘启动别忘了 加上 nv_disable=1（没有n卡的不用加）</li>
+<li>安装完成后再次重启也要加上 nv_disable=1参数</li>
+<li>不是免驱的n卡 安装webdrivers</li>
+<li>run AGDPFix.app(免驱卡解决显示器无信号)</li>
+<li>重启</li>
+<li>执行 audio_cloverALC-120.command驱动声卡</li>
+<li><p>If using macPro6,1: Unpack freqVectorsEdit.sh-master.zip, run freqVectorsEdit.sh. Choose the option called: “Mac-65CE76090165799A.plist (iMac17,1)”(这一步我没有执行)<br>9 重启 enjoy</p>
+<h3 id="免驱显卡设置"><a href="#免驱显卡设置" class="headerlink" title="免驱显卡设置"></a>免驱显卡设置</h3><p>所有Clover关于n卡参数都不要勾选 nv_disables,<br>nvda_drv, inject_nvidia，最后bios里一定要禁用核显。</p>
+<h2 id="原版安装-10-12"><a href="#原版安装-10-12" class="headerlink" title="原版安装 10.12"></a>原版安装 10.12</h2></li>
+<li><p>制作安装盘</p>
+</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo <span class="string">"/Applications/Install macOS Sierra.app/Contents/Resources/createinstallmedia"</span> --volume /Volumes/`Untitled(替换为你分区的名称)`--applicationpath <span class="string">"/Applications/Install macOS Sierra.app"</span> --nointeraction</div></pre></td></tr></table></figure>
+<ol>
+<li><strong>制作Clover引导</strong><ul>
+<li>运行Clover安装文件选择自定义安装</li>
+<li>选择一下安装选项<br>  Install for UEFI booting only<br>Drivers64UEFI<ul>
+<li>Driver64EFI<ul>
+<li>OsxAptioFix2Drv-64</li>
+<li>EmuVariableUefi-64</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>复制旗下文件到EFI</strong><ul>
+<li>ACPI/patched/SSDT-5.aml</li>
+<li>ACPI/patched/USB-SSDT.aml</li>
+<li>config.plist</li>
+<li>kexts/Other/FakeSMC.kext</li>
+<li>kexts/Other/IntelMausiEthernet.kext</li>
+<li>kexts/Other/CodecCommander.kext</li>
+<li>drivers64UEFI/HFSPlus.efi</li>
+<li>ACPI/patched/XOSI-WIN10.aml</li>
+<li>ACPI/patched/SSDT-HDEF-HDAS-1.aml</li>
+</ul>
+</li>
+<li><strong>删除一下文件</strong><ul>
+<li>kexts/10.*</li>
+<li>drivers64UEFI/VBoxHfs-64.efi</li>
+</ul>
+</li>
+</ol>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>和升级步骤一样</p>
+<h3 id="其他说明"><a href="#其他说明" class="headerlink" title="其他说明"></a>其他说明</h3><p>以上步骤不一定都要全部执行我就有一部分没执行，如果配置和我的一样可以直接那我的EFI试一下一般都会成功</p>
+<h3 id="最后祝所有正在折腾的朋友，早日吃上黑果"><a href="#最后祝所有正在折腾的朋友，早日吃上黑果" class="headerlink" title="最后祝所有正在折腾的朋友，早日吃上黑果"></a>最后祝所有正在折腾的朋友，早日吃上黑果</h3>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Swift学习之闭包]]></title>
+      <url>http://BESTDing.github.io/2016/09/25/Swift/Swift%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%97%AD%E5%8C%85/</url>
+      <content type="html"><![CDATA[<blockquote>
+<ul>
+<li>闭包表达式(Closure Expressions)</li>
+<li>尾随闭包(Trailing Closures)</li>
+<li>值捕获(Capturing Values)</li>
+<li>闭包是引用类型(Closures Are Reference Types)</li>
+<li>逃逸闭包(Escaping Closures)</li>
+<li>自动闭包(Autoclosures)<a id="more"></a>
+闭包是自包含的代码块，SWift闭包和objc的block相似。闭包可以捕获上下文中的常量、变量，Swift会帮你管理捕获过程中的内存。</li>
+</ul>
+</blockquote>
+<h3 id="特殊闭包"><a href="#特殊闭包" class="headerlink" title="特殊闭包"></a>特殊闭包</h3><ul>
+<li>全局函数有名字不会捕获任何值得闭包。</li>
+<li>嵌套函数，可以捕获上下文中的值。</li>
+</ul>
+<h3 id="闭包优化"><a href="#闭包优化" class="headerlink" title="闭包优化"></a>闭包优化</h3><ul>
+<li>利用上下文推断参数和返回类型</li>
+<li>隐式返回单表达式闭包，即单表达式可以省略<code>return</code>关键字</li>
+<li>参数名称缩写</li>
+<li>尾随闭包语法</li>
+</ul>
+<h3 id="闭包表达式"><a href="#闭包表达式" class="headerlink" title="闭包表达式"></a>闭包表达式</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义一个闭包</span></div><div class="line">&#123;(parameters) -&gt; returnType <span class="keyword">in</span></div><div class="line">	statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="根据上下文推断类型"><a href="#根据上下文推断类型" class="headerlink" title="根据上下文推断类型"></a>根据上下文推断类型</h3><p>闭包作为参数传递给函数时，基本都可以推断出闭包的参数类型和返回值类型，所以可以不用完整形式构造闭包。<br>当然如果完整格式有利于提高代码可读性，苹果官方鼓励使用完整格式的闭包。</p>
+<h3 id="单表达式闭包隐式返回"><a href="#单表达式闭包隐式返回" class="headerlink" title="单表达式闭包隐式返回"></a>单表达式闭包隐式返回</h3><p>单表达式可以省略<code>return</code>关键字隐式返回表达式结果。</p>
+<h3 id="参数名称缩写"><a href="#参数名称缩写" class="headerlink" title="参数名称缩写"></a>参数名称缩写</h3><p>Swift 自动为内联闭包提供了参数名称缩写功能，你可以直接通过$0, $1, $2 来顺序调用闭包参数。以此类推，你在表达式中使用参数名称缩写，你同样可以在闭包定义中省略参数列表，并且对应参数名称缩写的类型会通过函数类型进行推断。in关键字也同样可以被省略，因为此时闭包表达式完全由闭包函数体构成</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reversedNames = names.sorted(by: &#123; $<span class="number">0</span> &gt; $<span class="number">1</span> &#125; )</div></pre></td></tr></table></figure>
+<h3 id="运算符方法"><a href="#运算符方法" class="headerlink" title="运算符方法"></a>运算符方法</h3><p>更简短的方式编写闭包，可以使用运算符方法<br>更多关于运算符方法的内容请查看<a href="http://wiki.jikexueyuan.com/project/swift/chapter2/25_Advanced_Operators.html#operator_methods" target="_blank" rel="external">运算符方法</a></p>
+<h3 id="尾随闭包"><a href="#尾随闭包" class="headerlink" title="尾随闭包"></a>尾随闭包</h3><p>如果你需要将一个很长的闭包表达式作为最后一个参数传递给函数，可以使用尾随闭包来增强函数的可读性。尾随闭包是一个书写在函数括号之后的闭包表达式，函数支持将其作为最后一个参数调用。在使用尾随闭包时，你不用写出它的参数标签：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunctionThatTakesAClosure</span><span class="params">(closure: <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">    <span class="comment">// 函数体部分</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 以下是不使用尾随闭包进行函数调用</span></div><div class="line">someFunctionThatTakesAClosure(closure: &#123;</div><div class="line">    <span class="comment">// 闭包主体部分</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 以下是使用尾随闭包进行函数调用</span></div><div class="line">someFunctionThatTakesAClosure() &#123;</div><div class="line">    <span class="comment">// 闭包主体部分</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Swift自动布局框架SnapKit设置布局的方法就是用的尾随闭包</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="type">UIView</span>()</div><div class="line">superview.addSubview(box)</div><div class="line"></div><div class="line">box.snp.makeConstraints &#123; (make) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">    make.top.equalTo(superview).offset(<span class="number">20</span>)</div><div class="line">    make.<span class="keyword">left</span>.equalTo(superview).offset(<span class="number">20</span>)</div><div class="line">    make.bottom.equalTo(superview).offset(-<span class="number">20</span>)</div><div class="line">    make.<span class="keyword">right</span>.equalTo(superview).offset(-<span class="number">20</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="值捕获"><a href="#值捕获" class="headerlink" title="值捕获"></a>值捕获</h3><p>闭包可以在其被定义的上下文中捕获常量或变量。即使定义这些常量和变量的原作用域已经不存在，闭包仍然可以在闭包函数体内引用和修改这些值。</p>
+<h3 id="闭包是引用类型"><a href="#闭包是引用类型" class="headerlink" title="闭包是引用类型"></a>闭包是引用类型</h3><p>对应值类型，闭包是引用类型</p>
+<h3 id="逃逸闭包"><a href="#逃逸闭包" class="headerlink" title="逃逸闭包"></a>逃逸闭包</h3><p>当一个闭包作为参数传到一个函数中，但是这个闭包在函数返回之后才被执行，我们称该闭包从函数中逃逸。当你定义接受闭包作为参数的函数时，你可以在参数名之前标注 @escaping，用来指明这个闭包是允许“逃逸”出这个函数的。</p>
+<p>逃逸闭包在异步操作的函数中比较常见，比如我们<code>GET</code>一个请求，总是等待服务器返回后调用闭包处理服务器返回的状态。</p>
+<p><strong>一种能使闭包“逃逸”出函数的方法是，将这个闭包保存在一个函数外部定义的变量中。</strong></p>
+<h3 id="自动闭包"><a href="#自动闭包" class="headerlink" title="自动闭包"></a>自动闭包</h3><p>自动闭包是一种自动创建的闭包，用于包装传递给函数作为参数的表达式。这种闭包不接受任何参数，当它被调用的时候，会返回被包装在其中的表达式的值。这种便利语法让你能够省略闭包的花括号，用一个普通的表达式来代替显式的闭包。</p>
+<p>自动闭包也可以逃逸，和前面说明的一样在闭包前加上 @escaping</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[UILabel详解(Swift).md]]></title>
+      <url>http://BESTDing.github.io/2016/09/24/iOS/UILabel%E8%AF%A6%E8%A7%A3/</url>
+      <content type="html"><![CDATA[<h3 id="创建一个UILabel"><a href="#创建一个UILabel" class="headerlink" title="创建一个UILabel"></a>创建一个UILabel</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sLable = <span class="type">UILabel</span>(frame: <span class="type">CGRect</span>(x: <span class="number">100</span>, y: <span class="number">200</span>, width: <span class="number">100</span>, height: <span class="number">30</span>))</div></pre></td></tr></table></figure>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><blockquote>
+<ul>
+<li>text 设置要显示的内容</li>
+<li>lineBreakMode 设置文字显示不全是的模式</li>
+<li>font 设置要显示文本内容</li>
+<li>shadowColor 设置阴影颜色</li>
+<li>numberOfLines 设置文本行数</li>
+<li>textColer 设置文本颜色</li>
+<li>adjustsFontSizeToFitWidth 调整字体大小适应宽度<a id="more"></a>
+<h3 id="实例1自适应高度（宽度固定）"><a href="#实例1自适应高度（宽度固定）" class="headerlink" title="实例1自适应高度（宽度固定）"></a>实例1自适应高度（宽度固定）</h3></li>
+</ul>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义计算高度函数</span></div><div class="line">	<span class="function"><span class="keyword">func</span> <span class="title">heightWithConstrainedWidth</span><span class="params">(string: String, width: CGFloat, font: UIFont)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</div><div class="line">            <span class="keyword">let</span> constraintRect = <span class="type">CGSize</span>(width: width, height: <span class="number">100000.0</span>)</div><div class="line">            <span class="keyword">let</span> boundingBox = string.boundingRect(with: constraintRect, options: <span class="type">NSStringDrawingOptions</span>.usesLineFragmentOrigin, attributes: [<span class="type">NSFontAttributeName</span>: font], context: <span class="literal">nil</span>)</div><div class="line">            <span class="keyword">return</span> boundingBox.height</div><div class="line">&#125;</div><div class="line">        </div><div class="line">        </div><div class="line"><span class="keyword">var</span> label = <span class="type">UILabel</span>()</div><div class="line">label.frame.size.width = <span class="number">100</span> <span class="comment">//设置宽度</span></div><div class="line">label.font =  <span class="type">UIFont</span>.systemFont(ofSize: <span class="number">15.0</span>)</div><div class="line"><span class="comment">//设置字体大小</span></div><div class="line">label.numberOfLines = <span class="number">0</span> <span class="comment">// 0表示不限行数</span></div><div class="line">lable.textColor = <span class="type">UIColor</span>.orange <span class="comment">//设置颜色</span></div><div class="line"></div><div class="line">text = <span class="string">"自适应高度（宽度固定）自适应高度（宽度固定）自适应高度（宽度固定）自适应高度（宽度固定）自适应高度（宽度固定）"</span></div><div class="line"><span class="keyword">let</span> height = heightWithConstrainedWidth(string: text, width: <span class="number">100</span>, font: <span class="type">UIFont</span>.systemFont(ofSize: <span class="number">16</span>))</div><div class="line">label.frame.size.height = height<span class="comment">//设置计算过的高度</span></div><div class="line">label.text = text</div></pre></td></tr></table></figure>
+<p>显示效果</p>
+<p><img src="http://www.z4a.net/images/2016/09/24/2016-09-244.33.37.png" alt="2016-09-244.33.37.png"></p>
+<h3 id="设置字体"><a href="#设置字体" class="headerlink" title="设置字体"></a>设置字体</h3><p>通过font属性设置字体</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> font = <span class="type">UIFont</span>.systemFont(ofSize: <span class="number">15.0</span>)</div><div class="line">label.font = font</div></pre></td></tr></table></figure>
+<h3 id="设置lineBreakMode"><a href="#设置lineBreakMode" class="headerlink" title="设置lineBreakMode"></a>设置lineBreakMode</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//文字显示不全时怎么显示</span></div><div class="line"><span class="meta">@available</span>(iOS <span class="number">6.0</span>, *)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">NSLineBreakMode</span> : <span class="title">Int</span> </span>&#123;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="keyword">case</span> byWordWrapping <span class="comment">// Wrap at word boundaries, default</span></div><div class="line"></div><div class="line">    <span class="keyword">case</span> byCharWrapping <span class="comment">// Wrap at character boundaries</span></div><div class="line"></div><div class="line">    <span class="keyword">case</span> byClipping <span class="comment">// Simply clip</span></div><div class="line"></div><div class="line">    <span class="keyword">case</span> byTruncatingHead <span class="comment">// Truncate at head of line: "...wxyz"</span></div><div class="line"></div><div class="line">    <span class="keyword">case</span> byTruncatingTail <span class="comment">// Truncate at tail of line: "abcd..."</span></div><div class="line"></div><div class="line">    <span class="keyword">case</span> byTruncatingMiddle <span class="comment">// Truncate middle of line:  "ab...yz"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS自定义导航栏]]></title>
+      <url>http://BESTDing.github.io/2016/09/17/iOS/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%BC%E8%88%AA%E6%A0%8F/</url>
+      <content type="html"><![CDATA[<blockquote>
+<ol>
+<li>初始化UINavigationController</li>
+<li>自定义</li>
+</ol>
+</blockquote>
+<h3 id="初始化UINavigationController"><a href="#初始化UINavigationController" class="headerlink" title="初始化UINavigationController"></a>初始化UINavigationController</h3><p>在AppDelegate添加如下代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span>: <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> window: <span class="type">UIWindow</span>?</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="comment">// Override point for customization after application launch.</span></div><div class="line">        window = <span class="type">UIWindow</span>(frame: <span class="type">UIScreen</span>.main.bounds)</div><div class="line">        window?.backgroundColor = <span class="type">UIColor</span>.white</div><div class="line">        <span class="keyword">let</span> rootViewController = <span class="type">ViewController</span>()</div><div class="line">        <span class="keyword">let</span> nav = <span class="type">UINavigationController</span>(rootViewController: rootViewController)</div><div class="line">        window?.makeKeyAndVisible()</div><div class="line">        window?.rootViewController = nav</div><div class="line">        rootViewController.view.backgroundColor = <span class="type">UIColor</span>.darkGray</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>viewController</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> secoViewController : <span class="type">SecondeViewController</span>?</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="keyword">let</span> rightButton = <span class="type">UIButton</span>(frame: <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">25</span>, height: <span class="number">25</span>))</div><div class="line">        rightButton.setImage(<span class="type">UIImage</span>(named: <span class="string">"侧边栏"</span>), <span class="keyword">for</span>: <span class="type">UIControlState</span>.normal)</div><div class="line">        <span class="keyword">self</span>.navigationItem.title = <span class="string">"侧边栏"</span></div><div class="line">        <span class="keyword">self</span>.navigationItem.leftBarButtonItem = <span class="type">UIBarButtonItem</span>(customView: rightButton)</div><div class="line">        <span class="comment">//self.navigationController?.navigationBar.backgroundColor = UIColor.red</span></div><div class="line">        <span class="keyword">self</span>.navigationController?.navigationBar.barTintColor = <span class="type">UIColor</span>.red</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="自定义导航栏颜色"><a href="#自定义导航栏颜色" class="headerlink" title="自定义导航栏颜色"></a>自定义导航栏颜色</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.navigationController?.navigationBar.barTintColor = <span class="type">UIColor</span>.red</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[hexo new draft Mac Homebrew安装mysql报错ERROR 2002 (HY000) Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)解决办法]]></title>
+      <url>http://BESTDing.github.io/2016/09/12/brew%E5%AE%89%E8%A3%85mysql%E6%8A%A5%E9%94%99/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[mv命令]]></title>
+      <url>http://BESTDing.github.io/2016/09/11/linux/mv%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>mv命令是move的缩写，可以用来移动文件或者将文件重命名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。</p>
+<blockquote>
+<ol>
+<li>命令格式</li>
+<li>命令参数</li>
+<li>实例</li>
+</ol>
+</blockquote>
+<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><p><code>mv[选项][源文件][目的文件]</code></p>
+<h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h3><blockquote>
+<ul>
+<li>-b ：若需覆盖文件，则覆盖前先行备份。 </li>
+<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</li>
+<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</li>
+<li>-u ：若目标文件已经存在，且 source 比较新，才会更新(update)</li>
+<li>-t  ： –target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。</li>
+</ul>
+</blockquote>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
+<li>重命名文件如果文件存在提示是否覆盖</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv -i <span class="built_in">test</span>1 <span class="built_in">test</span>2</div></pre></td></tr></table></figure>
+<p><img src="http://www.z4a.net/images/2016/09/11/988a076386ab4c2e.png" alt="988a076386ab4c2e.png"> </p>
+<ul>
+<li>移动文件不询问，文件已存在直接覆盖</li>
+</ul>
+<p><a href="http://www.z4a.net/image/TM8IK" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/09/11/179d85df711c277f.png" alt="179d85df711c277f.png"></a></p>
+<ul>
+<li>移动文件到目录</li>
+</ul>
+<p><img src="http://www.z4a.net/images/2016/09/11/4d2153910ec92cae.png" alt="4d2153910ec92cae.png"></p>
+<ul>
+<li>重命名文件夹</li>
+</ul>
+<p><img src="http://www.z4a.net/images/2016/09/11/b2f880c4e256a2dc.png" alt="b2f880c4e256a2dc.png"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Mac下ssh和scp命令]]></title>
+      <url>http://BESTDing.github.io/2016/09/11/linux/Mac%E4%B8%8Bssh%E5%92%8Cscp%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>mac下要使用ssh远程登录需要在共享里勾选远程登录的选项</p>
+<p><img src="http://www.z4a.net/images/2016/09/11/-.png" alt="-.png"></p>
+<ul>
+<li>ssh 链接远程主机格式<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh userName@ip</div><div class="line">//example</div><div class="line">ssh teibunchou@192.168.0.101</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<p><img src="http://www.z4a.net/images/2016/09/11/ssh.png" alt="ssh.png"></p>
+<h3 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h3><p><strong>scp是secure copy的简写，用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。可能会稍微影响一下速度。当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。</strong></p>
+<blockquote>
+<ol>
+<li>命令格式</li>
+<li>参数说明</li>
+<li>实例</li>
+</ol>
+</blockquote>
+<h4 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h4><p><code>scp 【参数】【源路径】【目的路径】</code></p>
+<h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><blockquote>
+<ul>
+<li>-1  强制scp命令使用协议ssh1  </li>
+<li>-2  强制scp命令使用协议ssh2  </li>
+<li>-4  强制scp命令只使用IPv4寻址  </li>
+<li>-6  强制scp命令只使用IPv6寻址  </li>
+<li>-B  使用批处理模式（传输过程中不询问传输口令或短语）  </li>
+<li>-C  允许压缩。（将-C标志传递给ssh，从而打开压缩功能）  </li>
+<li>-p 保留原文件的修改时间，访问时间和访问权限。  </li>
+<li>-q  不显示传输进度条。  </li>
+<li>-r  递归复制整个目录。  </li>
+<li>-v 详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。   </li>
+<li>-c cipher  以cipher将数据传输进行加密，这个选项将直接传递给ssh。   </li>
+<li>-F ssh_config  指定一个替代的ssh配置文件，此参数直接传递给ssh。  </li>
+<li>-i identity_file  从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。    </li>
+<li>-l limit  限定用户所能使用的带宽，以Kbit/s为单位。     </li>
+<li>-o ssh_option  如果习惯于使用ssh_config(5)中的参数传递方式，   </li>
+<li>-P port  注意是大写的P, port是指定数据传输用到的端口号   </li>
+<li>-S program  指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</li>
+</ul>
+</blockquote>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><ul>
+<li>将局域网内一台主机上的Vim配置文件拷贝到当前主机上</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scp username@ip:路径 目的路径</div><div class="line">scp teibunchou@192.168.0.101:/users/teibunchou/.vimrc /users/ding/</div></pre></td></tr></table></figure>
+<ul>
+<li>将当前主机文件拷贝到远程主机上</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp 源路径 username@ip:目的路径</div></pre></td></tr></table></figure>
+<ul>
+<li></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Synergy配置两台Mac共享一套键盘鼠标]]></title>
+      <url>http://BESTDing.github.io/2016/09/11/Synergy%E9%85%8D%E7%BD%AE%E4%B8%A4%E5%8F%B0Mac%E5%85%B1%E4%BA%AB%E4%B8%80%E5%A5%97%E9%94%AE%E7%9B%98%E9%BC%A0%E6%A0%87/</url>
+      <content type="html"><![CDATA[<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><blockquote>
+<ul>
+<li>Synergy 1.8.2</li>
+<li>两台运行 mac OS的电脑</li>
+</ul>
+</blockquote>
+<h3 id="设置服务端"><a href="#设置服务端" class="headerlink" title="设置服务端"></a>设置服务端</h3><p><code>**服务端是提供共享键盘鼠标的PC**</code></p>
+<p>如下图</p>
+<p><img src="http://www.z4a.net/images/2016/09/11/431031092fa5aff5.png" alt="431031092fa5aff5.png"></p>
+<a id="more"></a>
+<ul>
+<li>点击设置服务端</li>
+</ul>
+<p><img src="http://www.z4a.net/images/2016/09/11/2.png" alt="2.png"></p>
+<ul>
+<li>拖动右上角显示器图标创建一个新的屏幕，这个屏幕要对应你要控制屏幕屏幕名称不能填错，双击可以设置屏幕的属性。</li>
+</ul>
+<h3 id="设置服务端有一个坑-一看就被坑过"><a href="#设置服务端有一个坑-一看就被坑过" class="headerlink" title="设置服务端有一个坑(一看就被坑过)"></a>设置服务端有一个坑(一看就被坑过)</h3><p>如果是两台Mac 你会发现两台PC屏幕名称居然一样都是bogon,这里一定要改为不同的名称不然会连接失败，可以通过<br><code>菜单栏&gt;编辑&gt;设置</code>修改。</p>
+<p><img src="http://www.z4a.net/images/2016/09/11/437d46161d0a097d.png" alt="437d46161d0a097d.png"></p>
+<h3 id="设置客户端"><a href="#设置客户端" class="headerlink" title="设置客户端"></a>设置客户端</h3><p><img src="http://www.z4a.net/images/2016/09/11/638f3eda9ac1dd0f.png" alt="638f3eda9ac1dd0f.png"></p>
+<p>客户端只要输入服务端iP就行了</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><ul>
+<li>服务端点击开始</li>
+<li>客户端点击开始</li>
+<li>enjoy</li>
+</ul>
+<h3 id="下载连接"><a href="#下载连接" class="headerlink" title="下载连接"></a>下载连接</h3><p>这个软件可用版本也不好找，我也找了好久最后把下载链接给大家附上！</p>
+<p><a href="https://yunpan.cn/ckynNKRMSQZLN" target="_blank" rel="external">Synergy 1.8.2</a> （提取码：6a24）</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Vim学习笔记-基本操作]]></title>
+      <url>http://BESTDing.github.io/2016/09/01/Vim/vim%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p><strong>C 代表 CTRL</strong></p>
+</blockquote>
+<ul>
+<li><strong>插入字符</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">i			在当前光标所在字符前插入字符</div><div class="line">a         在当前光标所在字符后插入字符</div><div class="line">o			在光标下面新的一行插入字符</div><div class="line">O			在光标上面打开一个新行</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>移动光标</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">h			左</div><div class="line">j			下</div><div class="line">k			上</div><div class="line">l			右</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><strong>删除字符</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x			删除一个字符</div><div class="line">dd			删除一整行</div><div class="line">J			删除一个换行符</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>撤销与重做</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">u			撤销(撤销最后一步操作)</div><div class="line">C-R			重做(回退前一个命令)</div><div class="line">U			行撤销(只在最近的修改的行上做撤销操作)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>指定命令执行次数</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">9k			向上移动9行</div><div class="line">3a!&lt;ESC&gt;  在末尾添加三个感叹号</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>退出</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ZZ			保存文件并退出</div><div class="line">q!			退出不保存</div></pre></td></tr></table></figure>
+<p><strong>备注:</strong></p>
+<p>与其他编辑器不一样，Vim 不会自动建立一个备份文件。如果你输入 “ZZ”，你<br>的修改立即生效并且不能恢复。你可以配置 Vim 让它产生一个备份文件.<a href="http://www.vimchina.org/vimcdoc/usr_07.html#07.4" target="_blank" rel="external">设置备份文件</a></p>
+<ul>
+<li><strong>词移动</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">w			移动到下一个单词的首字母</div><div class="line">b			移动到前一个单词的首字母</div><div class="line">e			移动到下一个单词的词尾</div><div class="line">ge			移动到上一个单词的词尾</div><div class="line">$			移动到行尾</div><div class="line">0			移动到行首</div><div class="line">^			移动到一行的第一个非空字符</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>移动到指定字符</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fx			向前查找本行的x字符</div><div class="line">F			向左查找</div><div class="line">t			移动到指定字符的前一个字符</div><div class="line">T			向左移动</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>括号匹配</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">%			括号匹配</div><div class="line">使用(), [], &#123;&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>移动到指定行</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">G			移动到最后一行</div><div class="line">nG			移动到第n行</div><div class="line">gg			移动到第一行</div><div class="line">n%			移动到当前文件百分之n的位置</div><div class="line">50%			移动到文档的中间位置</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>确定当前位置</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">C-G</div><div class="line"></div><div class="line">得到如下信息</div><div class="line"><span class="string">".vimrc"</span> line 23 of 45 --51%-- col 1<span class="string">"</span></div><div class="line">文件       所在行号   文件总共行数   所在百分比    所在列</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>滚屏</strong></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">C-D				命令把视窗向下移动半屏，所以把文字向上移动半屏。</div><div class="line">C-E				每次向上滚一行</div><div class="line">C-Y				每次向下滚动一行</div><div class="line">C-F				正向滚动一整屏(减两行)</div><div class="line">C-B				反向滚动一整屏</div><div class="line">zz				调整光标位置居于屏幕中间</div><div class="line">zt				把光标所在行移动到屏幕的顶部</div><div class="line">zb				则移动到屏幕的底部</div></pre></td></tr></table></figure>
+<h4 id="顺便贴一下目前我的Vim配置文件"><a href="#顺便贴一下目前我的Vim配置文件" class="headerlink" title="顺便贴一下目前我的Vim配置文件"></a>顺便贴一下目前我的Vim配置文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"> 1 <span class="built_in">set</span> nocompatible</div><div class="line"> 2 filetype off</div><div class="line"> 3 <span class="built_in">set</span> rtp+=~/.vim/bundle/Vundle.vim</div><div class="line"> 4 call vundle<span class="comment">#begin()</span></div><div class="line"> 5 Plugin <span class="string">'VundleVim/Vundle.vim'</span></div><div class="line"> 6 plugin <span class="string">'tpope/vim-fugitve'</span></div><div class="line"> 7 Plugin <span class="string">'L9'</span></div><div class="line"> 8 Plugin <span class="string">'git://git.wincent.com/command-t.git'</span></div><div class="line"> 9 Plugin <span class="string">'rstacruz/sparkup'</span>, &#123;<span class="string">'rtp'</span>: <span class="string">'vim/'</span>&#125;</div><div class="line">10 Plugin <span class="string">'ascenator/L9'</span>, &#123;<span class="string">'name'</span>: <span class="string">'newL9'</span>&#125;</div><div class="line">11 Plugin <span class="string">'chrisbra/vim-airline'</span>   <span class="string">"https://github.com/vim-airline/vim-airline</span></div><div class="line">12 Plugin 'vim-airline/vim-airline'</div><div class="line">13 Plugin 'vim-airline/vim-airline-themes'</div><div class="line">14 Plugin 'scrooloose/nerdtree'</div><div class="line">15 Plugin 'jelera/vim-javascript-syntax'</div><div class="line">16 Plugin 'vim-ruby/vim-ruby'</div><div class="line">17 Plugin 'dracula/vim'</div><div class="line">18 Plugin 'vim-scripts/ctags.vim'</div><div class="line">19 plugin 'klen/python-mode'</div><div class="line">20 Plugin 'scrooloose/syntastic'</div><div class="line">21 Plugin 'keith/swift.vim'</div><div class="line">22 Plugin 'uarun/vim-protobuf'</div><div class="line">23 Plugin 'jistr/vim-nerdtree-tabs'</div><div class="line">24 Plugin 'suan/vim-instant-markdown'</div><div class="line">25 Plugin 'plasticboy/vim-markdown'</div><div class="line">26 call vundle#end()</div><div class="line">27 filetype plugin indent on</div><div class="line">28</div><div class="line">29 let mapleader = ','</div><div class="line">30 nnoremap &lt;C-l&gt; gt</div><div class="line">31 nnoremap &lt;C-h&gt; gT</div><div class="line">32 nnoremap &lt;leader&gt;t : tabe&lt;CR&gt;</div><div class="line">33</div><div class="line">34 autocmd vimenter * NERDTree</div><div class="line">35 autocmd bufenter * if (winnr("$<span class="string">") == 1 &amp;&amp; exists("</span>b:NERDTree<span class="string">") &amp;&amp;   b:NERDTree.isTabTree()) | q | endif</span></div><div class="line">36 set fileencodings=utf-8,gb2312,gbk,gb18030,big5</div><div class="line">37 set fenc=utf-8</div><div class="line">38 set enc=utf-8</div><div class="line">39 set number</div><div class="line">40 set laststatus=2</div><div class="line">41 syntax on</div><div class="line">42 color dracula</div><div class="line">43 set ignorecase                     #忽略大小写</div><div class="line">44 set hlsearch                       #高亮所有匹配</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Swift属性和方法]]></title>
+      <url>http://BESTDing.github.io/2016/08/30/Swift/Swift%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h1><blockquote>
+<p><strong>属性</strong></p>
+<ul>
+<li>存储属性 （Stored Properties）</li>
+<li>计算属性  (Computed Properties)</li>
+<li>属性观察器 (Property Observers)</li>
+<li>类型属性   （Class Properties）</li>
+<li>全局变量和局部变量</li>
+</ul>
+<p><strong>函数</strong></p>
+<ul>
+<li>函数的定义</li>
+<li>函数的参数和返回值</li>
+<li>函数参数名称</li>
+<li>嵌套函数</li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li>实例方法 (Instance Methods)&gt;</li>
+<li>类方法  (Type Methods)</li>
+<li>方法的局部参数名和外部参数名 (Local and External Parameter Names for Methods)</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p><strong>存储属性</strong></p>
+<p>变量存储属性和常量存储属性，可以在定义存储属性时指定默认值，也可以在构造过程中设置或修改存储属性的值，甚至修改常量存储属性的值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Cup</span> </span>&#123;</div><div class="line">	<span class="keyword">var</span> capacity:<span class="type">Int</span>  <span class="comment">//变量存储属性</span></div><div class="line">	<span class="keyword">let</span> material:<span class="type">String</span> <span class="comment">//常量存储属性</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cup = <span class="type">Cup</span>(capacity: <span class="number">300</span>, material: <span class="string">"glass"</span>)</div><div class="line"><span class="comment">//常量属性一旦被初始化，就不能被修改了</span></div></pre></td></tr></table></figure>
+<p><strong>常量结构体的存储属性</strong><br>因为结构体是值类型，所以如果创建一个结构体的实例把它赋值给一个常量则不能修改这个实例的任何属性，即使是变量属性。</p>
+<p><strong>延迟存储属性</strong></p>
+<p>延迟存储属性只有在第一次调用的时候才会计算其初始值得属性。在属性声明前使用lazy来标示一个延迟存储属性。</p>
+<p><strong>!!!</strong></p>
+<p><em>延迟属性必须声明为变量，因为延迟属性的初始值可能在实例构造完成后才会得到。而常量属性在构造完成之前必须要有初始值，因此无法声明延迟属性</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataImporter</span> </span>&#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line">    DataImporter 是一个负责将外部文件中的数据导入的类。</div><div class="line">    这个类的初始化会消耗不少时间。</div><div class="line">    */</div><div class="line">    <span class="keyword">var</span> fileName = <span class="string">"data.txt"</span></div><div class="line">    <span class="comment">// 这里会提供数据导入功能</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataManager</span> </span>&#123;</div><div class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> importer = <span class="type">DataImporter</span>()</div><div class="line">    <span class="keyword">var</span> data = [<span class="type">String</span>]()</div><div class="line">    <span class="comment">// 这里会提供数据管理功能</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> manager = <span class="type">DataManager</span>()</div><div class="line">manager.data.append(<span class="string">"Some data"</span>)</div><div class="line">manager.data.append(<span class="string">"Some more data"</span>)</div><div class="line"><span class="comment">// DataImporter 实例的 importer 属性还没有被创建</span></div></pre></td></tr></table></figure>
+<p><strong>！！！</strong></p>
+<p>注意如果一个被标记为 lazy 的属性在没有初始化时就同时被多个线程访问，则无法保证该属性只会被初始化一次。</p>
+<p><strong>计算属性</strong></p>
+<p>计算属性不直接存储值，而是提供一个getter和一个setter，来间接获取和设置其他属性或变量的值。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Square</span> </span>&#123;</div><div class="line">	<span class="keyword">var</span> a: <span class="type">Int</span>  <span class="comment">//边长</span></div><div class="line">	<span class="keyword">var</span> area: <span class="type">String</span> &#123;</div><div class="line">		<span class="keyword">get</span> &#123;</div><div class="line">			<span class="keyword">return</span> a * a</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">set</span>(area) &#123;</div><div class="line">			sqrt(area) </div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//area可以从边长计算出，可以定义为一个计算属性</span></div></pre></td></tr></table></figure></p>
+<p><strong>便捷setter</strong></p>
+<p>setter没有定义表示新值得参数名，可以使用默认名称newValue。</p>
+<p><strong>只读计算属性</strong></p>
+<p>只有getter，没有setter的计算属性就是只读属性，定义的时候可以去掉，get关键字和花括号。</p>
+<p><strong>!!!</strong></p>
+<p><em>注意必须使用var关键字定义计算属性，包括只读计算属性，因为它们的值不是固定的。let关键字只用来声明常量属性，表示初始化后再也无法修改的值。</em></p>
+<h3 id="属性观察器"><a href="#属性观察器" class="headerlink" title="属性观察器"></a>属性观察器</h3><p>属性观察器监控和响应属性值的变化，每次属性被设置值的时候都会调用属性观察器，甚至新值和当前值相同的时候也不例外。</p>
+<p>可以为除了延迟存储属性之外的其他存储属性添加属性观察器，也可以通过重写属性的方式为继承的属性</p>
+<p><strong>!!!</strong><br>不需要为非重写的计算属性添加属性观察器，因为可以通过它的 setter 直接监控和响应值的变化。(不太理解)</p>
+<ul>
+<li>willSet 在新的值被设置之前调用,新值会被当做参数传入，默认参数名newValue</li>
+<li>didSet 在新的值被设置之后被立即调用,就值会被当做参数传入，默认参数名oldValue</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StepCounter</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> totalSteps: <span class="type">Int</span> = <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">willSet</span>(newTotalSteps) &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"About to set totalSteps to <span class="subst">\(newTotalSteps)</span>"</span>)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">didSet</span> &#123;</div><div class="line">            <span class="keyword">if</span> totalSteps &gt; oldValue  &#123;</div><div class="line">                <span class="built_in">print</span>(<span class="string">"Added <span class="subst">\(totalSteps - oldValue)</span> steps"</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> stepCounter = <span class="type">StepCounter</span>()</div><div class="line">stepCounter.totalSteps = <span class="number">200</span></div><div class="line"><span class="comment">// About to set totalSteps to 200</span></div><div class="line"><span class="comment">// Added 200 steps</span></div><div class="line">stepCounter.totalSteps = <span class="number">360</span></div><div class="line"><span class="comment">// About to set totalSteps to 360</span></div><div class="line"><span class="comment">// Added 160 steps</span></div><div class="line">stepCounter.totalSteps = <span class="number">896</span></div><div class="line"><span class="comment">// About to set totalSteps to 896</span></div><div class="line"><span class="comment">// Added 536 steps</span></div></pre></td></tr></table></figure>
+<h3 id="类型属性也就是常说的类变量"><a href="#类型属性也就是常说的类变量" class="headerlink" title="类型属性也就是常说的类变量"></a>类型属性也就是常说的类变量</h3><p>类变量是属于一个类的变量，可以通过类名直接访问，存储类型属性必须要指定默认值，这是因为类本身没有构造器，存储型类属性是延迟初始化的，而且不需要对其使用lazy修饰符。</p>
+<p><strong>类型属性定义语法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">使用关键字 static</div><div class="line">struct Person &#123;</div><div class="line">    static var age = 20</div><div class="line">    static var name = &quot;tom&quot;</div><div class="line">    var height: Int</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p = Person(height: 170)</div><div class="line">print(&quot;this is class Properties \(Person.age), \(Person.name)&quot;)</div><div class="line">//类属性直接用类名调用</div></pre></td></tr></table></figure>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p><strong>定义</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function name() -&gt; 返回值类型 &#123;</div><div class="line">	<span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>多参数</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addString</span><span class="params">(string1: String, string2: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> string1  + string2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(addString(<span class="string">"say"</span>, string2: <span class="string">" hello"</span>))</div><div class="line"><span class="comment">//输出say hello</span></div></pre></td></tr></table></figure>
+<p><strong>无返回值的函数</strong></p>
+<p>就是没有任何返回值的函数，省略掉返回值声明，实际上没有定义返回类型的函数会返回特殊值，叫Void，Void是一个元组（tuple）,没有任何元素，可以写成()。</p>
+<p><strong>多重返回函数</strong><br>利用元组(tuple)类型让多个值作为一个复合值从函数中返回。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">retunHeadAndTail</span><span class="params">(str: String)</span></span> -&gt; (head: <span class="type">Character</span>, tail: <span class="type">Character</span>) &#123;</div><div class="line">    <span class="keyword">return</span>(str[str.startIndex], str[str.endIndex.predecessor()])</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> ht = retunHeadAndTail(<span class="string">"say hello"</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(ht.head)</span>, <span class="subst">\(ht.tail)</span>"</span>)</div><div class="line"><span class="comment">//s,o</span></div></pre></td></tr></table></figure>
+<p><strong>可选元组返回类型</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">retunHeadAndTail</span><span class="params">(str: String)</span></span> -&gt; (head: <span class="type">Character</span>, tail: <span class="type">Character</span>)？ &#123;</div><div class="line">    <span class="keyword">return</span>(str[str.startIndex], str[str.endIndex.predecessor()])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="函数的参数名称"><a href="#函数的参数名称" class="headerlink" title="函数的参数名称"></a>函数的参数名称</h3><p>函数参数都有一个外部参数名（函数标签调用函数时使用），和一个局部参数名，外部参数名用于在函数调用时标注传递给函数的参数，局部参数名在函数的实现内部使用。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addString</span><span class="params">(string1: String, name string2: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> string1  + string2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(addString(<span class="string">"say hello"</span>, name: <span class="string">" Tom"</span>))</div><div class="line"><span class="comment">//输出say hello Tom</span></div></pre></td></tr></table></figure>
+<p>可以看到一般情况下，第一个参数省略其外部参数名，第二个以及随后的参数使用其局部参数名作为外部参数名。所有参数必须有独一无二的局部参数名。尽管多个参数可以有相同的外部参数名，但不同的外部参数名能让你的代码更有可读性。</p>
+<h3 id="指定外部参数名"><a href="#指定外部参数名" class="headerlink" title="指定外部参数名"></a>指定外部参数名</h3><p>你可以在局部参数名前指定外部参数名，中间以空格分隔：有一个注意点就是如果你提供了外部参数名，调用函数时必须使用外部参数名。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">name</span><span class="params">(exterParaName localParaName: Int)</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果一个参数有一个标签，那么在调用的时候必须使用标签来标记这个参数。</p>
+<h3 id="忽略外部参数名"><a href="#忽略外部参数名" class="headerlink" title="忽略外部参数名"></a>忽略外部参数名</h3><p>如果你不想为第二个及后续的参数设置外部参数名，用一个下划线(_)代替一个明确的参数名。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span><span class="params">(FirstName: Int, <span class="number">_</span> secondName)</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeLastChar</span><span class="params">(str: String = <span class="string">"this is a string"</span>)</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">removeLastChar(<span class="string">"hahaha"</span>)</div><div class="line">removeLastchar()<span class="comment">//使用参数的默认值</span></div></pre></td></tr></table></figure>
+<h4 id="！！！"><a href="#！！！" class="headerlink" title="！！！"></a>！！！</h4><p><em>将带有默认值的参数放在参数列表最后。这样可以保证在函数调用时，非默认参数的顺序是一致的，同时使得相同函数在不同情况下调用时显得更为清晰</em></p>
+<h5 id="可变参数-Variadic-Parameters"><a href="#可变参数-Variadic-Parameters" class="headerlink" title="可变参数(Variadic Parameters)"></a>可变参数(Variadic Parameters)</h5><p>语法通过在变量类型名后面加入(…)的方式定义可变参数。可变参数的传入值在函数体中变为此类型的一个数组。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(numbers: Int...)</span></span>-&gt;<span class="type">Int</span> &#123;</div><div class="line">	<span class="keyword">var</span> total: <span class="type">Int</span> = <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</div><div class="line">		total += number</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> total</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="输入输出参数"><a href="#输入输出参数" class="headerlink" title="输入输出参数"></a>输入输出参数</h5><p>变量参数，正如上面所述，仅仅能在函数体内被更改。如果你想要一个函数可以修改参数的值，并且想要在这些修改在函数调用结束后仍然存在，那么就应该把这个参数定义为输入输出参数（In-Out Parameters）。<br>定义一个输入输出参数时，在参数定义前加 inout 关键字。一个输入输出参数有传入函数的值，这个值被函数修改，然后被传出函数，替换原来的值。<br>你只能传递变量给输入输出参数。你不能传入常量或者字面量（literal value），因为这些量是不能被修改的。当传入的参数作为输入输出参数时，需要在参数名前加&amp;符，表示这个值可以被函数修改。</p>
+<h4 id="！！！-1"><a href="#！！！-1" class="headerlink" title="！！！"></a>！！！</h4><p>注意<br>输入输出参数不能有默认值，而且可变参数不能用 inout 标记。如果你用 inout 标记一个参数，这个参数不能被 var 或者 let 标记。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="keyword">inout</span> a: Int, <span class="keyword">inout</span> <span class="number">_</span> b: Int)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> temporaryA = a</div><div class="line">    a = b</div><div class="line">    b = temporaryA</div><div class="line">&#125;</div><div class="line"></div><div class="line">ar someInt = <span class="number">3</span></div><div class="line"><span class="keyword">var</span> anotherInt = <span class="number">107</span></div><div class="line">swapTwoInts(&amp;someInt, &amp;anotherInt)</div><div class="line"><span class="built_in">print</span>(<span class="string">"someInt is now <span class="subst">\(someInt)</span>, and anotherInt is now <span class="subst">\(anotherInt)</span>"</span>)</div><div class="line"><span class="comment">// prints "someInt is now 107, and anotherInt is now 3"</span></div></pre></td></tr></table></figure></p>
+<p><strong>这个符号（&amp;）的用法有点像c++中的引用符号</strong></p>
+<h4 id="函数类型-Function-Types"><a href="#函数类型-Function-Types" class="headerlink" title="函数类型(Function Types)"></a>函数类型(Function Types)</h4><p>每个函数都有种特定的函数类型，由函数的参数类型和返回类型组成。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTwoInts</span><span class="params">(a: Int, <span class="number">_</span> b: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">multiplyTwoInts</span><span class="params">(a: Int, <span class="number">_</span> b: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a * b</div><div class="line">&#125;<span class="comment">//函数类型为(Int, Int) -&gt; Int</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printHelloWorld</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"hello, world"</span>)</div><div class="line">&#125;<span class="comment">//() -&gt; Void</span></div></pre></td></tr></table></figure>
+<p>使用函数类型和使用普通类型一样，你可以定义一个函数类型的变量并将一个此函数类型的函数赋给这个变量。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mathFunction: (<span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">Int</span> = addTwoInts</div><div class="line"></div><div class="line">mathFunction(<span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure></p>
+<p><strong>函数类型也可以作为参数类型</strong><br>也就是说把一个函数，当做另一个函数的参数传进去<br>（例子以后再补充）<br><strong>函数作为返回类型</strong><br>既然函数类型和普通类型没有什么区别，那函数当然可以作为函数的返回类型了。</p>
+<h5 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h5><p>可以把函数定义在其他函数体中，称作嵌套函数，默认情况下，嵌套函数是对外界不可见的，但是可以被它们的外围函数（enclosing function）调用。一个外围函数也可以返回它的某一个嵌套函数，使得这个函数可以在其他域中被使用。</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h5><p>在类中定义的函数就叫方法，具体定义见上</p>
+<p><strong>self属性(The self Property)</strong></p>
+<p>类型的每一个实例都有一个隐含属性叫做self，self完全等同于该实例本身。你可以在一个实例的实例方法中使用这个隐含的self属性来引用当前实例。实际上，你不必在你的代码里面经常写self。不论何时，只要在一个方法中使用一个已知的属性或者方法名称，如果你没有明确地写self，Swift 假定你是指当前实例的属性或者方法。这种假定在上面的Counter中已经示范了：Counter中的三个实例方法中都使用的是count（而不是self.count）。</p>
+<p>使用这条规则的主要场景是实例方法的某个参数名称与实例的某个属性名称相同的时候。在这种情况下，参数名称享有优先权，并且在引用属性时必须使用一种更严格的方式。这时你可以使用self属性来区分参数名称和属性名称。</p>
+<h4 id="在实例方法中修改值类型"><a href="#在实例方法中修改值类型" class="headerlink" title="在实例方法中修改值类型"></a>在实例方法中修改值类型</h4><p>结构体，和枚举是值类型。默认情况下，值类型的属性不能再它的实例方法中被修改。使用（mutating）关键字修饰函数可以在方法内部改变他的属性</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span> </span>&#123;</div><div class="line">	<span class="keyword">var</span> x = <span class="number">0.0</span>, y = <span class="number">0.0</span></div><div class="line">	<span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">moveByx</span><span class="params">(deltaX: Double, y deltay:Double)</span></span> &#123;</div><div class="line">		x += deltaX</div><div class="line">		y += deltaY</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> somePoint = <span class="type">Point</span>(x: <span class="number">1.0</span>, y:<span class="number">1.0</span>)</div><div class="line">somePoint.moveByx(<span class="number">2.0</span>, y:<span class="number">3.0</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"The point is now at (<span class="subst">\(somePoint.x)</span>, <span class="subst">\(somePoint.y)</span>)"</span>)</div><div class="line"><span class="comment">//打印输出: "The point is now at (3.0, 4.0)"</span></div></pre></td></tr></table></figure>
+<p>类型方法(Type Methods)<br>实例方法是被实例调用，类方法是属于类本身，可以直接用类名调用。类方法用static关键字修饰。</p>
+<h4 id=""><a href="#" class="headerlink" title="!!!"></a>!!!</h4><p>在 Objective-C 中，你只能为 Objective-C 的类类型（classes）定义类型方法（type-level methods）。在 Swift 中，你可以为所有的类、结构体和枚举定义类型方法。每一个类型方法都被它所支持的类型显式包含。</p>
+]]></content>
+    </entry>
+    
+  
+  
+</search>

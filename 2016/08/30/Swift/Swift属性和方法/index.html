@@ -1,0 +1,1070 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="属性和方法
+属性
+
+存储属性 （Stored Properties）
+计算属性  (Computed Properties)
+属性观察器 (Property Observers)
+类型属性   （Class Properties）
+全局变量和局部变量
+
+函数
+
+函数的定义
+函数的参数和返回值
+函数参数名称
+嵌套函数
+
+方法
+
+实例方法 (Instance Methods)&amp;gt;
+类方法  (Ty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift属性和方法">
+<meta property="og:url" content="http://BESTDing.github.io/2016/08/30/Swift/Swift属性和方法/index.html">
+<meta property="og:site_name" content="EstDing-技术栈">
+<meta property="og:description" content="属性和方法
+属性
+
+存储属性 （Stored Properties）
+计算属性  (Computed Properties)
+属性观察器 (Property Observers)
+类型属性   （Class Properties）
+全局变量和局部变量
+
+函数
+
+函数的定义
+函数的参数和返回值
+函数参数名称
+嵌套函数
+
+方法
+
+实例方法 (Instance Methods)&amp;gt;
+类方法  (Ty">
+<meta property="og:updated_time" content="2016-09-25T10:24:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift属性和方法">
+<meta name="twitter:description" content="属性和方法
+属性
+
+存储属性 （Stored Properties）
+计算属性  (Computed Properties)
+属性观察器 (Property Observers)
+类型属性   （Class Properties）
+全局变量和局部变量
+
+函数
+
+函数的定义
+函数的参数和返回值
+函数参数名称
+嵌套函数
+
+方法
+
+实例方法 (Instance Methods)&amp;gt;
+类方法  (Ty">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://BESTDing.github.io/2016/08/30/Swift/Swift属性和方法/"/>
+
+  <title> Swift属性和方法 | EstDing-技术栈 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?2ff6cdf11ce9d4c5156b8cac8e0cf266";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">EstDing-技术栈</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift属性和方法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T20:52:48+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/Swift/Swift属性和方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/Swift/Swift属性和方法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/30/Swift/Swift属性和方法/" class="leancloud_visitors" data-flag-title="Swift属性和方法">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h1><blockquote>
+<p><strong>属性</strong></p>
+<ul>
+<li>存储属性 （Stored Properties）</li>
+<li>计算属性  (Computed Properties)</li>
+<li>属性观察器 (Property Observers)</li>
+<li>类型属性   （Class Properties）</li>
+<li>全局变量和局部变量</li>
+</ul>
+<p><strong>函数</strong></p>
+<ul>
+<li>函数的定义</li>
+<li>函数的参数和返回值</li>
+<li>函数参数名称</li>
+<li>嵌套函数</li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li>实例方法 (Instance Methods)&gt;</li>
+<li>类方法  (Type Methods)</li>
+<li>方法的局部参数名和外部参数名 (Local and External Parameter Names for Methods)</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p><strong>存储属性</strong></p>
+<p>变量存储属性和常量存储属性，可以在定义存储属性时指定默认值，也可以在构造过程中设置或修改存储属性的值，甚至修改常量存储属性的值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Cup</span> </span>&#123;</div><div class="line">	<span class="keyword">var</span> capacity:<span class="type">Int</span>  <span class="comment">//变量存储属性</span></div><div class="line">	<span class="keyword">let</span> material:<span class="type">String</span> <span class="comment">//常量存储属性</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cup = <span class="type">Cup</span>(capacity: <span class="number">300</span>, material: <span class="string">"glass"</span>)</div><div class="line"><span class="comment">//常量属性一旦被初始化，就不能被修改了</span></div></pre></td></tr></table></figure>
+<p><strong>常量结构体的存储属性</strong><br>因为结构体是值类型，所以如果创建一个结构体的实例把它赋值给一个常量则不能修改这个实例的任何属性，即使是变量属性。</p>
+<p><strong>延迟存储属性</strong></p>
+<p>延迟存储属性只有在第一次调用的时候才会计算其初始值得属性。在属性声明前使用lazy来标示一个延迟存储属性。</p>
+<p><strong>!!!</strong></p>
+<p><em>延迟属性必须声明为变量，因为延迟属性的初始值可能在实例构造完成后才会得到。而常量属性在构造完成之前必须要有初始值，因此无法声明延迟属性</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataImporter</span> </span>&#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line">    DataImporter 是一个负责将外部文件中的数据导入的类。</div><div class="line">    这个类的初始化会消耗不少时间。</div><div class="line">    */</div><div class="line">    <span class="keyword">var</span> fileName = <span class="string">"data.txt"</span></div><div class="line">    <span class="comment">// 这里会提供数据导入功能</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataManager</span> </span>&#123;</div><div class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> importer = <span class="type">DataImporter</span>()</div><div class="line">    <span class="keyword">var</span> data = [<span class="type">String</span>]()</div><div class="line">    <span class="comment">// 这里会提供数据管理功能</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> manager = <span class="type">DataManager</span>()</div><div class="line">manager.data.append(<span class="string">"Some data"</span>)</div><div class="line">manager.data.append(<span class="string">"Some more data"</span>)</div><div class="line"><span class="comment">// DataImporter 实例的 importer 属性还没有被创建</span></div></pre></td></tr></table></figure>
+<p><strong>！！！</strong></p>
+<p>注意如果一个被标记为 lazy 的属性在没有初始化时就同时被多个线程访问，则无法保证该属性只会被初始化一次。</p>
+<p><strong>计算属性</strong></p>
+<p>计算属性不直接存储值，而是提供一个getter和一个setter，来间接获取和设置其他属性或变量的值。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Square</span> </span>&#123;</div><div class="line">	<span class="keyword">var</span> a: <span class="type">Int</span>  <span class="comment">//边长</span></div><div class="line">	<span class="keyword">var</span> area: <span class="type">String</span> &#123;</div><div class="line">		<span class="keyword">get</span> &#123;</div><div class="line">			<span class="keyword">return</span> a * a</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">set</span>(area) &#123;</div><div class="line">			sqrt(area) </div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//area可以从边长计算出，可以定义为一个计算属性</span></div></pre></td></tr></table></figure></p>
+<p><strong>便捷setter</strong></p>
+<p>setter没有定义表示新值得参数名，可以使用默认名称newValue。</p>
+<p><strong>只读计算属性</strong></p>
+<p>只有getter，没有setter的计算属性就是只读属性，定义的时候可以去掉，get关键字和花括号。</p>
+<p><strong>!!!</strong></p>
+<p><em>注意必须使用var关键字定义计算属性，包括只读计算属性，因为它们的值不是固定的。let关键字只用来声明常量属性，表示初始化后再也无法修改的值。</em></p>
+<h3 id="属性观察器"><a href="#属性观察器" class="headerlink" title="属性观察器"></a>属性观察器</h3><p>属性观察器监控和响应属性值的变化，每次属性被设置值的时候都会调用属性观察器，甚至新值和当前值相同的时候也不例外。</p>
+<p>可以为除了延迟存储属性之外的其他存储属性添加属性观察器，也可以通过重写属性的方式为继承的属性</p>
+<p><strong>!!!</strong><br>不需要为非重写的计算属性添加属性观察器，因为可以通过它的 setter 直接监控和响应值的变化。(不太理解)</p>
+<ul>
+<li>willSet 在新的值被设置之前调用,新值会被当做参数传入，默认参数名newValue</li>
+<li>didSet 在新的值被设置之后被立即调用,就值会被当做参数传入，默认参数名oldValue</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StepCounter</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> totalSteps: <span class="type">Int</span> = <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">willSet</span>(newTotalSteps) &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"About to set totalSteps to <span class="subst">\(newTotalSteps)</span>"</span>)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">didSet</span> &#123;</div><div class="line">            <span class="keyword">if</span> totalSteps &gt; oldValue  &#123;</div><div class="line">                <span class="built_in">print</span>(<span class="string">"Added <span class="subst">\(totalSteps - oldValue)</span> steps"</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> stepCounter = <span class="type">StepCounter</span>()</div><div class="line">stepCounter.totalSteps = <span class="number">200</span></div><div class="line"><span class="comment">// About to set totalSteps to 200</span></div><div class="line"><span class="comment">// Added 200 steps</span></div><div class="line">stepCounter.totalSteps = <span class="number">360</span></div><div class="line"><span class="comment">// About to set totalSteps to 360</span></div><div class="line"><span class="comment">// Added 160 steps</span></div><div class="line">stepCounter.totalSteps = <span class="number">896</span></div><div class="line"><span class="comment">// About to set totalSteps to 896</span></div><div class="line"><span class="comment">// Added 536 steps</span></div></pre></td></tr></table></figure>
+<h3 id="类型属性也就是常说的类变量"><a href="#类型属性也就是常说的类变量" class="headerlink" title="类型属性也就是常说的类变量"></a>类型属性也就是常说的类变量</h3><p>类变量是属于一个类的变量，可以通过类名直接访问，存储类型属性必须要指定默认值，这是因为类本身没有构造器，存储型类属性是延迟初始化的，而且不需要对其使用lazy修饰符。</p>
+<p><strong>类型属性定义语法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">使用关键字 static</div><div class="line">struct Person &#123;</div><div class="line">    static var age = 20</div><div class="line">    static var name = &quot;tom&quot;</div><div class="line">    var height: Int</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p = Person(height: 170)</div><div class="line">print(&quot;this is class Properties \(Person.age), \(Person.name)&quot;)</div><div class="line">//类属性直接用类名调用</div></pre></td></tr></table></figure>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p><strong>定义</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function name() -&gt; 返回值类型 &#123;</div><div class="line">	<span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>多参数</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addString</span><span class="params">(string1: String, string2: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> string1  + string2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(addString(<span class="string">"say"</span>, string2: <span class="string">" hello"</span>))</div><div class="line"><span class="comment">//输出say hello</span></div></pre></td></tr></table></figure>
+<p><strong>无返回值的函数</strong></p>
+<p>就是没有任何返回值的函数，省略掉返回值声明，实际上没有定义返回类型的函数会返回特殊值，叫Void，Void是一个元组（tuple）,没有任何元素，可以写成()。</p>
+<p><strong>多重返回函数</strong><br>利用元组(tuple)类型让多个值作为一个复合值从函数中返回。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">retunHeadAndTail</span><span class="params">(str: String)</span></span> -&gt; (head: <span class="type">Character</span>, tail: <span class="type">Character</span>) &#123;</div><div class="line">    <span class="keyword">return</span>(str[str.startIndex], str[str.endIndex.predecessor()])</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> ht = retunHeadAndTail(<span class="string">"say hello"</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"<span class="subst">\(ht.head)</span>, <span class="subst">\(ht.tail)</span>"</span>)</div><div class="line"><span class="comment">//s,o</span></div></pre></td></tr></table></figure>
+<p><strong>可选元组返回类型</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">retunHeadAndTail</span><span class="params">(str: String)</span></span> -&gt; (head: <span class="type">Character</span>, tail: <span class="type">Character</span>)？ &#123;</div><div class="line">    <span class="keyword">return</span>(str[str.startIndex], str[str.endIndex.predecessor()])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="函数的参数名称"><a href="#函数的参数名称" class="headerlink" title="函数的参数名称"></a>函数的参数名称</h3><p>函数参数都有一个外部参数名（函数标签调用函数时使用），和一个局部参数名，外部参数名用于在函数调用时标注传递给函数的参数，局部参数名在函数的实现内部使用。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addString</span><span class="params">(string1: String, name string2: String)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> string1  + string2</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(addString(<span class="string">"say hello"</span>, name: <span class="string">" Tom"</span>))</div><div class="line"><span class="comment">//输出say hello Tom</span></div></pre></td></tr></table></figure>
+<p>可以看到一般情况下，第一个参数省略其外部参数名，第二个以及随后的参数使用其局部参数名作为外部参数名。所有参数必须有独一无二的局部参数名。尽管多个参数可以有相同的外部参数名，但不同的外部参数名能让你的代码更有可读性。</p>
+<h3 id="指定外部参数名"><a href="#指定外部参数名" class="headerlink" title="指定外部参数名"></a>指定外部参数名</h3><p>你可以在局部参数名前指定外部参数名，中间以空格分隔：有一个注意点就是如果你提供了外部参数名，调用函数时必须使用外部参数名。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">name</span><span class="params">(exterParaName localParaName: Int)</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果一个参数有一个标签，那么在调用的时候必须使用标签来标记这个参数。</p>
+<h3 id="忽略外部参数名"><a href="#忽略外部参数名" class="headerlink" title="忽略外部参数名"></a>忽略外部参数名</h3><p>如果你不想为第二个及后续的参数设置外部参数名，用一个下划线(_)代替一个明确的参数名。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span><span class="params">(FirstName: Int, <span class="number">_</span> secondName)</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeLastChar</span><span class="params">(str: String = <span class="string">"this is a string"</span>)</span></span> &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">removeLastChar(<span class="string">"hahaha"</span>)</div><div class="line">removeLastchar()<span class="comment">//使用参数的默认值</span></div></pre></td></tr></table></figure>
+<h4 id="！！！"><a href="#！！！" class="headerlink" title="！！！"></a>！！！</h4><p><em>将带有默认值的参数放在参数列表最后。这样可以保证在函数调用时，非默认参数的顺序是一致的，同时使得相同函数在不同情况下调用时显得更为清晰</em></p>
+<h5 id="可变参数-Variadic-Parameters"><a href="#可变参数-Variadic-Parameters" class="headerlink" title="可变参数(Variadic Parameters)"></a>可变参数(Variadic Parameters)</h5><p>语法通过在变量类型名后面加入(…)的方式定义可变参数。可变参数的传入值在函数体中变为此类型的一个数组。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(numbers: Int...)</span></span>-&gt;<span class="type">Int</span> &#123;</div><div class="line">	<span class="keyword">var</span> total: <span class="type">Int</span> = <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</div><div class="line">		total += number</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> total</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="输入输出参数"><a href="#输入输出参数" class="headerlink" title="输入输出参数"></a>输入输出参数</h5><p>变量参数，正如上面所述，仅仅能在函数体内被更改。如果你想要一个函数可以修改参数的值，并且想要在这些修改在函数调用结束后仍然存在，那么就应该把这个参数定义为输入输出参数（In-Out Parameters）。<br>定义一个输入输出参数时，在参数定义前加 inout 关键字。一个输入输出参数有传入函数的值，这个值被函数修改，然后被传出函数，替换原来的值。<br>你只能传递变量给输入输出参数。你不能传入常量或者字面量（literal value），因为这些量是不能被修改的。当传入的参数作为输入输出参数时，需要在参数名前加&amp;符，表示这个值可以被函数修改。</p>
+<h4 id="！！！-1"><a href="#！！！-1" class="headerlink" title="！！！"></a>！！！</h4><p>注意<br>输入输出参数不能有默认值，而且可变参数不能用 inout 标记。如果你用 inout 标记一个参数，这个参数不能被 var 或者 let 标记。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">swapTwoInts</span><span class="params">(<span class="keyword">inout</span> a: Int, <span class="keyword">inout</span> <span class="number">_</span> b: Int)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> temporaryA = a</div><div class="line">    a = b</div><div class="line">    b = temporaryA</div><div class="line">&#125;</div><div class="line"></div><div class="line">ar someInt = <span class="number">3</span></div><div class="line"><span class="keyword">var</span> anotherInt = <span class="number">107</span></div><div class="line">swapTwoInts(&amp;someInt, &amp;anotherInt)</div><div class="line"><span class="built_in">print</span>(<span class="string">"someInt is now <span class="subst">\(someInt)</span>, and anotherInt is now <span class="subst">\(anotherInt)</span>"</span>)</div><div class="line"><span class="comment">// prints "someInt is now 107, and anotherInt is now 3"</span></div></pre></td></tr></table></figure></p>
+<p><strong>这个符号（&amp;）的用法有点像c++中的引用符号</strong></p>
+<h4 id="函数类型-Function-Types"><a href="#函数类型-Function-Types" class="headerlink" title="函数类型(Function Types)"></a>函数类型(Function Types)</h4><p>每个函数都有种特定的函数类型，由函数的参数类型和返回类型组成。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTwoInts</span><span class="params">(a: Int, <span class="number">_</span> b: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">multiplyTwoInts</span><span class="params">(a: Int, <span class="number">_</span> b: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a * b</div><div class="line">&#125;<span class="comment">//函数类型为(Int, Int) -&gt; Int</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printHelloWorld</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"hello, world"</span>)</div><div class="line">&#125;<span class="comment">//() -&gt; Void</span></div></pre></td></tr></table></figure>
+<p>使用函数类型和使用普通类型一样，你可以定义一个函数类型的变量并将一个此函数类型的函数赋给这个变量。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mathFunction: (<span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">Int</span> = addTwoInts</div><div class="line"></div><div class="line">mathFunction(<span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure></p>
+<p><strong>函数类型也可以作为参数类型</strong><br>也就是说把一个函数，当做另一个函数的参数传进去<br>（例子以后再补充）<br><strong>函数作为返回类型</strong><br>既然函数类型和普通类型没有什么区别，那函数当然可以作为函数的返回类型了。</p>
+<h5 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h5><p>可以把函数定义在其他函数体中，称作嵌套函数，默认情况下，嵌套函数是对外界不可见的，但是可以被它们的外围函数（enclosing function）调用。一个外围函数也可以返回它的某一个嵌套函数，使得这个函数可以在其他域中被使用。</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h5><p>在类中定义的函数就叫方法，具体定义见上</p>
+<p><strong>self属性(The self Property)</strong></p>
+<p>类型的每一个实例都有一个隐含属性叫做self，self完全等同于该实例本身。你可以在一个实例的实例方法中使用这个隐含的self属性来引用当前实例。实际上，你不必在你的代码里面经常写self。不论何时，只要在一个方法中使用一个已知的属性或者方法名称，如果你没有明确地写self，Swift 假定你是指当前实例的属性或者方法。这种假定在上面的Counter中已经示范了：Counter中的三个实例方法中都使用的是count（而不是self.count）。</p>
+<p>使用这条规则的主要场景是实例方法的某个参数名称与实例的某个属性名称相同的时候。在这种情况下，参数名称享有优先权，并且在引用属性时必须使用一种更严格的方式。这时你可以使用self属性来区分参数名称和属性名称。</p>
+<h4 id="在实例方法中修改值类型"><a href="#在实例方法中修改值类型" class="headerlink" title="在实例方法中修改值类型"></a>在实例方法中修改值类型</h4><p>结构体，和枚举是值类型。默认情况下，值类型的属性不能再它的实例方法中被修改。使用（mutating）关键字修饰函数可以在方法内部改变他的属性</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span> </span>&#123;</div><div class="line">	<span class="keyword">var</span> x = <span class="number">0.0</span>, y = <span class="number">0.0</span></div><div class="line">	<span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">moveByx</span><span class="params">(deltaX: Double, y deltay:Double)</span></span> &#123;</div><div class="line">		x += deltaX</div><div class="line">		y += deltaY</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> somePoint = <span class="type">Point</span>(x: <span class="number">1.0</span>, y:<span class="number">1.0</span>)</div><div class="line">somePoint.moveByx(<span class="number">2.0</span>, y:<span class="number">3.0</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"The point is now at (<span class="subst">\(somePoint.x)</span>, <span class="subst">\(somePoint.y)</span>)"</span>)</div><div class="line"><span class="comment">//打印输出: "The point is now at (3.0, 4.0)"</span></div></pre></td></tr></table></figure>
+<p>类型方法(Type Methods)<br>实例方法是被实例调用，类方法是属于类本身，可以直接用类名调用。类方法用static关键字修饰。</p>
+<h4 id=""><a href="#" class="headerlink" title="!!!"></a>!!!</h4><p>在 Objective-C 中，你只能为 Objective-C 的类类型（classes）定义类型方法（type-level methods）。在 Swift 中，你可以为所有的类、结构体和枚举定义类型方法。每一个类型方法都被它所支持的类型显式包含。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/01/Vim/vim学习笔记-基本操作/" rel="prev" title="Vim学习笔记-基本操作">
+                Vim学习笔记-基本操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/30/Swift/Swift属性和方法/"
+           data-title="Swift属性和方法" data-url="http://BESTDing.github.io/2016/08/30/Swift/Swift属性和方法/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="EstDing" />
+          <p class="site-author-name" itemprop="name">EstDing</p>
+          <p class="site-description motion-element" itemprop="description">钝鸟先飞</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/BESTDing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/JOYDinDin" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#属性和方法"><span class="nav-number">1.</span> <span class="nav-text">属性和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">1.0.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性观察器"><span class="nav-number">1.0.2.</span> <span class="nav-text">属性观察器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型属性也就是常说的类变量"><span class="nav-number">1.0.3.</span> <span class="nav-text">类型属性也就是常说的类变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">1.0.4.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的参数名称"><span class="nav-number">1.0.5.</span> <span class="nav-text">函数的参数名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定外部参数名"><span class="nav-number">1.0.6.</span> <span class="nav-text">指定外部参数名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略外部参数名"><span class="nav-number">1.0.7.</span> <span class="nav-text">忽略外部参数名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#默认参数值"><span class="nav-number">1.0.7.0.1.</span> <span class="nav-text">默认参数值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#！！！"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">！！！</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#可变参数-Variadic-Parameters"><span class="nav-number">1.0.7.1.1.</span> <span class="nav-text">可变参数(Variadic Parameters)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#输入输出参数"><span class="nav-number">1.0.7.1.2.</span> <span class="nav-text">输入输出参数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#！！！-1"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">！！！</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数类型-Function-Types"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">函数类型(Function Types)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#嵌套函数"><span class="nav-number">1.0.7.3.1.</span> <span class="nav-text">嵌套函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">1.0.7.4.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实例方法"><span class="nav-number">1.0.7.4.1.</span> <span class="nav-text">实例方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在实例方法中修改值类型"><span class="nav-number">1.0.7.5.</span> <span class="nav-text">在实例方法中修改值类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.0.7.6.</span> <span class="nav-text">!!!</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EstDing</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;总访问量: <span id="busuanzi_value_site_pv"></span>
+</span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"JOYDinDin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("9NL7D5CMF4lQIP333R7OHgvX-gzGzoHsz", "RTDGKnXQyM19pOjYD9xBOUab");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
