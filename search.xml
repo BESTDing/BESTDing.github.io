@@ -19,6 +19,7 @@
 <h4 id="注册coding-net，并新建一个和你用户名一样的项目。"><a href="#注册coding-net，并新建一个和你用户名一样的项目。" class="headerlink" title="注册coding.net，并新建一个和你用户名一样的项目。"></a>注册coding.net，并新建一个和你用户名一样的项目。</h4><p>这个很简单不在赘述</p>
 <h4 id="修改配置文件-config-yml"><a href="#修改配置文件-config-yml" class="headerlink" title="修改配置文件_config.yml"></a>修改配置文件_config.yml</h4><p>修改_config.yml文件添加coding.net部署仓库</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  - type:</span> git</div><div class="line"><span class="attr">    repo:</span> https://github.com/BESTDing/BESTDing.github.io.git</div><div class="line"><span class="attr">    branch:</span> master</div><div class="line"><span class="attr">  - type:</span> git</div><div class="line"><span class="attr">    repo:</span> git@git.coding.net:EstDing/EstDing.git,coding-pages</div><div class="line"><span class="attr">    branch:</span> coding-pages</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>注意coding.net的pages服务是coding-pages分支</p>
 <p>3  在source目录下创建 Staticfile文件</p>
 <p>切换到source目录执行</p>

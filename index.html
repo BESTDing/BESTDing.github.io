@@ -357,8 +357,7 @@
 
       
         
-          
-            <p>最近github不知道抽什么风我部署在github上的博客一直访问不了，奈何囊中羞涩供不起vps于是就想把blog迁移到国内的coding.net上，迁移大致有以下几个步骤</p>
+          <p>最近github不知道抽什么风我部署在github上的博客一直访问不了，奈何囊中羞涩供不起vps于是就想把blog迁移到国内的coding.net上，迁移大致有以下几个步骤</p>
 <blockquote>
 <ol>
 <li>注册coding.net，并新建一个和你用户名一样的项目。</li>
@@ -371,20 +370,11 @@
 <h4 id="注册coding-net，并新建一个和你用户名一样的项目。"><a href="#注册coding-net，并新建一个和你用户名一样的项目。" class="headerlink" title="注册coding.net，并新建一个和你用户名一样的项目。"></a>注册coding.net，并新建一个和你用户名一样的项目。</h4><p>这个很简单不在赘述</p>
 <h4 id="修改配置文件-config-yml"><a href="#修改配置文件-config-yml" class="headerlink" title="修改配置文件_config.yml"></a>修改配置文件_config.yml</h4><p>修改_config.yml文件添加coding.net部署仓库</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  - type:</span> git</div><div class="line"><span class="attr">    repo:</span> https://github.com/BESTDing/BESTDing.github.io.git</div><div class="line"><span class="attr">    branch:</span> master</div><div class="line"><span class="attr">  - type:</span> git</div><div class="line"><span class="attr">    repo:</span> git@git.coding.net:EstDing/EstDing.git,coding-pages</div><div class="line"><span class="attr">    branch:</span> coding-pages</div></pre></td></tr></table></figure>
-<p>注意coding.net的pages服务是coding-pages分支</p>
-<p>3  在source目录下创建 Staticfile文件</p>
-<p>切换到source目录执行</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch Staticfile</div></pre></td></tr></table></figure>
-<p>4 域名绑定</p>
-<p>我的域名是在腾讯云购买的，所以直接用的腾讯云解析按照下面图片的格式配置域名解析，如果你同时部署在了github上可以设置国外线路只想github</p>
-<p><a href="http://www.z4a.net/image/Wd38w" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/11/20/2016-11-209.58.14.png" alt="2016-11-209.58.14.png"></a></p>
-<p>5 部署</p>
-<p>执行下面命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
-<p>6 参考文章</p>
-<p><a href="https://segmentfault.com/a/1190000004548638" target="_blank" rel="external">更详细教程</a></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/20/将博客从github迁移到coding-net/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
