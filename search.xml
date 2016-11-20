@@ -561,7 +561,8 @@
     <entry>
       <title><![CDATA[hexo new draft Mac Homebrew安装mysql报错ERROR 2002 (HY000) Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)解决办法]]></title>
       <url>http://BESTDing.github.io/2016/09/12/brew%E5%AE%89%E8%A3%85mysql%E6%8A%A5%E9%94%99/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<h4 id="首先查看mysql有没有启动"><a href="#首先查看mysql有没有启动" class="headerlink" title="首先查看mysql有没有启动"></a>首先查看mysql有没有启动</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql.server start</div></pre></td></tr></table></figure>
+]]></content>
     </entry>
     
     <entry>
