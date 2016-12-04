@@ -279,6 +279,151 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/04/Python正则表达式/" itemprop="url">
+                  Python正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-04T21:08:46+08:00" content="2016-12-04">
+              2016-12-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/04/Python正则表达式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/Python正则表达式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/04/Python正则表达式/" class="leancloud_visitors" data-flag-title="Python正则表达式">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="正则基础"><a href="#正则基础" class="headerlink" title="正则基础"></a>正则基础</h4><blockquote>
+<ul>
+<li><code>\d</code> 匹配一个数字</li>
+<li><code>\w</code> 匹配一个字母或数字</li>
+<li><code>.</code> 匹配任意一个字符</li>
+<li><code>*</code> 表示任意个字符包括0个</li>
+<li><code>+</code> 表示至少一个字符</li>
+<li><code>?</code> 表示0个或1个字符</li>
+<li><code>{n}</code> 表示n个字符</li>
+<li><code>{n,m}</code> 表示n-m个字符</li>
+<li><code>\s</code> 匹配一个空格</li>
+<li><code>[]</code> 中括号可以用来指定一个范围</li>
+<li><code>A|B</code> 匹配A或B</li>
+<li><code>^</code> ^\d 以数字开头</li>
+<li><code>\d$</code> 以数字结尾
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/04/Python正则表达式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/21/git学习笔记1/" itemprop="url">
                   git学习笔记(-)
                 </a>
@@ -357,44 +502,15 @@
 
       
         
-          
-            <h4 id="git修改远程仓库地址"><a href="#git修改远程仓库地址" class="headerlink" title="git修改远程仓库地址"></a>git修改远程仓库地址</h4><ul>
+          <h4 id="git修改远程仓库地址"><a href="#git修改远程仓库地址" class="headerlink" title="git修改远程仓库地址"></a>git修改远程仓库地址</h4><ul>
 <li>3种方法</li>
 </ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git remote origin <span class="built_in">set</span>-url url</div><div class="line"><span class="comment">#先移除后添加</span></div><div class="line">git remote rm origin</div><div class="line">git remote add origin url</div><div class="line"><span class="comment">#直接修改config 文件</span></div></pre></td></tr></table></figure>
-<h4 id="git设置-git-config"><a href="#git设置-git-config" class="headerlink" title="git设置(git config)"></a>git设置(git config)</h4><p>git-config设置主要可以存放在一下三个不同的地方</p>
-<blockquote>
-<ol>
-<li><code>/etc/gitconfig</code>文件：系统中对所有用户都普遍适用的配置。若使用 <code>git config</code> 时用 –system 选项，读写的就是这个文件。</li>
-<li><code>~/.gitconfig</code>文件：<code>~/.gitconfig</code> 文件：用户目录下的配置文件只适用于该用户。若使用 git config 时用 –global 选项，读写的就是这个文件。</li>
-<li>当前项目目录中的git配置文件 <code>.git/config</code>这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以 .git/config 里的配置会覆盖 /etc/gitconfig 中的同名变量。</li>
-</ol>
-</blockquote>
-<p>在 Windows 系统上，Git 会找寻用户主目录下的 .gitconfig 文件。主目录即 $HOME 变量指定的目录，一般都是 C:\Documents and Settings\$USER。此外，Git 还会尝试找寻 /etc/gitconfig 文件，只不过看当初 Git 装在什么目录，就以此作为根目录来定位。</p>
-<h4 id="配置用户名和邮箱"><a href="#配置用户名和邮箱" class="headerlink" title="配置用户名和邮箱"></a>配置用户名和邮箱</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 配置用户名和邮箱</span></div><div class="line"> git config --global user.name <span class="string">"EstDing"</span></div><div class="line"> git config --global user.email estding0@gmail.com</div></pre></td></tr></table></figure>
-<h4 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --list</div></pre></td></tr></table></figure>
-<h4 id="git-clone指定文件名称"><a href="#git-clone指定文件名称" class="headerlink" title="git clone指定文件名称"></a>git clone指定文件名称</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#这个命令会将远程仓库的文件克隆岛myfile文件夹内</span></div><div class="line">git clong url myfile</div></pre></td></tr></table></figure>
-<h3 id="git-文件状态"><a href="#git-文件状态" class="headerlink" title="git 文件状态"></a>git 文件状态</h3><blockquote>
-<ol>
-<li>未跟踪(新增的文件或者从始至终都没有加入版本跟踪的文件)</li>
-<li>已跟踪(使用<code>git add</code>命令添加过的文件)</li>
-<li>已修改()</li>
-<li>已修改保存到暂存区(使用<code>git add</code>命令后的文件会被放到暂存区)</li>
-<li>已提交(<code>git commit</code>提交之后就会产生一个版本记录)</li>
-</ol>
-</blockquote>
-<h4 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
-<h4 id="gitignore-设置对那些文件不进行版本跟踪"><a href="#gitignore-设置对那些文件不进行版本跟踪" class="headerlink" title=".gitignore 设置对那些文件不进行版本跟踪"></a><code>.gitignore</code> 设置对那些文件不进行版本跟踪</h4><p><code>.gitignore</code>文件的规范：</p>
-<blockquote>
-<ul>
-<li>所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略。</li>
-<li>可以使用标准的 glob 模式匹配。</li>
-<li>匹配模式最后跟反斜杠（/）说明要忽略的是目录。</li>
-<li>要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。</li>
-</ul>
-</blockquote>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/21/git学习笔记1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1521,160 +1637,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/15/linux磁盘管理之df和du命令/" itemprop="url">
-                  linux磁盘管理之df和du命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-15T17:46:32+08:00" content="2016-10-15">
-              2016-10-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux命令/" itemprop="url" rel="index">
-                    <span itemprop="name">linux命令</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/15/linux磁盘管理之df和du命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/15/linux磁盘管理之df和du命令/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/10/15/linux磁盘管理之df和du命令/" class="leancloud_visitors" data-flag-title="linux磁盘管理之df和du命令">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<ul>
-<li>df</li>
-<li>du</li>
-<li>umount</li>
-<li>mount</li>
-</ul>
-</blockquote>
-<h3 id="df"><a href="#df" class="headerlink" title="df"></a>df</h3><p><strong>参数说明</strong></p>
-<blockquote>
-<ul>
-<li>-h –human-readable 使用人类可读的格式(预设值是不加这个选项的…)</li>
-<li>-i, –inodes 列出 inode 资讯，不列出已使用 block</li>
-<li>-k, –kilobytes 就像是 –block-size=1024</li>
-<li>文件–block-size={SIZE} 使用 {SIZE} 大小的 Blocks</li>
-<li>文件-t, –type=TYPE 限制列出文件系统的 TYPE</li>
-<li>文件-T, –print-type 显示文件系统的形式</li>
-</ul>
-</blockquote>
-<p><strong>实例</strong></p>
-<ul>
-<li>以可读的形式列出当前系统磁盘使用情况</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -h</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/15/linux磁盘管理之df和du命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1720,7 +1682,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1728,7 +1690,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1737,7 +1699,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,Swift,UserDefaults," />
+  <meta name="keywords" content="Python,正则表达式," />
 
 
 
@@ -84,27 +84,62 @@
 
 
 
-<meta name="description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
+<meta name="description" content="正则基础
 
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
+\d 匹配一个数字
+\w 匹配一个字母或数字
+. 匹配任意一个字符
+* 表示任意个字符包括0个
++ 表示至少一个字符
+? 表示0个或1个字符
+{n} 表示n个字符
+{n,m} 表示n-m个字符
+\s 匹配一个空格
+[] 中括号可以用来指定一个范围
+A|B 匹配A或B
+^ ^\d 以数字开头
+\d$ 以数字结尾">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift学习之UserDefaults">
-<meta property="og:url" content="http://BESTDing.github.io/2016/10/16/Swift学习之UserDefaults/index.html">
+<meta property="og:title" content="Python正则表达式">
+<meta property="og:url" content="http://BESTDing.github.io/2016/12/04/Python正则表达式/index.html">
 <meta property="og:site_name" content="EstDing-技术栈">
-<meta property="og:description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
+<meta property="og:description" content="正则基础
 
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
-<meta property="og:image" content="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png">
-<meta property="og:updated_time" content="2016-11-19T15:18:08.000Z">
+\d 匹配一个数字
+\w 匹配一个字母或数字
+. 匹配任意一个字符
+* 表示任意个字符包括0个
++ 表示至少一个字符
+? 表示0个或1个字符
+{n} 表示n个字符
+{n,m} 表示n-m个字符
+\s 匹配一个空格
+[] 中括号可以用来指定一个范围
+A|B 匹配A或B
+^ ^\d 以数字开头
+\d$ 以数字结尾">
+<meta property="og:image" content="http://www.z4a.net/images/2016/12/04/2016-12-048.31.41.png">
+<meta property="og:image" content="http://www.z4a.net/images/2016/12/04/2016-12-048.45.11.png">
+<meta property="og:image" content="http://www.z4a.net/images/2016/12/04/2016-12-048.56.16.png">
+<meta property="og:updated_time" content="2016-12-04T13:08:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift学习之UserDefaults">
-<meta name="twitter:description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
+<meta name="twitter:title" content="Python正则表达式">
+<meta name="twitter:description" content="正则基础
 
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
-<meta name="twitter:image" content="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png">
+\d 匹配一个数字
+\w 匹配一个字母或数字
+. 匹配任意一个字符
+* 表示任意个字符包括0个
++ 表示至少一个字符
+? 表示0个或1个字符
+{n} 表示n个字符
+{n,m} 表示n-m个字符
+\s 匹配一个空格
+[] 中括号可以用来指定一个范围
+A|B 匹配A或B
+^ ^\d 以数字开头
+\d$ 以数字结尾">
+<meta name="twitter:image" content="http://www.z4a.net/images/2016/12/04/2016-12-048.31.41.png">
 
 
 
@@ -125,9 +160,9 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
 
 
 
-  <link rel="canonical" href="http://BESTDing.github.io/2016/10/16/Swift学习之UserDefaults/"/>
+  <link rel="canonical" href="http://BESTDing.github.io/2016/12/04/Python正则表达式/"/>
 
-  <title> Swift学习之UserDefaults | EstDing-技术栈 </title>
+  <title> Python正则表达式 | EstDing-技术栈 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -288,7 +323,7 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
             
             
               
-                Swift学习之UserDefaults
+                Python正则表达式
               
             
           </h1>
@@ -300,8 +335,8 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T10:33:19+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2016-12-04T21:08:46+08:00" content="2016-12-04">
+              2016-12-04
             </time>
           </span>
 
@@ -314,8 +349,8 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -330,8 +365,8 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/16/Swift学习之UserDefaults/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/Swift学习之UserDefaults/" itemprop="commentsCount"></span>
+                <a href="/2016/12/04/Python正则表达式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/Python正则表达式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -341,7 +376,7 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
 
           
           
-             <span id="/2016/10/16/Swift学习之UserDefaults/" class="leancloud_visitors" data-flag-title="Swift学习之UserDefaults">
+             <span id="/2016/12/04/Python正则表达式/" class="leancloud_visitors" data-flag-title="Python正则表达式">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -363,62 +398,63 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
       
 
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下<code>UserDefaults</code>这个类。</p>
-<p><img src="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png" alt="96d92204gw1f8tb4m5obvj20iw09u40i.png"></p>
-<p>官方文档里是这样介绍的</p>
-<p><em>The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an application to customize its behavior to match a user’s preferences. For example, you can allow users to determine what units of measurement your application displays or how often documents are automatically saved. Applications record such preferences by assigning values to a set of parameters in a user’s defaults database. The parameters are referred to as defaults since they’re commonly used to determine an application’s default state at startup or the way it acts by default.</em></p>
-<p><strong>NSUserDefaults 类为与默认系统交互提供了一个编程接口。默认值系统允许应用程序自定义其行为以匹配用户的首选项。例如，您可以允许用户以确定显示那些组件或多久文件会自动保存。应用程序通过将值分配给一组用户的默认数据库参数记录这些用户偏好设置。因为他们常用来确定应用程序在启动时的默认状态或它的默认行为。</strong></p>
-<p><em>At runtime, you use an NSUserDefaults object to read the defaults that your application uses from a user’s defaults database. NSUserDefaults caches the information to avoid having to open the user’s defaults database each time you need a default value. The synchronize() method, which is automatically invoked at periodic intervals, keeps the in-memory cache in sync with a user’s defaults database.</em></p>
-<p><strong>在运行时，您使用NSUserDefaults对象从用户的默认数据库读取应用程序使用的默认值。 NSUserDefaults缓存信息，以避免在每次需要默认值时都必须打开用户的默认数据库。 以周期性间隔自动调用的synchronize（）方法使内存中缓存与用户的默认数据库保持同步。</strong></p>
-<p><em>The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData. For more details, see Preferences and Settings Programming Guide.</em></p>
-<p><strong>NSUserDefaults类提供了方便的方法来访问常见类型，如浮点数，双精度，整数，布尔值和URL。 默认对象必须是属性列表，也就是说，一个实例（或集合的实例组合）：NSData，NSString，NSNumber，NSDate，NSArray或NSDictionary。 如果要存储任何其他类型的对象，通常应该将其存档以创建NSData的实例。 有关详细信息，请参阅首选项和设置编程指南。
-</strong></p>
-<a id="more"></a>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p><strong>类方法</strong></p>
+        <h4 id="正则基础"><a href="#正则基础" class="headerlink" title="正则基础"></a>正则基础</h4><blockquote>
 <ul>
-<li><code>class func resetStandardUserDefaults()</code></li>
-</ul>
-<p>同步所有更改，并在内存中释放UserDefaults</p>
-<p><em>+resetStandardUserDefaults releases the standardUserDefaults and sets it to nil. A new standardUserDefaults will be created the next time it’s accessed. The only visible effect this has is that all KVO observers of the previous standardUserDefaults will no longer be observing it.</em></p>
-<p><strong>resetStandardUserDefaults释放standardUserDefaults并将其设置为nil。 新的standardUserDefaults将在下次访问时创建。 唯一可见的效果是，所有以前的standardUserDefaults的KVO观察者将不再观察它。</strong></p>
-<p><strong>初始化方法</strong></p>
-<ul>
-<li><code>init()</code></li>
-<li><code>init?(suiteName: String?)</code></li>
-</ul>
-<p><strong>get方法</strong></p>
-<blockquote>
-<ul>
-<li><code>func array(forKey: String)</code><br>Returns the array associated with the specified key.</li>
-<li><code>func bool(forKey: String)</code><br>Returns the Boolean value associated with the specified key.</li>
-<li><code>func data(forKey: String)</code><br>Returns the data object associated with the specified key.</li>
-<li><code>func dictionary(forKey: String)</code><br>Returns the dictionary object associated with the specified key.</li>
-<li><code>func float(forKey: String)</code><br>Returns the floating-point value associated with the specified key.</li>
-<li><code>func integer(forKey: String)</code><br>Returns the integer value associated with the specified key..</li>
-<li><code>func object(forKey: String)</code><br>Returns the object associated with the first occurrence of the specified default.</li>
-<li><code>func stringArray(forKey: String)</code><br>Returns the array of strings associated with the specified key.</li>
-<li><code>func string(forKey: String)</code><br>Returns the string associated with the specified key.</li>
-<li><code>func double(forKey: String)</code><br>Returns the double value associated with the specified key.</li>
-<li><code>func url(forKey: String)</code><br>Returns the NSURL instance associated with the specified key.</li>
+<li><code>\d</code> 匹配一个数字</li>
+<li><code>\w</code> 匹配一个字母或数字</li>
+<li><code>.</code> 匹配任意一个字符</li>
+<li><code>*</code> 表示任意个字符包括0个</li>
+<li><code>+</code> 表示至少一个字符</li>
+<li><code>?</code> 表示0个或1个字符</li>
+<li><code>{n}</code> 表示n个字符</li>
+<li><code>{n,m}</code> 表示n-m个字符</li>
+<li><code>\s</code> 匹配一个空格</li>
+<li><code>[]</code> 中括号可以用来指定一个范围</li>
+<li><code>A|B</code> 匹配A或B</li>
+<li><code>^</code> ^\d 以数字开头</li>
+<li><code>\d$</code> 以数字结尾<a id="more"></a> 
+</li>
 </ul>
 </blockquote>
-<p><strong>Set方法</strong></p>
-<blockquote>
-<ul>
-<li><code>func set(Bool, forKey: String)</code><br>Sets the value of the specified default key to the specified Boolean value.</li>
-<li><code>func set(Float, forKey: String)</code><br>Sets the value of the specified default key to the specified floating-point value.</li>
-<li><code>func set(Int, forKey: String)</code><br>Sets the value of the specified default key to the specified integer value.</li>
-<li><code>func set(Any?, forKey: String)</code><br>Sets the value of the specified default key in the standard application domain.</li>
-<li><code>func set(Double, forKey: String)</code><br>Sets the value of the specified default key to the double value.</li>
-<li><code>func set(URL?, forKey: String)</code><br>Sets the value of the specified default key to the specified URL.</li>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\d&#123;3&#125; 表示3个数字</div><div class="line">\d&#123;3,8&#125; 表示3-8个数字</div><div class="line">\s+ 表示至少一个空格</div><div class="line">[0-9] 匹配0-9之间的一个数字</div><div class="line">[0-9]+ 至少有一个0-9之间的数字</div></pre></td></tr></table></figure>
+<h4 id="Python-re模块"><a href="#Python-re模块" class="headerlink" title="Python re模块"></a>Python re模块</h4><ul>
+<li><code>re.match(re, str)</code></li>
 </ul>
-</blockquote>
-<p><strong>remove方法</strong></p>
-<blockquote>
+<p><code>match()</code>方法接收一个正则表达式和一个字符串，如果有匹配返回一个 <code>match</code>对象， 否则返回None</p>
+<p><a href="http://www.z4a.net/image/OCpen" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/12/04/2016-12-048.31.41.png" alt="2016-12-048.31.41.png"></a></p>
 <ul>
-<li><code>func removeObject(forKey: String)</code><br>Removes the value of the specified default key in the standard application domain.</li>
+<li><code>re.split(re, str)</code> 切分字符串</li>
 </ul>
-</blockquote>
+<p>用正则表达式切分字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">re.split(<span class="string">r'\s+'</span>, <span class="string">'a b    c'</span>)</div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">re.split(<span class="string">r'[\s\,]+'</span>, <span class="string">'a,b, c d'</span>)</div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>定义分组 ‘m.group()’</li>
+</ul>
+<p>m是一个 match对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">^(\d&#123;<span class="number">3</span>&#125;)-(\d&#123;<span class="number">3</span><span class="number">-8</span>&#125;)$</div><div class="line">上面的代码用小括号定义两个分组</div><div class="line">m = re.match(<span class="string">r'^(\d&#123;3&#125;)-(\d&#123;3-8&#125;)$</span></div><div class="line">', <span class="string">'010-12345'</span>)</div><div class="line">m.group(<span class="number">1</span>)</div><div class="line"><span class="string">'010'</span></div><div class="line">m.group(<span class="number">2</span>)</div><div class="line"><span class="string">'12345'</span></div><div class="line">group(<span class="number">0</span>)</div><div class="line"><span class="string">'010-12345'</span></div></pre></td></tr></table></figure>
+<p><a href="http://www.z4a.net/image/OCqn6" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/12/04/2016-12-048.45.11.png" alt="2016-12-048.45.11.png"></a></p>
+<ul>
+<li>贪婪匹配</li>
+</ul>
+<p>最后需要特别指出的是，正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。举例如下，匹配出数字后面的0：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">re.match(<span class="string">r'^(\d+)(0*)$'</span>, <span class="string">'102300'</span>).groups()</div><div class="line"><span class="comment">#('102300', '')</span></div><div class="line">\d+采用贪婪匹配，直接匹配了所有的数字，结果<span class="number">0</span>*只能匹配空字符串了。</div><div class="line">加？号让\d+采非贪婪匹配</div><div class="line">re.match(<span class="string">r'^(\d+?)(0*)$'</span>, <span class="string">'102300'</span>).groups()</div><div class="line"><span class="comment">#('1023', '00')</span></div></pre></td></tr></table></figure>
+<ul>
+<li>编译正则表达式</li>
+</ul>
+<p>当我们在Python中使用正则表达式时，re模块内部会干两件事情：</p>
+<ol>
+<li><p>编译正则表达式，如果正则表达式的字符串本身不合法，会报错；</p>
+</li>
+<li><p>用编译后的正则表达式去匹配字符串。</p>
+</li>
+</ol>
+<p>如果一个正则表达式使用非常频繁，可以预编译正则表达式，提高效率</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">re_c = re.compile(<span class="string">r'^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$'</span>)</div><div class="line">re_c.match(<span class="string">'010-12345'</span>).groups()</div><div class="line"><span class="comment">#('010', '12345')</span></div></pre></td></tr></table></figure>
+<p> <img src="http://www.z4a.net/images/2016/12/04/2016-12-048.56.16.png" alt="2016-12-048.56.16.png"></p>
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><ul>
+<li>匹配邮箱</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mail_re = re.compile(&apos;[0-9a-zA-z]*\@(gmail|microsoft)&apos;)</div><div class="line">re.match(&apos;someone@gmail.com</div><div class="line">&apos;)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -441,11 +477,9 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
+            <a href="/tags/Python/" rel="tag">#Python</a>
           
-            <a href="/tags/Swift/" rel="tag">#Swift</a>
-          
-            <a href="/tags/UserDefaults/" rel="tag">#UserDefaults</a>
+            <a href="/tags/正则表达式/" rel="tag">#正则表达式</a>
           
         </div>
       
@@ -454,17 +488,13 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/15/linux磁盘管理之df和du命令/" rel="next" title="linux磁盘管理之df和du命令">
-                <i class="fa fa-chevron-left"></i> linux磁盘管理之df和du命令
+              <a href="/2016/11/21/git学习笔记1/" rel="next" title="git学习笔记(-)">
+                <i class="fa fa-chevron-left"></i> git学习笔记(-)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/16/Swift代码修改Xib或storyboard中添加的自动布局约束/" rel="prev" title="Swift代码修改Xib或storyboard中添加的自动布局约束">
-                Swift代码修改Xib或storyboard中添加的自动布局约束 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,8 +520,8 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/16/Swift学习之UserDefaults/"
-           data-title="Swift学习之UserDefaults" data-url="http://BESTDing.github.io/2016/10/16/Swift学习之UserDefaults/">
+      <div class="ds-thread" data-thread-key="2016/12/04/Python正则表达式/"
+           data-title="Python正则表达式" data-url="http://BESTDing.github.io/2016/12/04/Python正则表达式/">
       </div>
     
   </div>
@@ -602,7 +632,7 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">2.</span> <span class="nav-text">常用方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则基础"><span class="nav-number">1.</span> <span class="nav-text">正则基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example"><span class="nav-number">2.</span> <span class="nav-text">example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python-re模块"><span class="nav-number">3.</span> <span class="nav-text">Python re模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li></ol></div>
             
           </div>
         </section>
