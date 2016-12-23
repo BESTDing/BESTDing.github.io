@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[Python正则表达式]]></title>
-      <url>http://BESTDing.github.io/2016/12/04/Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+      <url>http://estding.com/2016/12/04/Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h4 id="正则基础"><a href="#正则基础" class="headerlink" title="正则基础"></a>正则基础</h4><blockquote>
 <ul>
 <li><code>\d</code> 匹配一个数字</li>
@@ -68,7 +68,7 @@
     
     <entry>
       <title><![CDATA[git学习笔记(-)]]></title>
-      <url>http://BESTDing.github.io/2016/11/21/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
+      <url>http://estding.com/2016/11/21/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
       <content type="html"><![CDATA[<h4 id="git修改远程仓库地址"><a href="#git修改远程仓库地址" class="headerlink" title="git修改远程仓库地址"></a>git修改远程仓库地址</h4><ul>
 <li>3种方法</li>
 </ul>
@@ -110,7 +110,7 @@
     
     <entry>
       <title><![CDATA[将博客从github迁移到coding.net]]></title>
-      <url>http://BESTDing.github.io/2016/11/20/%E5%B0%86%E5%8D%9A%E5%AE%A2%E4%BB%8Egithub%E8%BF%81%E7%A7%BB%E5%88%B0coding-net/</url>
+      <url>http://estding.com/2016/11/20/%E5%B0%86%E5%8D%9A%E5%AE%A2%E4%BB%8Egithub%E8%BF%81%E7%A7%BB%E5%88%B0coding-net/</url>
       <content type="html"><![CDATA[<p>最近github不知道抽什么风我部署在github上的博客一直访问不了，奈何囊中羞涩供不起vps于是就想把blog迁移到国内的coding.net上，迁移大致有以下几个步骤</p>
 <blockquote>
 <ol>
@@ -142,7 +142,7 @@
     
     <entry>
       <title><![CDATA[技嘉z170x-ud3 i7-6700k黑苹果教程]]></title>
-      <url>http://BESTDing.github.io/2016/11/19/%E6%8A%80%E5%98%89z170x-ud3%20i7-6700K%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%95%99%E7%A8%8B/</url>
+      <url>http://estding.com/2016/11/19/%E6%8A%80%E5%98%89z170x-ud3%20i7-6700K%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%95%99%E7%A8%8B/</url>
       <content type="html"><![CDATA[<p><a href="http://bbs.pcbeta.com/viewthread-1707541-1-1.html" target="_blank" rel="external">感谢远景坛友翻译和搬运:</a></p>
 <p><a href="https://www.tonymacx86.com/threads/guide-el-capitan-on-the-ga-z170x-ud3.180618/" target="_blank" rel="external">原贴地址</a></p>
 <h2 id="电脑配置"><a href="#电脑配置" class="headerlink" title="电脑配置"></a>电脑配置</h2><blockquote>
@@ -287,7 +287,7 @@
     
     <entry>
       <title><![CDATA[Swift随机颜色]]></title>
-      <url>http://BESTDing.github.io/2016/10/23/Swift%E9%9A%8F%E6%9C%BA%E9%A2%9C%E8%89%B2/</url>
+      <url>http://estding.com/2016/10/23/Swift%E9%9A%8F%E6%9C%BA%E9%A2%9C%E8%89%B2/</url>
       <content type="html"><![CDATA[<p>我们利用arc4randomuniform()产生三个随机值，再用UIColor构造方法返回一个随机颜色实例，你可以将下面一段代码拖入代码段以便随时服用</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">randomColor</span><span class="params">()</span></span> -&gt; <span class="type">UIColor</span> &#123;</div><div class="line">      <span class="keyword">let</span> red = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">let</span> green = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">let</span> blue = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">return</span> <span class="type">UIColor</span>(red: red, green: green, blue: blue, alpha: <span class="number">1.0</span>)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p><a href="http://www.z4a.net/image/jlH3f" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/10/23/2016-10-2311.28.43.png" alt="2016-10-2311.28.43.png"></a></p>
@@ -296,7 +296,7 @@
     
     <entry>
       <title><![CDATA[Swift中的Pragma mark]]></title>
-      <url>http://BESTDing.github.io/2016/10/17/Swift%E4%B8%AD%E7%9A%84pragmamark/</url>
+      <url>http://estding.com/2016/10/17/Swift%E4%B8%AD%E7%9A%84pragmamark/</url>
       <content type="html"><![CDATA[<p>之前写OC时都是用#pragma mark-生成分割线，用#pragma mark 生成函数说明</p>
 <p>在Swift中发现这个语法不管用了，Google了一下发现有了新的用法，</p>
 <p>//// MARK: - 生成分隔线</p>
@@ -307,7 +307,7 @@
     
     <entry>
       <title><![CDATA[iOS学习-NSLayoutConstraint-Swift3]]></title>
-      <url>http://BESTDing.github.io/2016/10/17/iOS%E5%AD%A6%E4%B9%A0-NSLayoutConstraint-Swift3/</url>
+      <url>http://estding.com/2016/10/17/iOS%E5%AD%A6%E4%B9%A0-NSLayoutConstraint-Swift3/</url>
       <content type="html"><![CDATA[<p>约束是定义两个组件之间的布局关系，必须满足基本的系统布局约束，每个约束都有以下形式</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">item1.attribute1 = multiplier × item2.attribute2 + constant</div></pre></td></tr></table></figure>
 <p>意思就是item1的布局属性等于item2的布局属性*multiplier再加上一个常量</p>
@@ -340,7 +340,7 @@
     
     <entry>
       <title><![CDATA[iOS广播NotificationCenter-Swift3]]></title>
-      <url>http://BESTDing.github.io/2016/10/16/iOS%E5%B9%BF%E6%92%ADNotificationCenter-Swift3/</url>
+      <url>http://estding.com/2016/10/16/iOS%E5%B9%BF%E6%92%ADNotificationCenter-Swift3/</url>
       <content type="html"><![CDATA[<p>NSNotificationCenter对象（或简称为通知中心）提供用于在程序内广播信息的机制。 NSNotificationCenter对象实质上是一个通知转发表。</p>
 <p><em>Objects register with a notification center to receive notifications (NSNotification objects) using the addObserver(_:selector:name:object:) or addObserver(forName:object:queue:using:) methods. Each invocation of this method specifies a set of notifications. Therefore, objects may register as observers of different notification sets by calling these methods several times.<br>Each running Cocoa program has a default notification center. You typically don’t create your own. An NSNotificationCenter object can deliver notifications only within a single program. If you want to post a notification to other processes or receive notifications from other processes, use an instance of DistributedNotificationCenter.</em></p>
 <p>**类实例使用addObserver（_：selector：name：object :)或addObserver（forName：object：queue：using :)在通知中心注册，接收通知（NSNotification对象）。 每次调用此方法都会指定一组通知。 因此，对象可以通过多次调用这些方法来注册为不同通知集的观察者。</p>
@@ -353,7 +353,7 @@
     
     <entry>
       <title><![CDATA[Swift代码修改Xib或storyboard中添加的自动布局约束]]></title>
-      <url>http://BESTDing.github.io/2016/10/16/Swift%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9Xib%E6%88%96storyboard%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%9A%84%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E7%BA%A6%E6%9D%9F/</url>
+      <url>http://estding.com/2016/10/16/Swift%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9Xib%E6%88%96storyboard%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%9A%84%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E7%BA%A6%E6%9D%9F/</url>
       <content type="html"><![CDATA[<p>很多次在xib或storyboard中添加了自动布局约束想要修改约束，但是不知道怎么修改，偶然在简书看到一篇文章才知道原来约束也是可以添加为IBoutlet.</p>
 <p><a href="http://www.jianshu.com/p/5ae4d59abc4a" target="_blank" rel="external">参考文章</a></p>
 <p><strong>登录框根据键盘弹起调整布局</strong></p>
@@ -375,7 +375,7 @@
     
     <entry>
       <title><![CDATA[Swift学习之UserDefaults]]></title>
-      <url>http://BESTDing.github.io/2016/10/16/Swift%E5%AD%A6%E4%B9%A0%E4%B9%8BUserDefaults/</url>
+      <url>http://estding.com/2016/10/16/Swift%E5%AD%A6%E4%B9%A0%E4%B9%8BUserDefaults/</url>
       <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下<code>UserDefaults</code>这个类。</p>
 <p><img src="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png" alt="96d92204gw1f8tb4m5obvj20iw09u40i.png"></p>
 <p>官方文档里是这样介绍的</p>
@@ -437,7 +437,7 @@
     
     <entry>
       <title><![CDATA[linux磁盘管理之df和du命令]]></title>
-      <url>http://BESTDing.github.io/2016/10/15/linux%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E4%B9%8Bdf%E5%92%8Cdu%E5%91%BD%E4%BB%A4/</url>
+      <url>http://estding.com/2016/10/15/linux%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E4%B9%8Bdf%E5%92%8Cdu%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<blockquote>
 <ul>
 <li>df</li>
@@ -523,7 +523,7 @@
     
     <entry>
       <title><![CDATA[linux输出重定向]]></title>
-      <url>http://BESTDing.github.io/2016/10/06/linux/linux%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</url>
+      <url>http://estding.com/2016/10/06/linux/linux%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</url>
       <content type="html"><![CDATA[<p>一般情况下，每个 Unix/Linux 命令运行时都会打开三个文件：</p>
 <ul>
 <li>标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。</li>
@@ -556,7 +556,7 @@
     
     <entry>
       <title><![CDATA[linux命令杂记]]></title>
-      <url>http://BESTDing.github.io/2016/10/05/linux/who%E5%92%8Cwc%E5%91%BD%E4%BB%A4/</url>
+      <url>http://estding.com/2016/10/05/linux/who%E5%92%8Cwc%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<blockquote>
 <ol>
 <li>who命令</li>
@@ -578,7 +578,7 @@
     
     <entry>
       <title><![CDATA[Swift学习之闭包]]></title>
-      <url>http://BESTDing.github.io/2016/09/25/Swift/Swift%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%97%AD%E5%8C%85/</url>
+      <url>http://estding.com/2016/09/25/Swift/Swift%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%97%AD%E5%8C%85/</url>
       <content type="html"><![CDATA[<blockquote>
 <ul>
 <li>闭包表达式(Closure Expressions)</li>
@@ -622,7 +622,7 @@
     
     <entry>
       <title><![CDATA[UILabel详解(Swift).md]]></title>
-      <url>http://BESTDing.github.io/2016/09/24/iOS/UILabel%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://estding.com/2016/09/24/iOS/UILabel%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h3 id="创建一个UILabel"><a href="#创建一个UILabel" class="headerlink" title="创建一个UILabel"></a>创建一个UILabel</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sLable = <span class="type">UILabel</span>(frame: <span class="type">CGRect</span>(x: <span class="number">100</span>, y: <span class="number">200</span>, width: <span class="number">100</span>, height: <span class="number">30</span>))</div></pre></td></tr></table></figure>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><blockquote>
 <ul>
@@ -647,7 +647,7 @@
     
     <entry>
       <title><![CDATA[iOS自定义导航栏]]></title>
-      <url>http://BESTDing.github.io/2016/09/17/iOS/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%BC%E8%88%AA%E6%A0%8F/</url>
+      <url>http://estding.com/2016/09/17/iOS/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%BC%E8%88%AA%E6%A0%8F/</url>
       <content type="html"><![CDATA[<blockquote>
 <ol>
 <li>初始化UINavigationController</li>
@@ -665,14 +665,14 @@
     
     <entry>
       <title><![CDATA[hexo new draft Mac Homebrew安装mysql报错ERROR 2002 (HY000) Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)解决办法]]></title>
-      <url>http://BESTDing.github.io/2016/09/12/brew%E5%AE%89%E8%A3%85mysql%E6%8A%A5%E9%94%99/</url>
+      <url>http://estding.com/2016/09/12/brew%E5%AE%89%E8%A3%85mysql%E6%8A%A5%E9%94%99/</url>
       <content type="html"><![CDATA[<h4 id="首先查看mysql有没有启动"><a href="#首先查看mysql有没有启动" class="headerlink" title="首先查看mysql有没有启动"></a>首先查看mysql有没有启动</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql.server start</div></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[mv命令]]></title>
-      <url>http://BESTDing.github.io/2016/09/11/linux/mv%E5%91%BD%E4%BB%A4/</url>
+      <url>http://estding.com/2016/09/11/linux/mv%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<p>mv命令是move的缩写，可以用来移动文件或者将文件重命名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。</p>
 <blockquote>
 <ol>
@@ -713,7 +713,7 @@
     
     <entry>
       <title><![CDATA[Mac下ssh和scp命令]]></title>
-      <url>http://BESTDing.github.io/2016/09/11/linux/Mac%E4%B8%8Bssh%E5%92%8Cscp%E5%91%BD%E4%BB%A4/</url>
+      <url>http://estding.com/2016/09/11/linux/Mac%E4%B8%8Bssh%E5%92%8Cscp%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>mac下要使用ssh远程登录需要在共享里勾选远程登录的选项</p>
 <p><img src="http://www.z4a.net/images/2016/09/11/-.png" alt="-.png"></p>
 <ul>
@@ -768,7 +768,7 @@
     
     <entry>
       <title><![CDATA[Synergy配置两台Mac共享一套键盘鼠标]]></title>
-      <url>http://BESTDing.github.io/2016/09/11/Synergy%E9%85%8D%E7%BD%AE%E4%B8%A4%E5%8F%B0Mac%E5%85%B1%E4%BA%AB%E4%B8%80%E5%A5%97%E9%94%AE%E7%9B%98%E9%BC%A0%E6%A0%87/</url>
+      <url>http://estding.com/2016/09/11/Synergy%E9%85%8D%E7%BD%AE%E4%B8%A4%E5%8F%B0Mac%E5%85%B1%E4%BA%AB%E4%B8%80%E5%A5%97%E9%94%AE%E7%9B%98%E9%BC%A0%E6%A0%87/</url>
       <content type="html"><![CDATA[<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><blockquote>
 <ul>
 <li>Synergy 1.8.2</li>
@@ -802,7 +802,7 @@
     
     <entry>
       <title><![CDATA[Vim学习笔记-基本操作]]></title>
-      <url>http://BESTDing.github.io/2016/09/01/Vim/vim%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+      <url>http://estding.com/2016/09/01/Vim/vim%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
       <content type="html"><![CDATA[<blockquote>
 <p><strong>C 代表 CTRL</strong></p>
 </blockquote>
@@ -863,7 +863,7 @@
     
     <entry>
       <title><![CDATA[Swift属性和方法]]></title>
-      <url>http://BESTDing.github.io/2016/08/30/Swift/Swift%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</url>
+      <url>http://estding.com/2016/08/30/Swift/Swift%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h1><blockquote>
 <p><strong>属性</strong></p>
 <ul>
