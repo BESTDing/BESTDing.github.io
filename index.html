@@ -129,6 +129,65 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-leetcode17" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/08/leetcode17/">leetcode17</a>
+    </h1>
+  
+
+        <a href="/2017/01/08/leetcode17/" class="archive-article-date">
+  	<time datetime="2017-01-08T13:22:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-08</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是leetcode17的JS实现，运用递归的思想，刚学JS代码比较挫</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/算法/">算法</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/08/leetcode17/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Python正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -738,74 +797,6 @@
 
 
   
-    <article id="post-Swift学习之UserDefaults" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/16/Swift学习之UserDefaults/">Swift学习之UserDefaults</a>
-    </h1>
-  
-
-        <a href="/2016/10/16/Swift学习之UserDefaults/" class="archive-article-date">
-  	<time datetime="2016-10-16T02:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-16</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下<code>UserDefaults</code>这个类。</p>
-<p><img src="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png" alt="96d92204gw1f8tb4m5obvj20iw09u40i.png"></p>
-<p>官方文档里是这样介绍的</p>
-<p><em>The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an application to customize its behavior to match a user’s preferences. For example, you can allow users to determine what units of measurement your application displays or how often documents are automatically saved. Applications record such preferences by assigning values to a set of parameters in a user’s defaults database. The parameters are referred to as defaults since they’re commonly used to determine an application’s default state at startup or the way it acts by default.</em></p>
-<p><strong>NSUserDefaults 类为与默认系统交互提供了一个编程接口。默认值系统允许应用程序自定义其行为以匹配用户的首选项。例如，您可以允许用户以确定显示那些组件或多久文件会自动保存。应用程序通过将值分配给一组用户的默认数据库参数记录这些用户偏好设置。因为他们常用来确定应用程序在启动时的默认状态或它的默认行为。</strong></p>
-<p><em>At runtime, you use an NSUserDefaults object to read the defaults that your application uses from a user’s defaults database. NSUserDefaults caches the information to avoid having to open the user’s defaults database each time you need a default value. The synchronize() method, which is automatically invoked at periodic intervals, keeps the in-memory cache in sync with a user’s defaults database.</em></p>
-<p><strong>在运行时，您使用NSUserDefaults对象从用户的默认数据库读取应用程序使用的默认值。 NSUserDefaults缓存信息，以避免在每次需要默认值时都必须打开用户的默认数据库。 以周期性间隔自动调用的synchronize（）方法使内存中缓存与用户的默认数据库保持同步。</strong></p>
-<p><em>The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData. For more details, see Preferences and Settings Programming Guide.</em></p>
-<p><strong>NSUserDefaults类提供了方便的方法来访问常见类型，如浮点数，双精度，整数，布尔值和URL。 默认对象必须是属性列表，也就是说，一个实例（或集合的实例组合）：NSData，NSString，NSNumber，NSDate，NSArray或NSDictionary。 如果要存储任何其他类型的对象，通常应该将其存档以创建NSData的实例。 有关详细信息，请参阅首选项和设置编程指南。
-</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UserDefaults/">UserDefaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/16/Swift学习之UserDefaults/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -820,7 +811,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 EstDing
+    		&copy; 2017 EstDing
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -864,15 +855,19 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CentOS7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">linux命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Homebrew</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">DevOps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -888,19 +883,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">DevOps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">装饰器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">CentOS7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">linux命令</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,11 +895,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">NSNotification</a>
+                <a href="javascript:void(0)">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Swift3</a>
+                <a href="javascript:void(0)">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -924,7 +911,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">源码</a>
+                <a href="javascript:void(0)">NSNotification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -948,11 +939,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">UIColor</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Synergy</a>
+                <a href="javascript:void(0)">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -964,11 +951,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">UserDefaults</a>
+                <a href="javascript:void(0)">Synergy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
+                <a href="javascript:void(0)">UIColor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UserDefaults</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -988,14 +983,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">df</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">du</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">blog</a>
               </li>
              
@@ -1012,6 +999,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">黑苹果</a>
               </li>
              
@@ -1020,11 +1015,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Vim</a>
+                <a href="javascript:void(0)">UILabel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">UILabel</a>
+                <a href="javascript:void(0)">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
