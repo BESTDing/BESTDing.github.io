@@ -129,6 +129,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux/mv命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/11/linux/mv命令/">mv命令</a>
+    </h1>
+  
+
+        <a href="/2016/09/11/linux/mv命令/" class="archive-article-date">
+  	<time datetime="2016-09-11T09:25:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-11</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mv命令是move的缩写，可以用来移动文件或者将文件重命名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。</p>
+<blockquote>
+<ol>
+<li>命令格式</li>
+<li>命令参数</li>
+<li>实例</li>
+</ol>
+</blockquote>
+<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><p><code>mv[选项][源文件][目的文件]</code></p>
+<h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h3><blockquote>
+<ul>
+<li>-b ：若需覆盖文件，则覆盖前先行备份。 </li>
+<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</li>
+<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</li>
+<li>-u ：若目标文件已经存在，且 source 比较新，才会更新(update)</li>
+<li>-t  ： –target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。</li>
+</ul>
+</blockquote>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
+<li>重命名文件如果文件存在提示是否覆盖</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv -i <span class="built_in">test</span>1 <span class="built_in">test</span>2</div></pre></td></tr></table></figure>
+<p><img src="http://www.z4a.net/images/2016/09/11/988a076386ab4c2e.png" alt="988a076386ab4c2e.png"> </p>
+<ul>
+<li>移动文件不询问，文件已存在直接覆盖</li>
+</ul>
+<p><a href="http://www.z4a.net/image/TM8IK" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/09/11/179d85df711c277f.png" alt="179d85df711c277f.png"></a></p>
+<ul>
+<li>移动文件到目录</li>
+</ul>
+<p><img src="http://www.z4a.net/images/2016/09/11/4d2153910ec92cae.png" alt="4d2153910ec92cae.png"></p>
+<ul>
+<li>重命名文件夹</li>
+</ul>
+<p><img src="http://www.z4a.net/images/2016/09/11/b2f880c4e256a2dc.png" alt="b2f880c4e256a2dc.png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux命令/">linux命令</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/linux命令/">linux命令</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/11/linux/mv命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-linux/Mac下ssh和scp命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -468,14 +561,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">CentOS7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">linux命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Homebrew</a>
               </li>
              
@@ -484,15 +569,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Python</a>
+                <a href="javascript:void(0)">CentOS7</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">callable</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">DevOps</a>
+                <a href="javascript:void(0)">linux命令</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,7 +589,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">DevOps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">装饰器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">callable</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,10 +610,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Swift3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,6 +622,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">terminal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,14 +649,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">UIColor</a>
               </li>
              
@@ -572,7 +657,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
+                <a href="javascript:void(0)">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,19 +673,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Notification</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">iOS广播</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">算法</a>
+                <a href="javascript:void(0)">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,6 +693,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">df</a>
               </li>
              
@@ -628,15 +713,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Notification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS广播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Vim</a>
+                <a href="javascript:void(0)">UILabel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">UILabel</a>
+                <a href="javascript:void(0)">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

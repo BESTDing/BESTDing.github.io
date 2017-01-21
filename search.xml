@@ -4,6 +4,119 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript数据类型]]></title>
+      <url>http://estding.com/2017/01/20/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+      <content type="html"><![CDATA[<h4 id="5种基本类型"><a href="#5种基本类型" class="headerlink" title="5种基本类型"></a>5种基本类型</h4><blockquote>
+<ul>
+<li>Undefined</li>
+<li>Null</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<p>还有一种复杂的数据类型 <code>object</code></p>
+<ul>
+<li>typeof 操作符</li>
+</ul>
+<p>返回变量的数据类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="string">'hello'</span> <span class="comment">//String</span></div><div class="line"><span class="keyword">typeof</span> <span class="number">1</span>      <span class="comment">//Number</span></div></pre></td></tr></table></figure>
+<p>注意typeof是操作符不是函数，圆括号可以省略</p>
+<blockquote>
+<p><strong>1. Undefined 类型</strong></p>
+<blockquote>
+<p>在使用 <code>var</code>声明变量后但是并未对其初始化，此时变量的值就是 <code>undefined</code>,要理解<code>Undefined</code>和<code>undefined</code>,前者是类型，后者是值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> example;</div><div class="line"><span class="built_in">console</span>.log(example); <span class="comment">//Undefined</span></div><div class="line"><span class="built_in">console</span>.log(example == <span class="literal">undefined</span>); <span class="comment">//true</span></div><div class="line"><span class="keyword">typeof</span> example; <span class="comment">//undefined</span></div><div class="line"><span class="comment">//注意undefined和未声明的变量是不一样但是 typeof对未定义的变量也是返回undefined</span></div><div class="line"><span class="keyword">typeof</span> example2; <span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+<p><em>强烈建议显示初始化已经声明的变量</em></p>
+</blockquote>
+<p><strong>2. Null 类型</strong></p>
+<blockquote>
+<p><code>Null</code> 类型也只有一个值 <code>null</code>, <code>null</code>表示一个空对象指针</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">//Object</span></div></pre></td></tr></table></figure>
+<p><em><code>undefined</code> 派生于<code>null</code></em></p>
+</blockquote>
+<p><strong>3. Boolean 类型</strong></p>
+<blockquote>
+<p><code>Boolean</code>类型有两个字面量值 <code>true</code>,<code>false</code>这两个字面量区分大小写敏感，也就是说True, False不是布尔值而是标识符，ECMAScript所有类型都有与这连个Boolean值等价的值，可以调用转换函数来转换 <code>Boolean()</code>.具体转换规则如下。</p>
+<blockquote>
+<ul>
+<li>String 非空字符串为true 空字符串为false</li>
+<li>Number 任何非零数字值都为true 0和<code>NaN</code>为false </li>
+<li>Object 任何对象都为true      null为false</li>
+<li>Undefined undefined为false</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><strong>4. Number类型</strong></p>
+<blockquote>
+<p>使用<code>IEEE754</code>表示整数和浮点数，十进制， 八进制 <code>070</code>第一位为0，注意八进制字面量在严格模式下无效，会导致JavaScript引擎抛出错误。注意在进行算术计算时，所有八进制和十六进制表示的数值最终都将被转换成十进制数值。 </p>
+<blockquote>
+<ul>
+<li>浮点数的精度在进行算术计算时其精度远远不如整数。例如，0.1+0.2的结果不是0.3而是<code>0.30000000000000004</code>,因此不要写下面这样的代码。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (a + b == <span class="number">0.3</span>) &#123;</div><div class="line">	alert(<span class="string">'You got 0.3.'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>数值范围最小值 <code>Number.MIN_VALUE</code>, 最大值 <code>Number.Max_VALUE</code>,如果计算的结果超过最大和最小值得表示范围，这个数值会被自动转换为<code>Infinity</code>(正无穷),负数为<code>-Infinity</code>(负无穷)，<code>Infinity</code>不是能够参与计算的数值，确定一个值是不是无穷的用函数<code>isFinite()</code>.</li>
+<li><code>NaN</code>，非数值是一个特殊的数值，表示一个本来要返回数值的操作数未返回数值的情况。特点：任何涉及NaN的操作都会返回<code>NaN</code>,另外NaN与任何值都不相等，包括<code>NaN</code>本身。<code>alert(NaN == NaN) false</code>.<code>isNaN()</code>函数在接受一个参数后，会尝试将这个值转换为数值，任何不能被转换为数值的值都会导致这个函数返回<code>true</code>,<code>isNaN()</code>同样适用于对象，接受对象参数后，会调用对象的 <code>valueOf()</code>方法，确定返回值是否可以转换为数值，如果不能，则基于这个返回值调用<code>toString()</code>方法，在测试返回值。<strong>注意这个过程也是ECMAScript 中内置函数和操作符的一般执行流程</strong></li>
+<li>数值转换，<code>Number()</code>, <code>parseInt()</code>, <code>parseFloat()</code>.第一个函数适用于任何数据类型，后两个函数专门用于把字符串转换成数值。三个函数的转换规则不一样。</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>parseInt()</code>的转换规则</li>
+<li>忽略字符开头空格，知道第一个非空字符，如果第一个非空字符不是数字字符或负号，<code>parseInt()</code>就会返回NaN,也就是说，用paseInt()会继续解析第二个字符，知道解析玩后续所有字符或者遇到了一个非数字的字符。<code>parseInt()</code>也能识别十进制，八进制，和十六进制。另外ECMAScript已经不具备解析八进制值得能力，因此 ‘var num = parseInt(‘070’);’num为70.另外<code>parseInt()</code>接受第二参数用来指定按那个规则转换。<strong>最佳实践任何情况下都指定转换基数</strong>。</li>
+</ul>
+</blockquote>
+</blockquote>
+<ul>
+<li>String 类型</li>
+</ul>
+<blockquote>
+<ul>
+<li>任何字符串的长度，都可以通过其属性<code>length</code>获取，<code>alert(text.length);</code>.</li>
+<li>字符串是不可变的</li>
+<li>转换为字符串</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>toString()</code>可以直接调用上述方法，<code>null</code>和<code>undefined</code>值没有<code>toString()</code>方法，另外在调用数值的<code>toString()</code>方法可以传入<code>基数</code>,例如 </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toString()); <span class="comment">//'10'</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">2</span>)); <span class="comment">//'1010'</span></div></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><code>String()</code></li>
+</ul>
+<blockquote>
+<ul>
+<li>如果参数有 <code>toString()</code>方法，则调用该方法，并返回响应的结果。</li>
+<li>如果值为 <code>null</code>，则返回 ‘null’。</li>
+<li>如果为‘undefined’, 则返回 ‘undefined’。</li>
+</ul>
+</blockquote>
+</blockquote>
+<ul>
+<li>Object 类型<blockquote>
+<ul>
+<li>constructor: 保存构造函数</li>
+<li>hasOwnProperty(propertyName): 用于检查给定的属性是否在当前对象的实例中，参数必须为字符串。</li>
+<li>isPrototypeOf(Object): 用于检查传入对象是否是对象的原型。</li>
+<li>propertyIsEnumerable(propertyName):用于检查给定的属相是否能够使用 <code>for-in</code>语句来枚举。参数必须为String.</li>
+<li>toLocalString(): 返回对象的字符串表示，</li>
+<li>toString()返回对象的字符串表示。</li>
+<li>value偶发（）： 返回对象的字符串，数值或布尔值表示。通常于 toString()方法的返回值相同。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><strong>leetcode20</strong></p>
+<p><em>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.<br>The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> isValid = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> stack = [s[<span class="number">0</span>]];</div><div class="line">    <span class="keyword">var</span> left = [<span class="string">'('</span>, <span class="string">'['</span>, <span class="string">'&#123;'</span>];</div><div class="line">    <span class="keyword">var</span> right = [<span class="string">')'</span>, <span class="string">']'</span>, <span class="string">'&#125;'</span>];</div><div class="line">    <span class="keyword">if</span> (s.length % <span class="number">2</span> !== <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; s.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (right.indexOf(s[i]) !== <span class="number">-1</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (stack[stack.length - <span class="number">1</span>] !== left[right.indexOf(s[i])]) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                stack.pop();</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            stack.push(s[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (stack.length === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[leetcode19]]></title>
       <url>http://estding.com/2017/01/15/leetcode19/</url>
       <content type="html"><![CDATA[<p>leetcode19</p>
