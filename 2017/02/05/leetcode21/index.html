@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://estding.com">
-  <title>Tag: mysql | EstDing-技术栈</title>
+  <title>leetcode21 | EstDing-技术栈</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="钝鸟先飞">
-<meta property="og:type" content="website">
-<meta property="og:title" content="EstDing-技术栈">
-<meta property="og:url" content="http://estding.com/tags/mysql/index.html">
+  <meta name="description" content="leetcode21">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode21">
+<meta property="og:url" content="http://estding.com/2017/02/05/leetcode21/index.html">
 <meta property="og:site_name" content="EstDing-技术栈">
-<meta property="og:description" content="钝鸟先飞">
+<meta property="og:description" content="leetcode21">
+<meta property="og:updated_time" content="2017-02-05T12:07:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EstDing-技术栈">
-<meta name="twitter:description" content="钝鸟先飞">
+<meta name="twitter:title" content="leetcode21">
+<meta name="twitter:description" content="leetcode21">
   
   
     <link rel="icon" href="/favicon.png">
@@ -127,59 +128,145 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-leetcode21" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/09/12/brew安装mysql报错/" class="archive-article-date">
-  	<time datetime="2016-09-11T16:14:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/12/brew安装mysql报错/">hexo new draft Mac Homebrew安装mysql报错ERROR 2002 (HY000) Can&#39;t connect to local MySQL server through socket &#39;/tmp/mysql.sock&#39; (2)解决办法</a>
+    <h1 class="article-title" itemprop="name">
+      leetcode21
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <a href="/2017/02/05/leetcode21/" class="archive-article-date">
+  	<time datetime="2017-02-05T12:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>leetcode21</p>
+<a id="more"></a>
+<p><strong>题目</strong></p>
+<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p>合并两个有序的链表，比较简单</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ListNode</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.val = val;</div><div class="line">      <span class="keyword">this</span>.next = <span class="literal">null</span>;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> mergeTwoLists = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> tmp = <span class="keyword">new</span> ListNode(<span class="number">0</span>), head = tmp;</div><div class="line">    <span class="keyword">while</span>(l1 &amp;&amp; l2) &#123;</div><div class="line">        <span class="keyword">if</span> (l1.val &gt; l2.val) &#123;</div><div class="line">            tmp.next = l2;</div><div class="line">            l2 = l2.next;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            tmp.next = l1;</div><div class="line">            l1 = l1.next;</div><div class="line">        &#125;</div><div class="line">        tmp = tmp.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (l1) &#123;</div><div class="line">        tmp.next = l1;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (l2) &#123;</div><div class="line">        tmp.next = l2;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head.next;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Homebrew/">Homebrew</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/mysql/">mysql</a>
+	<a class="article-category-link" href="/categories/算法/">算法</a>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://estding.com/2017/02/05/leetcode21/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/20/JavaScript数据类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript数据类型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="leetcode21" data-title="leetcode21" data-url="http://estding.com/2017/02/05/leetcode21/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"joydindin"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
           </div>
@@ -202,9 +289,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
