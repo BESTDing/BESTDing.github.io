@@ -4,6 +4,106 @@
   
     
     <entry>
+      <title><![CDATA[CSS之column-count]]></title>
+      <url>http://estding.com/2017/03/19/CSS%E4%B9%8Bcolumn-count/</url>
+      <content type="html"><![CDATA[<p><code>column-count</code><br>可以规定元素被分为多少列，配合使用的有下列CSS属性<br><code>column-gap</code><br>规定列之前间隔宽度<br><code>column-rule</code><br>规定列之间的宽度、样式和颜色。</p>
+<a id="more"></a>
+<p>用法</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span> &#123;</div><div class="line">	<span class="attribute">column-count</span>: <span class="number">2</span>;</div><div class="line">	<span class="attribute">column-gap</span>: <span class="number">1em</span>;</div><div class="line">	<span class="attribute">column-rule</span>: <span class="number">4px</span> outset <span class="number">#ff0000</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>样式如下</p>
+<p><a href="http://www.z4a.net/image/nCvbT" target="_blank" rel="external"><img src="http://www.z4a.net/images/2017/03/19/2017-03-1911.45.46.png" alt="2017-03-1911.45.46.png"></a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ul标签的默认padding]]></title>
+      <url>http://estding.com/2017/03/19/ul%E6%A0%87%E7%AD%BE%E7%9A%84%E9%BB%98%E8%AE%A4padding/</url>
+      <content type="html"><![CDATA[<p>今天用ul模仿写了一个下面这种效果，无奈自己写的时候发现ul不居中，于是就去看原网站的css代码发现有一下代码<br><a id="more"></a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span> &#123;</div><div class="line">	<span class="attribute">padding-left</span>: <span class="number">0px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>添加之后果然正常了，于是就搜了一下发现<br>ul标签在FF中默认是有padding值的,而在IE中只有margin默认有值。默认值都是40px.</p>
+<p>so~~<br>ul {<br>    padding-left: 0px;<br>    margin-left: 0px;<br>}</p>
+<p>可以解决一些布局上的问题。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[CSS-margin]]></title>
+      <url>http://estding.com/2017/03/13/CSS-margin/</url>
+      <content type="html"><![CDATA[<h4 id="margin标记可以带一个、二个、三个、四个参数，各有不同的含义。"><a href="#margin标记可以带一个、二个、三个、四个参数，各有不同的含义。" class="headerlink" title="margin标记可以带一个、二个、三个、四个参数，各有不同的含义。"></a>margin标记可以带一个、二个、三个、四个参数，各有不同的含义。</h4><a id="more"></a>
+<ul>
+<li>margin: 20px;（上、下、左、右各20px。）</li>
+<li>margin: 20px 40px;（上、下20px；左、右40px。）</li>
+<li>margin: 20px 40px 60px;（上20px；左、右40px；下60px。）</li>
+<li>margin: 20px 40px 60px 80px;（上20px；右40px；下60px；左80px。）</li>
+<li>在css中使用margin可以将margin-top，margin-right，margin-bottom，margin-left，缩写为一个标记，顺序为上右下左（顺时针）。</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript操作符]]></title>
+      <url>http://estding.com/2017/02/05/JavaScript%E6%93%8D%E4%BD%9C%E7%AC%A6/</url>
+      <content type="html"><![CDATA[<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><p>操作符在应用于对象时,响应的操作符通常会调用对象的valueof()和(或)toString()方法，以便取得可以操作的值。<br><a id="more"></a><br><strong>1. 递增递减操作符</strong></p>
+<p>借鉴与C,递增和递减操作符在执行前置递增递减操作时，变量的值都是在语句被求值以前改变的，后置递增递减操作是在包含它们的语句被求值之后才执行的。</p>
+<p><strong>2. 一元加和减操作</strong></p>
+<p>在对非数值应用一元加操作符时，该操作符会像<code>Number()</code>转型函数一样对这个值执行转换，转换规则遵守<code>Number()</code>的语法定义。</p>
+<p>一元减操作符应用于非数值时，会先遵循一元加操作符的转换规则，最后再将得到的数值转换为负数。</p>
+<p><strong>3. 位操作符</strong></p>
+<ul>
+<li>按位非(NOt)，<code>~</code>执行结果是操作数的负值减1.</li>
+<li>按位与(AND)， <code>&amp;</code></li>
+<li>按位或(OR),  <code>|</code></li>
+<li>按位异或,(XOR) <code>^</code></li>
+<li>左移 <code>&lt;&lt;</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oldvalue = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> newValue = oldValue &lt;&lt; <span class="number">5</span>;左移<span class="number">5</span>位</div></pre></td></tr></table></figure>
+<p>左移不会影响操作数的负号位，换句话说，如果将-2左移5位，结果将是-64，而非64.</p>
+<ul>
+<li>有符号的右移， <code>&gt;&gt;</code></li>
+</ul>
+<p>这个操作符会将数值右移，但保留符号位(即正负号标记)<br><strong>JavaScript高级程序设计一书上描述，右移用符号位填充空位，如果是负数时不太懂</strong></p>
+<ul>
+<li>无符号右移， <code>&gt;&gt;&gt;</code>表示。<br>这个操作符会将数值的所有32位都像右移动。对于整数结果与有符号右移相同，对于负数不同。</li>
+</ul>
+<p><strong>4. 布尔操作符</strong></p>
+<ul>
+<li>逻辑非 <code>!</code></li>
+<li>逻辑与 <code>&amp;&amp;</code></li>
+<li>逻辑或 <code>||</code></li>
+</ul>
+<p><strong>5. 乘性操作符</strong></p>
+<ul>
+<li>乘法 <code>*</code></li>
+<li>除法 <code>/</code></li>
+<li>求模 <code>%</code></li>
+</ul>
+<p><strong>6. 加性操作符</strong></p>
+<ul>
+<li>加法 <code>+</code></li>
+<li>加法 <code>-</code></li>
+</ul>
+<p><strong>7. 关系操作符</strong></p>
+<ul>
+<li>大于 <code>&gt;</code></li>
+<li>小于 <code>&lt;</code></li>
+<li>大于等于 <code>&gt;=</code></li>
+<li>小于等于 <code>&lt;=</code></li>
+</ul>
+<p><strong>8. 相等操作符</strong></p>
+<ul>
+<li>相等 <code>==</code></li>
+<li>不相等 <code>!=</code></li>
+<li>全等 <code>===</code> 两个操作数未经转换的情况下就返回true</li>
+<li>不全等 <code>!==</code> 表示两个操作数，未经转换就不相等</li>
+</ul>
+<p><strong>9. 条件操作符</strong><br><code>boolean_expression ? true_value : false_value</code><br><strong>10. 赋值操作符</strong><br>复合赋值操作符<br><strong>11 逗号操作符</strong></p>
+<p>在一条语句执行多个操作，<br>赋值总返回表达式最后一项。</p>
+<p><strong>instanceof操作符</strong></p>
+<p>判断某个对象是否是某个类型的实例，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(person <span class="keyword">instanceof</span> <span class="built_in">Object</span>) <span class="comment">//true</span></div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[leetcode20]]></title>
       <url>http://estding.com/2017/02/05/leetcode20/</url>
       <content type="html"><![CDATA[<p>leetcode20</p>
