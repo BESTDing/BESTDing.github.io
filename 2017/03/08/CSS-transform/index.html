@@ -6,29 +6,50 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://estding.com">
-  <title>Swift学习之UserDefaults | EstDing-技术栈</title>
+  <title>CSS-transform | EstDing-技术栈</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
+  <meta name="description" content="transform的属性包括
 
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
+
+rotate()旋转 rotatex(), rotatey()
+skew()
+scale() 放大缩小
+translate() 
+
+
+rotate()旋转
+1234.demo-transform &amp;#123;	transform: rotate(10deg); /*顺时针旋转十度*/	transform: rotate(-10deg); /*逆时针旋转十度*/&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift学习之UserDefaults">
-<meta property="og:url" content="http://estding.com/2016/10/16/Swift学习之UserDefaults/index.html">
+<meta property="og:title" content="CSS-transform">
+<meta property="og:url" content="http://estding.com/2017/03/08/CSS-transform/index.html">
 <meta property="og:site_name" content="EstDing-技术栈">
-<meta property="og:description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
+<meta property="og:description" content="transform的属性包括
 
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
-<meta property="og:image" content="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png">
-<meta property="og:updated_time" content="2016-11-19T15:18:08.000Z">
+
+rotate()旋转 rotatex(), rotatey()
+skew()
+scale() 放大缩小
+translate() 
+
+
+rotate()旋转
+1234.demo-transform &amp;#123;	transform: rotate(10deg); /*顺时针旋转十度*/	transform: rotate(-10deg); /*逆时针旋转十度*/&amp;#">
+<meta property="og:image" content="http://www.z4a.net/images/2017/03/08/2017-03-0811.25.21.png">
+<meta property="og:updated_time" content="2017-03-29T12:28:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift学习之UserDefaults">
-<meta name="twitter:description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
+<meta name="twitter:title" content="CSS-transform">
+<meta name="twitter:description" content="transform的属性包括
 
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
-<meta name="twitter:image" content="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png">
+
+rotate()旋转 rotatex(), rotatey()
+skew()
+scale() 放大缩小
+translate() 
+
+
+rotate()旋转
+1234.demo-transform &amp;#123;	transform: rotate(10deg); /*顺时针旋转十度*/	transform: rotate(-10deg); /*逆时针旋转十度*/&amp;#">
+<meta name="twitter:image" content="http://www.z4a.net/images/2017/03/08/2017-03-0811.25.21.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -139,80 +160,46 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Swift学习之UserDefaults" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CSS-transform" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Swift学习之UserDefaults
+      CSS-transform
     </h1>
   
 
-        <a href="/2016/10/16/Swift学习之UserDefaults/" class="archive-article-date">
-  	<time datetime="2016-10-16T02:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-16</time>
+        <a href="/2017/03/08/CSS-transform/" class="archive-article-date">
+  	<time datetime="2017-03-08T14:01:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下<code>UserDefaults</code>这个类。</p>
-<p><img src="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png" alt="96d92204gw1f8tb4m5obvj20iw09u40i.png"></p>
-<p>官方文档里是这样介绍的</p>
-<p><em>The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an application to customize its behavior to match a user’s preferences. For example, you can allow users to determine what units of measurement your application displays or how often documents are automatically saved. Applications record such preferences by assigning values to a set of parameters in a user’s defaults database. The parameters are referred to as defaults since they’re commonly used to determine an application’s default state at startup or the way it acts by default.</em></p>
-<p><strong>NSUserDefaults 类为与默认系统交互提供了一个编程接口。默认值系统允许应用程序自定义其行为以匹配用户的首选项。例如，您可以允许用户以确定显示那些组件或多久文件会自动保存。应用程序通过将值分配给一组用户的默认数据库参数记录这些用户偏好设置。因为他们常用来确定应用程序在启动时的默认状态或它的默认行为。</strong></p>
-<p><em>At runtime, you use an NSUserDefaults object to read the defaults that your application uses from a user’s defaults database. NSUserDefaults caches the information to avoid having to open the user’s defaults database each time you need a default value. The synchronize() method, which is automatically invoked at periodic intervals, keeps the in-memory cache in sync with a user’s defaults database.</em></p>
-<p><strong>在运行时，您使用NSUserDefaults对象从用户的默认数据库读取应用程序使用的默认值。 NSUserDefaults缓存信息，以避免在每次需要默认值时都必须打开用户的默认数据库。 以周期性间隔自动调用的synchronize（）方法使内存中缓存与用户的默认数据库保持同步。</strong></p>
-<p><em>The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData. For more details, see Preferences and Settings Programming Guide.</em></p>
-<p><strong>NSUserDefaults类提供了方便的方法来访问常见类型，如浮点数，双精度，整数，布尔值和URL。 默认对象必须是属性列表，也就是说，一个实例（或集合的实例组合）：NSData，NSString，NSNumber，NSDate，NSArray或NSDictionary。 如果要存储任何其他类型的对象，通常应该将其存档以创建NSData的实例。 有关详细信息，请参阅首选项和设置编程指南。
-</strong></p>
-<a id="more"></a>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p><strong>类方法</strong></p>
-<ul>
-<li><code>class func resetStandardUserDefaults()</code></li>
-</ul>
-<p>同步所有更改，并在内存中释放UserDefaults</p>
-<p><em>+resetStandardUserDefaults releases the standardUserDefaults and sets it to nil. A new standardUserDefaults will be created the next time it’s accessed. The only visible effect this has is that all KVO observers of the previous standardUserDefaults will no longer be observing it.</em></p>
-<p><strong>resetStandardUserDefaults释放standardUserDefaults并将其设置为nil。 新的standardUserDefaults将在下次访问时创建。 唯一可见的效果是，所有以前的standardUserDefaults的KVO观察者将不再观察它。</strong></p>
-<p><strong>初始化方法</strong></p>
-<ul>
-<li><code>init()</code></li>
-<li><code>init?(suiteName: String?)</code></li>
-</ul>
-<p><strong>get方法</strong></p>
+        <p>transform的属性包括</p>
 <blockquote>
 <ul>
-<li><code>func array(forKey: String)</code><br>Returns the array associated with the specified key.</li>
-<li><code>func bool(forKey: String)</code><br>Returns the Boolean value associated with the specified key.</li>
-<li><code>func data(forKey: String)</code><br>Returns the data object associated with the specified key.</li>
-<li><code>func dictionary(forKey: String)</code><br>Returns the dictionary object associated with the specified key.</li>
-<li><code>func float(forKey: String)</code><br>Returns the floating-point value associated with the specified key.</li>
-<li><code>func integer(forKey: String)</code><br>Returns the integer value associated with the specified key..</li>
-<li><code>func object(forKey: String)</code><br>Returns the object associated with the first occurrence of the specified default.</li>
-<li><code>func stringArray(forKey: String)</code><br>Returns the array of strings associated with the specified key.</li>
-<li><code>func string(forKey: String)</code><br>Returns the string associated with the specified key.</li>
-<li><code>func double(forKey: String)</code><br>Returns the double value associated with the specified key.</li>
-<li><code>func url(forKey: String)</code><br>Returns the NSURL instance associated with the specified key.</li>
+<li>rotate()旋转 rotatex(), rotatey()</li>
+<li>skew()</li>
+<li>scale() 放大缩小</li>
+<li>translate() </li>
 </ul>
 </blockquote>
-<p><strong>Set方法</strong></p>
-<blockquote>
-<ul>
-<li><code>func set(Bool, forKey: String)</code><br>Sets the value of the specified default key to the specified Boolean value.</li>
-<li><code>func set(Float, forKey: String)</code><br>Sets the value of the specified default key to the specified floating-point value.</li>
-<li><code>func set(Int, forKey: String)</code><br>Sets the value of the specified default key to the specified integer value.</li>
-<li><code>func set(Any?, forKey: String)</code><br>Sets the value of the specified default key in the standard application domain.</li>
-<li><code>func set(Double, forKey: String)</code><br>Sets the value of the specified default key to the double value.</li>
-<li><code>func set(URL?, forKey: String)</code><br>Sets the value of the specified default key to the specified URL.</li>
-</ul>
-</blockquote>
-<p><strong>remove方法</strong></p>
-<blockquote>
-<ul>
-<li><code>func removeObject(forKey: String)</code><br>Removes the value of the specified default key in the standard application domain.</li>
-</ul>
-</blockquote>
+<p><strong>rotate()旋转</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo-transform</span> &#123;</div><div class="line">	<span class="attribute">transform</span>: <span class="built_in">rotate</span>(10deg); <span class="comment">/*顺时针旋转十度*/</span></div><div class="line">	<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-10deg); <span class="comment">/*逆时针旋转十度*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>skew()倾斜</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo-tranform</span> &#123;</div><div class="line">	<span class="attribute">transform</span>: <span class="built_in">skew</span>(20deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>scale()放大缩小</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo-transform</span> &#123;</div><div class="line">	<span class="attribute">transform</span>: <span class="built_in">skew</span>(1.5) <span class="comment">/*放大1.5倍*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>translate()变换，位移</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo-transform</span> &#123;</div><div class="line">	<span class="attribute">transform</span>: <span class="built_in">translate</span>(120x, 20px) <span class="comment">/*向上移动120px, 向右移动20px*/</span></div><div class="line">	transform: <span class="built_in">translate</span>(-10px, -20px) <span class="comment">/*向下移动10px, 向左移动移动20px*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个小栗子效果如下</p>
+<p><a href="http://www.z4a.net/image/dTAJE" target="_blank" rel="external"><img src="http://www.z4a.net/images/2017/03/08/2017-03-0811.25.21.png" alt="2017-03-0811.25.21.png"></a></p>
+<p>代码如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"menu.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"logo"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"menu"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"home-link"</span>&gt;</span>主页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>目录<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: Arial, Helvetica, sans-serif;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#414142</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#ededed</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#menu</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: -<span class="number">16px</span>;</div><div class="line">    <span class="attribute">left</span>: -<span class="number">20px</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">250px</span>;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-35deg) <span class="built_in">translate</span>(-92px, 22px);</div><div class="line">    <span class="attribute">padding-top</span>: <span class="number">2em</span>;</div><div class="line">    <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">    <span class="attribute">background-color</span>: white;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#menu</span> <span class="selector-class">.home-link</span> &#123;</div><div class="line">    <span class="attribute">margin-right</span>: <span class="number">1em</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#menu</span> <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">text-decoration</span>: none;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#8F8F8F</span>;</div><div class="line">    <span class="comment">/*margin-right: 1em;*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#menu</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: darkgray;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
 
@@ -223,13 +210,13 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UserDefaults/">UserDefaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/transform/">transform</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
 	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	<a class="article-category-link" href="/categories/CSS3/">CSS3</a>
 	</div>
 
 
@@ -281,7 +268,7 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://estding.com/2016/10/16/Swift学习之UserDefaults/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://estding.com/2017/03/08/CSS-transform/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,18 +282,18 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
   
 <nav id="article-nav">
   
-    <a href="/2016/10/16/Swift代码修改Xib或storyboard中添加的自动布局约束/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/13/CSS-margin/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Swift代码修改Xib或storyboard中添加的自动布局约束
+          CSS-margin
         
       </div>
     </a>
   
   
-    <a href="/2016/10/15/linux磁盘管理之df和du命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linux磁盘管理之df和du命令</div>
+    <a href="/2017/02/05/JavaScript操作符/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript操作符</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -319,7 +306,7 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Swift学习之UserDefaults" data-title="Swift学习之UserDefaults" data-url="http://estding.com/2016/10/16/Swift学习之UserDefaults/"></div>
+	<div class="ds-thread" data-thread-key="CSS-transform" data-title="CSS-transform" data-url="http://estding.com/2017/03/08/CSS-transform/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

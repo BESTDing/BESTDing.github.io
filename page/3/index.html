@@ -129,6 +129,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux磁盘管理之df和du命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/15/linux磁盘管理之df和du命令/">linux磁盘管理之df和du命令</a>
+    </h1>
+  
+
+        <a href="/2016/10/15/linux磁盘管理之df和du命令/" class="archive-article-date">
+  	<time datetime="2016-10-15T09:46:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-15</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<ul>
+<li>df</li>
+<li>du</li>
+<li>umount</li>
+<li>mount</li>
+</ul>
+</blockquote>
+<h3 id="df"><a href="#df" class="headerlink" title="df"></a>df</h3><p><strong>参数说明</strong></p>
+<blockquote>
+<ul>
+<li>-h –human-readable 使用人类可读的格式(预设值是不加这个选项的…)</li>
+<li>-i, –inodes 列出 inode 资讯，不列出已使用 block</li>
+<li>-k, –kilobytes 就像是 –block-size=1024</li>
+<li>文件–block-size={SIZE} 使用 {SIZE} 大小的 Blocks</li>
+<li>文件-t, –type=TYPE 限制列出文件系统的 TYPE</li>
+<li>文件-T, –print-type 显示文件系统的形式</li>
+</ul>
+</blockquote>
+<p><strong>实例</strong></p>
+<ul>
+<li>以可读的形式列出当前系统磁盘使用情况</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -h</div></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/df/">df</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/du/">du</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux命令/">linux命令</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/linux命令/">linux命令</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/15/linux磁盘管理之df和du命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-linux/linux输出重定向" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -743,75 +825,6 @@
 
 
   
-    <article id="post-Vim/vim学习笔记-基本操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/01/Vim/vim学习笔记-基本操作/">Vim学习笔记-基本操作</a>
-    </h1>
-  
-
-        <a href="/2016/09/01/Vim/vim学习笔记-基本操作/" class="archive-article-date">
-  	<time datetime="2016-09-01T05:56:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-01</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>C 代表 CTRL</strong></p>
-</blockquote>
-<ul>
-<li><strong>插入字符</strong></li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">i			在当前光标所在字符前插入字符</div><div class="line">a         在当前光标所在字符后插入字符</div><div class="line">o			在光标下面新的一行插入字符</div><div class="line">O			在光标上面打开一个新行</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>移动光标</strong></li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">h			左</div><div class="line">j			下</div><div class="line">k			上</div><div class="line">l			右</div></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Vim/">Vim</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/01/Vim/vim学习笔记-基本操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1059,6 +1072,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">liunx命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">transform</a>
               </li>
             
             <div class="clearfix"></div>

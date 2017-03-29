@@ -6,29 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://estding.com">
-  <title>Swift学习之UserDefaults | EstDing-技术栈</title>
+  <title>Tag: transform | EstDing-技术栈</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
-
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Swift学习之UserDefaults">
-<meta property="og:url" content="http://estding.com/2016/10/16/Swift学习之UserDefaults/index.html">
+  <meta name="description" content="钝鸟先飞">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EstDing-技术栈">
+<meta property="og:url" content="http://estding.com/tags/transform/index.html">
 <meta property="og:site_name" content="EstDing-技术栈">
-<meta property="og:description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
-
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
-<meta property="og:image" content="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png">
-<meta property="og:updated_time" content="2016-11-19T15:18:08.000Z">
+<meta property="og:description" content="钝鸟先飞">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift学习之UserDefaults">
-<meta name="twitter:description" content="概述昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下UserDefaults这个类。
-
-官方文档里是这样介绍的
-The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an applica">
-<meta name="twitter:image" content="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png">
+<meta name="twitter:title" content="EstDing-技术栈">
+<meta name="twitter:description" content="钝鸟先飞">
   
   
     <link rel="icon" href="/favicon.png">
@@ -139,205 +127,59 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Swift学习之UserDefaults" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Swift学习之UserDefaults
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/08/CSS-transform/" class="archive-article-date">
+  	<time datetime="2017-03-08T14:01:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/08/CSS-transform/">CSS-transform</a>
     </h1>
   
 
-        <a href="/2016/10/16/Swift学习之UserDefaults/" class="archive-article-date">
-  	<time datetime="2016-10-16T02:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-16</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下<code>UserDefaults</code>这个类。</p>
-<p><img src="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png" alt="96d92204gw1f8tb4m5obvj20iw09u40i.png"></p>
-<p>官方文档里是这样介绍的</p>
-<p><em>The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an application to customize its behavior to match a user’s preferences. For example, you can allow users to determine what units of measurement your application displays or how often documents are automatically saved. Applications record such preferences by assigning values to a set of parameters in a user’s defaults database. The parameters are referred to as defaults since they’re commonly used to determine an application’s default state at startup or the way it acts by default.</em></p>
-<p><strong>NSUserDefaults 类为与默认系统交互提供了一个编程接口。默认值系统允许应用程序自定义其行为以匹配用户的首选项。例如，您可以允许用户以确定显示那些组件或多久文件会自动保存。应用程序通过将值分配给一组用户的默认数据库参数记录这些用户偏好设置。因为他们常用来确定应用程序在启动时的默认状态或它的默认行为。</strong></p>
-<p><em>At runtime, you use an NSUserDefaults object to read the defaults that your application uses from a user’s defaults database. NSUserDefaults caches the information to avoid having to open the user’s defaults database each time you need a default value. The synchronize() method, which is automatically invoked at periodic intervals, keeps the in-memory cache in sync with a user’s defaults database.</em></p>
-<p><strong>在运行时，您使用NSUserDefaults对象从用户的默认数据库读取应用程序使用的默认值。 NSUserDefaults缓存信息，以避免在每次需要默认值时都必须打开用户的默认数据库。 以周期性间隔自动调用的synchronize（）方法使内存中缓存与用户的默认数据库保持同步。</strong></p>
-<p><em>The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData. For more details, see Preferences and Settings Programming Guide.</em></p>
-<p><strong>NSUserDefaults类提供了方便的方法来访问常见类型，如浮点数，双精度，整数，布尔值和URL。 默认对象必须是属性列表，也就是说，一个实例（或集合的实例组合）：NSData，NSString，NSNumber，NSDate，NSArray或NSDictionary。 如果要存储任何其他类型的对象，通常应该将其存档以创建NSData的实例。 有关详细信息，请参阅首选项和设置编程指南。
-</strong></p>
-<a id="more"></a>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p><strong>类方法</strong></p>
-<ul>
-<li><code>class func resetStandardUserDefaults()</code></li>
-</ul>
-<p>同步所有更改，并在内存中释放UserDefaults</p>
-<p><em>+resetStandardUserDefaults releases the standardUserDefaults and sets it to nil. A new standardUserDefaults will be created the next time it’s accessed. The only visible effect this has is that all KVO observers of the previous standardUserDefaults will no longer be observing it.</em></p>
-<p><strong>resetStandardUserDefaults释放standardUserDefaults并将其设置为nil。 新的standardUserDefaults将在下次访问时创建。 唯一可见的效果是，所有以前的standardUserDefaults的KVO观察者将不再观察它。</strong></p>
-<p><strong>初始化方法</strong></p>
-<ul>
-<li><code>init()</code></li>
-<li><code>init?(suiteName: String?)</code></li>
-</ul>
-<p><strong>get方法</strong></p>
-<blockquote>
-<ul>
-<li><code>func array(forKey: String)</code><br>Returns the array associated with the specified key.</li>
-<li><code>func bool(forKey: String)</code><br>Returns the Boolean value associated with the specified key.</li>
-<li><code>func data(forKey: String)</code><br>Returns the data object associated with the specified key.</li>
-<li><code>func dictionary(forKey: String)</code><br>Returns the dictionary object associated with the specified key.</li>
-<li><code>func float(forKey: String)</code><br>Returns the floating-point value associated with the specified key.</li>
-<li><code>func integer(forKey: String)</code><br>Returns the integer value associated with the specified key..</li>
-<li><code>func object(forKey: String)</code><br>Returns the object associated with the first occurrence of the specified default.</li>
-<li><code>func stringArray(forKey: String)</code><br>Returns the array of strings associated with the specified key.</li>
-<li><code>func string(forKey: String)</code><br>Returns the string associated with the specified key.</li>
-<li><code>func double(forKey: String)</code><br>Returns the double value associated with the specified key.</li>
-<li><code>func url(forKey: String)</code><br>Returns the NSURL instance associated with the specified key.</li>
-</ul>
-</blockquote>
-<p><strong>Set方法</strong></p>
-<blockquote>
-<ul>
-<li><code>func set(Bool, forKey: String)</code><br>Sets the value of the specified default key to the specified Boolean value.</li>
-<li><code>func set(Float, forKey: String)</code><br>Sets the value of the specified default key to the specified floating-point value.</li>
-<li><code>func set(Int, forKey: String)</code><br>Sets the value of the specified default key to the specified integer value.</li>
-<li><code>func set(Any?, forKey: String)</code><br>Sets the value of the specified default key in the standard application domain.</li>
-<li><code>func set(Double, forKey: String)</code><br>Sets the value of the specified default key to the double value.</li>
-<li><code>func set(URL?, forKey: String)</code><br>Sets the value of the specified default key to the specified URL.</li>
-</ul>
-</blockquote>
-<p><strong>remove方法</strong></p>
-<blockquote>
-<ul>
-<li><code>func removeObject(forKey: String)</code><br>Removes the value of the specified default key in the standard application domain.</li>
-</ul>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UserDefaults/">UserDefaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/transform/">transform</a></li></ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	<a class="article-category-link" href="/categories/CSS3/">CSS3</a>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://estding.com/2016/10/16/Swift学习之UserDefaults/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/10/16/Swift代码修改Xib或storyboard中添加的自动布局约束/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Swift代码修改Xib或storyboard中添加的自动布局约束
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/10/15/linux磁盘管理之df和du命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linux磁盘管理之df和du命令</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Swift学习之UserDefaults" data-title="Swift学习之UserDefaults" data-url="http://estding.com/2016/10/16/Swift学习之UserDefaults/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"joydindin"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 
           </div>
@@ -360,9 +202,9 @@ The NSUserDefaults class provides a programmatic interface for interacting with 
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
