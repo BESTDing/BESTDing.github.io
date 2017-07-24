@@ -25,8 +25,8 @@
 <ul>
 <li>垂直滚动</li>
 </ul>
-<p>浏览器在垂直方向滚动的距离 y 总是大于等于0</p>
-<p>我们可以得出这样的结论</p>
+<p>浏览器在垂直方向滚动的距离 y 总是大于等于0<br>我们可以得出这样的结论</p>
+<a id="more"></a>
 <p><strong>文档坐标 = 视口坐标 + 滚动距离</strong></p>
 <h3 id="获取浏览器滚动距离"><a href="#获取浏览器滚动距离" class="headerlink" title="获取浏览器滚动距离"></a>获取浏览器滚动距离</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getScrollOffset</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (w.pageXOffset) </div><div class="line">	 <span class="keyword">return</span> &#123;x: w.pageXOffset y: w.pageYOffset&#125;;</div><div class="line">	 <span class="keyword">var</span> d = <span class="built_in">window</span>.document;</div><div class="line">	 <span class="comment">/*标准模式下IE*/</span></div><div class="line">	 <span class="keyword">if</span> (<span class="built_in">document</span>.compatMode = <span class="string">'CSS1Coompat'</span>)</div><div class="line">	 	<span class="keyword">return</span> &#123;x: d.documentElement.scrollLeft, y: d.documentElement.scrollTop&#125;</div><div class="line">	 <span class="comment">/*混杂模式IE*/</span></div><div class="line">	 reutn &#123;x: d.body.scrollLeft, y: d.body.scrollTop&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="获取浏览器窗口的大小"><a href="#获取浏览器窗口的大小" class="headerlink" title="获取浏览器窗口的大小"></a>获取浏览器窗口的大小</h3><p>获取浏览器窗口大小我们可以判定一个元素在不在可是区域<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getViewPortSize</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (w.innerWidth) <span class="keyword">return</span> &#123;w: w.innerWidth, h: innerHeight&#125;;</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> d = <span class="built_in">document</span>;</div><div class="line">	<span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">'CSS1Compat'</span>) &#123;</div><div class="line">		<span class="keyword">return</span> &#123;w: d.documentElement.clientWidth,</div><div class="line">				 h: d.documentElement.clientHeight&#125;;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> &#123;w: d.body.clientWidth, h: d.body.clientWidth&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -71,6 +71,7 @@
 <h3 id="引入媒体查询方法"><a href="#引入媒体查询方法" class="headerlink" title="引入媒体查询方法"></a>引入媒体查询方法</h3><p>*link方法引入</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../css/tv.css"</span> <span class="attr">media</span>=<span class="string">"tv"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <p>上面指定引入一个css文件用于<code>tv</code>类的媒体类型渲染</p>
+<a id="more"></a>
 <ul>
 <li>@import引入</li>
 </ul>
@@ -232,6 +233,7 @@
 </blockquote>
 <p>通过在<code>new</code>后跟构造函数创建一个对象</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//创建一个空对象</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <blockquote>
 <p>Object.create()</p>
 </blockquote>
@@ -312,6 +314,7 @@
 <li><code>\D</code> 除了ASCII数字之外的任何字符</li>
 <li><code>[\b]</code> 退格直接量</li>
 </ul>
+<a id="more"></a>
 <h4 id="重复匹配"><a href="#重复匹配" class="headerlink" title="重复匹配"></a>重复匹配</h4><ul>
 <li><code>{n, m}</code> 匹配一项至少n次，但不能超过m次</li>
 <li><code>{n, }</code> 匹配前一项n次或者更多次</li>
