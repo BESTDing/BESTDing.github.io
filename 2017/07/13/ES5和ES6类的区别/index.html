@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://estding.com">
+  <title>JsvaScript对象学习总结 | EstDing-技术栈</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JS类和对象概念和方法一直掌握的不够牢固，本文结合 es5和es6做一下总结，旨在强化记忆和学习
+如何创建一个对象
+字面量
+
+1234567var o = &amp;#123;&amp;#125;; //创建一个空对象var o = &amp;#123;	x: 1,	y: 2&amp;#125;//创建一个带有属性的对象//通过字面量创建的对象和 new Object()一样继承自Object.prototype
+
+new 运算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JsvaScript对象学习总结">
+<meta property="og:url" content="http://estding.com/2017/07/13/ES5和ES6类的区别/index.html">
+<meta property="og:site_name" content="EstDing-技术栈">
+<meta property="og:description" content="JS类和对象概念和方法一直掌握的不够牢固，本文结合 es5和es6做一下总结，旨在强化记忆和学习
+如何创建一个对象
+字面量
+
+1234567var o = &amp;#123;&amp;#125;; //创建一个空对象var o = &amp;#123;	x: 1,	y: 2&amp;#125;//创建一个带有属性的对象//通过字面量创建的对象和 new Object()一样继承自Object.prototype
+
+new 运算">
+<meta property="og:updated_time" content="2017-07-17T09:43:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JsvaScript对象学习总结">
+<meta name="twitter:description" content="JS类和对象概念和方法一直掌握的不够牢固，本文结合 es5和es6做一下总结，旨在强化记忆和学习
+如何创建一个对象
+字面量
+
+1234567var o = &amp;#123;&amp;#125;; //创建一个空对象var o = &amp;#123;	x: 1,	y: 2&amp;#125;//创建一个带有属性的对象//通过字面量创建的对象和 new Object()一样继承自Object.prototype
+
+new 运算">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/images/baybay4.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">EstDing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">飞蛾扑火, 钝鸟先飞</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BESTDing" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">EstDing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/images/baybay4.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">EstDing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">飞蛾扑火, 钝鸟先飞</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BESTDing" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-ES5和ES6类的区别" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JsvaScript对象学习总结
+    </h1>
+  
+
+        <a href="/2017/07/13/ES5和ES6类的区别/" class="archive-article-date">
+  	<time datetime="2017-07-13T08:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>JS</code>类和对象概念和方法一直掌握的不够牢固，本文结合 es5和es6做一下总结，旨在强化记忆和学习</p>
+<h4 id="如何创建一个对象"><a href="#如何创建一个对象" class="headerlink" title="如何创建一个对象"></a>如何创建一个对象</h4><blockquote>
+<p>字面量</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;&#125;; <span class="comment">//创建一个空对象</span></div><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">	x: <span class="number">1</span>,</div><div class="line">	y: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//创建一个带有属性的对象</span></div><div class="line"><span class="comment">//通过字面量创建的对象和 new Object()一样继承自Object.prototype</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>new 运算符</p>
+</blockquote>
+<p>通过在<code>new</code>后跟构造函数创建一个对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//创建一个空对象</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>Object.create()</p>
+</blockquote>
+<p><code>Object.create()</code>接受 两个参数，第一个是需要传入的原型对象必须，第二个参数用来描述需要创建对象的属性可选</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">	x: <span class="number">1</span>,</div><div class="line">	y: <span class="string">'z'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> oChild = <span class="built_in">Object</span>.create(o); <span class="comment">//创建一个对象继承o</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> oChild2 = <span class="built_in">Object</span>.create(o, &#123;</div><div class="line">	x: <span class="number">10</span>,</div><div class="line">	print: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">	&#125;</div><div class="line"> &#125;);</div><div class="line"> <span class="comment">//创建一个对象除了继承属性，还包括自有属性的队形</span></div></pre></td></tr></table></figure>
+<p><code>Object.create()</code>实际上是<code>道格拉斯</code>提倡的原型继承，给定一个原型对象，创建一个基于原型的对象，在扩展对象。</p>
+<p>实现代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span>  F = <span class="keyword">new</span> <span class="built_in">Function</span>();</div><div class="line">	F.prototype = o;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="对象属性特性"><a href="#对象属性特性" class="headerlink" title="对象属性特性"></a>对象属性特性</h3><p>对于数据属性有以下特性</p>
+<ul>
+<li>value 数据属性的值</li>
+<li>writable 数据属相可写性</li>
+<li>enumerable 数据属相可枚举属性</li>
+<li><p>configurable 数据属性可配置属性</p>
+<p>对于存取器属相有一下特性</p>
+</li>
+<li><p>get get方法</p>
+</li>
+<li>set set方法</li>
+<li>enumerable 可枚举属性</li>
+<li><p>configurable 可配置属性</p>
+<p>可以通过调用Object.getOwnPropertyDescriptor() 可以获得对象上某个属性的特性描述符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">	x: <span class="number">1</span>,</div><div class="line">	<span class="comment">//存取器属性</span></div><div class="line">	</div><div class="line">	get name() &#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">'Tom'</span>;</div><div class="line">	&#125;,</div><div class="line">	set name(value) &#123;</div><div class="line">		consoloe.log(<span class="string">`<span class="subst">$&#123;value&#125;</span> set value`</span>)</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDesriptor(o, <span class="string">'x'</span>));</div><div class="line"><span class="comment">//获取o对象x属性的特性描述符Object &#123;value: 1, writable: true, enumerable: true, configurable: true&#125;</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDesriptor(o, <span class="string">'name'</span>));</div><div class="line"><span class="comment">//获取存取器属性的特性描述符Object &#123;get: , set: , enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p> 由此可见通过字面量定义的对象的数据属性的 <code>writable</code> <code>enumerable</code> <code>configurable</code>都是为<code>true</code>;<br> 存取器属性的 <code>enumerable</code> <code>configurable</code>默认也为<code>true</code></p>
+<p> 接着上面的代码，我用<code>Object.defineProperty()</code>为对象定义新属性，或者修改现有属性</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//定义个新属性 </span></div><div class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'y'</span>, &#123;</div><div class="line">	value: <span class="number">3</span>,</div><div class="line">	writeable: <span class="literal">true</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(o, <span class="string">'y'</span>));</div><div class="line"><span class="comment">//Object &#123;value: 3, writable: true, enumerable: false, configurable: false&#125;</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(o.y);</div></pre></td></tr></table></figure>
+<p>新创建的属性的描述符，默认是false,这和字面量定义不太一样</p>
+<p>另外还有 <code>Object.definProperties()</code>可以一次定义多个属性，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.definProperties(&#123;&#125;, &#123;</div><div class="line">	x: &#123;value: <span class="number">1</span>, writable: <span class="literal">true</span>&#125;,</div><div class="line">	y: &#123;value: <span class="number">2</span>, writable: <span class="literal">false</span>&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><p>JavaScript中的继承是通过原型链实现的，假如有一个类的原型是另一个类的实例，那么这个类的实例有一个<code>__proto__</code>属性指向原型就是父类的实例，而这个原型也有一个<code>__proto__</code>属性指向自己的原型。这样就形成原型链，画个图更好理解点。</p>
+<p><strong>原型继承</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ES5写法</span></div><div class="line"><span class="comment">//创建父类A</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.x = x;</div><div class="line">	<span class="keyword">this</span>.str = <span class="string">'this is parent class'</span>;</div><div class="line">&#125;</div><div class="line">A.prototype = &#123;</div><div class="line">	print: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.str);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">A.prototype.constructor = A;</div><div class="line"><span class="comment">//创建子类B</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.y = y</div><div class="line">&#125;</div><div class="line">B.prototype = <span class="keyword">new</span> A(<span class="number">2</span>);</div><div class="line">B.prototype.constructor = B;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A(<span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B(<span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">//2</span></div><div class="line"><span class="built_in">console</span>.log(b.y); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(b.str); <span class="comment">//this is parent class;</span></div><div class="line"><span class="comment">//x , str 属性是从A的实例(也就是B的原型)继承过来的</span></div><div class="line">b.print(); <span class="comment">//this is parent class b&#123;y: 2&#125;</span></div><div class="line"><span class="comment">//print()方法是从父类的父类继承过来的，也就是A的原型</span></div><div class="line"><span class="comment">//在子类实例上调用继承的方法`this`绑定的是子类实例，在上面通过b调用print(),首先会查找print方法在A.prototype上找到方法后并调用，之后查找str属性，在B.prototype上找到str属性并输出。</span></div></pre></td></tr></table></figure>
+<p>以上就是原型链继承，原型链继承有两个问题</p>
+<ol>
+<li>如果原型中包含引用类型的属性，所有类实例共享这个属性，一个实例修改会影响其他实例。</li>
+</ol>
+<p><strong>借用构造函数继承</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.x = x;</div><div class="line">	<span class="keyword">this</span>.str = <span class="string">'this is parent class'</span>;</div><div class="line">&#125;</div><div class="line">A.prototype = &#123;</div><div class="line">	print: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.str);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">A.prototype.constructor = A;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">	<span class="comment">//借用父类A的构造函数</span></div><div class="line">	A.call(<span class="keyword">this</span>, <span class="number">1</span>);</div><div class="line">	<span class="keyword">this</span>.y = y</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B(<span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(b.y); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(b.str); <span class="comment">// this is parent class</span></div><div class="line"></div><div class="line"><span class="comment">//我们借用父类的构造函数，绑定this所以说这种继承并不是真正的从父类继承属性，我们只是借用了父类的构造函数，所以这种继承也叫伪造对象，但是我们的目的达到了，我们不需要再编写重复的`this.x = x; this.str = '';`</span></div></pre></td></tr></table></figure>
+<p>借用构造函数解决了原型链继承问题，但是有么有发现我们并没有调用b.print(),我们只是继承了属性并没有继承方法，方法定义在父类的原型上。</p>
+<p><strong>组合继承</strong></p>
+<p>顾名思义组合继承就是结合<code>借用构造函数</code>和<code>原型链继承</code>两种方法的优点的一种类的继承方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.x = x;</div><div class="line">	<span class="keyword">this</span>.str = <span class="string">'this is parent class'</span>;</div><div class="line">&#125;</div><div class="line">A.prototype = &#123;</div><div class="line">	print: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.str);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">A.prototype.constructor = A;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">	<span class="comment">//借用父类A的构造函数</span></div><div class="line">	A.call(<span class="keyword">this</span>, <span class="number">1</span>);</div><div class="line">	<span class="keyword">this</span>.y = y</div><div class="line">&#125;</div><div class="line"></div><div class="line">B.prototype = <span class="keyword">new</span> A();</div><div class="line">B.prototype.construct = B;</div><div class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(b.y); <span class="comment">// 2</span></div><div class="line">b.print(); <span class="comment">// this is  parent class</span></div></pre></td></tr></table></figure>
+<p>这样我们即继承了属性又继承了方法，其实方法也是属性，这样说为了区分。</p>
+<p>说到这里我们看一下es6的继承</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es6继承</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">	<span class="keyword">constructor</span>(x) &#123;</div><div class="line">		<span class="keyword">this</span>.x = x;</div><div class="line">		<span class="keyword">this</span>.str = <span class="string">'this is parent class'</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	print() &#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.str);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</div><div class="line">	<span class="keyword">constructor</span>(x, y) &#123;</div><div class="line">        <span class="keyword">super</span>(x);   <span class="comment">//es6规定必须调用父类构造函数</span></div><div class="line">		<span class="keyword">this</span>.y = y;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> B(<span class="number">1</span>, <span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(b.y); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(b.str); <span class="comment">// this is parent class</span></div><div class="line">b.print(); <span class="comment">// this is parent class</span></div></pre></td></tr></table></figure>
+<p>我们看子类调用了父类的构造函数是不是和上面借用构造函数相似,其实本质上<code>es6</code>的继承就是es5的组合继承，<code>class</code>和<code>extend</code>两个关键字只是语法糖</p>
+<p>在es6中有两条继承链，一是构造函数的继承，二是原型的继承</p>
+<p>子类的<code>__proto__</code>总是指向父类即<code>B.__proto__ === A</code>, 原型继承即方法的继承， <code>B.prototype.__proto__ === A.prototype</code>就是我们第一步讲的原型链。<br>方法的继承没什么卵用，实际上我们还要通过super()手动调用父类的构造方法。所以es6 <code>class</code>和<code>extend</code>实质上就是es5的组合继承。</p>
+<p><strong>有一点不同</strong></p>
+<p>es5中我们以这种形式调用父类的构造函数<code>A.call(this, x)</code>可见我们先创建子类实例然后复制父类属性。但是es6 中我们先调用<code>super()</code>创建父类的实例(其实也不是什么父类的实例了自我理解就是一个空对象)然后在添加子类的自定义属性。现在假设有如下继承链<code>A-&gt;B-&gt;C-&gt;D</code> 我们现在想创建一个D的实例，那我们调用D的构造函数，D的构造函数又会调用C的构造函数，以此类推最先在A上创建this对象，然后添加属性，可见<code>es6</code>的继承是自上而下的，最顶层的祖先的属性最先被添加。(其实es5组合继承也是自顶向下的这样才符合常理嘛唯一的不同就是创建this的先后了)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://estding.com/2017/07/13/ES5和ES6类的区别/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/18/JavaScript操作DOM方法总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript操作DOM方法总结 (-)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/05/JavaScript正则表达式总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript正则表达式总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ES5和ES6类的区别" data-title="JsvaScript对象学习总结" data-url="http://estding.com/2017/07/13/ES5和ES6类的区别/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"joydindin"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 EstDing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CentOS7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">linux命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">DevOps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3.0</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NotificationCenter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">callable</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">装饰器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">proxy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">terminal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSNotification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">margin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">transform</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">column-count</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">SWift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Pragma mark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UserDefaults</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">AutoLayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UIColor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Synergy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSLayoutConstraint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">自动布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Notification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS广播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">coding.net</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">package.json文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">黑苹果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Linux 命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">liunx命令</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">ESTDing,&lt;br&gt;测试工程师&lt;br&gt;&lt;br&gt;喜爱前端,&lt;br&gt;搞过iOS,&lt;br&gt;&lt;br&gt;路漫漫,&lt;br&gt;我亦不知疲倦</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

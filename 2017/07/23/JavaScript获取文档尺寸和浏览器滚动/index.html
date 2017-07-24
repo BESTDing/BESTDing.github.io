@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://estding.com">
+  <title>JavaScript获取文档尺寸和浏览器滚动 | EstDing-技术栈</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天写了个小东西，正好需要js获取元素尺寸位置，而且用到浏览器滚动。记录一下巩固一下今天学到的知识。
+文档坐标和视口坐标
+视口坐标
+
+是相对于，浏览器窗口元素的坐标，浏览器的窗口取决于显示器的大小和用户的缩放操作。所以元素相对于视口的坐标是不固定的。
+
+文档坐标
+
+文档坐标是元素相对于整个文档的左上角的坐标，这个坐标也是随着浏览器窗口大小改变而改变的。
+
+浏览器滚动
+
+水平滚动
+
+
+浏览器水平滚动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript获取文档尺寸和浏览器滚动">
+<meta property="og:url" content="http://estding.com/2017/07/23/JavaScript获取文档尺寸和浏览器滚动/index.html">
+<meta property="og:site_name" content="EstDing-技术栈">
+<meta property="og:description" content="今天写了个小东西，正好需要js获取元素尺寸位置，而且用到浏览器滚动。记录一下巩固一下今天学到的知识。
+文档坐标和视口坐标
+视口坐标
+
+是相对于，浏览器窗口元素的坐标，浏览器的窗口取决于显示器的大小和用户的缩放操作。所以元素相对于视口的坐标是不固定的。
+
+文档坐标
+
+文档坐标是元素相对于整个文档的左上角的坐标，这个坐标也是随着浏览器窗口大小改变而改变的。
+
+浏览器滚动
+
+水平滚动
+
+
+浏览器水平滚动">
+<meta property="og:updated_time" content="2017-07-22T17:31:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript获取文档尺寸和浏览器滚动">
+<meta name="twitter:description" content="今天写了个小东西，正好需要js获取元素尺寸位置，而且用到浏览器滚动。记录一下巩固一下今天学到的知识。
+文档坐标和视口坐标
+视口坐标
+
+是相对于，浏览器窗口元素的坐标，浏览器的窗口取决于显示器的大小和用户的缩放操作。所以元素相对于视口的坐标是不固定的。
+
+文档坐标
+
+文档坐标是元素相对于整个文档的左上角的坐标，这个坐标也是随着浏览器窗口大小改变而改变的。
+
+浏览器滚动
+
+水平滚动
+
+
+浏览器水平滚动">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/images/baybay4.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">EstDing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">飞蛾扑火, 钝鸟先飞</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BESTDing" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">EstDing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/images/baybay4.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">EstDing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">飞蛾扑火, 钝鸟先飞</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BESTDing" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-JavaScript获取文档尺寸和浏览器滚动" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript获取文档尺寸和浏览器滚动
+    </h1>
+  
+
+        <a href="/2017/07/23/JavaScript获取文档尺寸和浏览器滚动/" class="archive-article-date">
+  	<time datetime="2017-07-22T16:49:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-23</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天写了个小东西，正好需要<code>js</code>获取元素尺寸位置，而且用到浏览器滚动。记录一下巩固一下今天学到的知识。</p>
+<h3 id="文档坐标和视口坐标"><a href="#文档坐标和视口坐标" class="headerlink" title="文档坐标和视口坐标"></a>文档坐标和视口坐标</h3><ul>
+<li>视口坐标</li>
+</ul>
+<p>是相对于，浏览器窗口元素的坐标，浏览器的窗口取决于显示器的大小和用户的缩放操作。所以元素相对于视口的坐标是不固定的。</p>
+<ul>
+<li>文档坐标</li>
+</ul>
+<p>文档坐标是元素相对于整个文档的左上角的坐标，这个坐标也是随着浏览器窗口大小改变而改变的。</p>
+<ul>
+<li><p>浏览器滚动</p>
+</li>
+<li><p>水平滚动</p>
+</li>
+</ul>
+<p>浏览器水平滚动的距离 x 总是大于等于0</p>
+<ul>
+<li>垂直滚动</li>
+</ul>
+<p>浏览器在垂直方向滚动的距离 y 总是大于等于0</p>
+<p>我们可以得出这样的结论</p>
+<p><strong>文档坐标 = 视口坐标 + 滚动距离</strong></p>
+<h3 id="获取浏览器滚动距离"><a href="#获取浏览器滚动距离" class="headerlink" title="获取浏览器滚动距离"></a>获取浏览器滚动距离</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getScrollOffset</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (w.pageXOffset) </div><div class="line">	 <span class="keyword">return</span> &#123;x: w.pageXOffset y: w.pageYOffset&#125;;</div><div class="line">	 <span class="keyword">var</span> d = <span class="built_in">window</span>.document;</div><div class="line">	 <span class="comment">/*标准模式下IE*/</span></div><div class="line">	 <span class="keyword">if</span> (<span class="built_in">document</span>.compatMode = <span class="string">'CSS1Coompat'</span>)</div><div class="line">	 	<span class="keyword">return</span> &#123;x: d.documentElement.scrollLeft, y: d.documentElement.scrollTop&#125;</div><div class="line">	 <span class="comment">/*混杂模式IE*/</span></div><div class="line">	 reutn &#123;x: d.body.scrollLeft, y: d.body.scrollTop&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取浏览器窗口的大小"><a href="#获取浏览器窗口的大小" class="headerlink" title="获取浏览器窗口的大小"></a>获取浏览器窗口的大小</h3><p>获取浏览器窗口大小我们可以判定一个元素在不在可是区域<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getViewPortSize</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (w.innerWidth) <span class="keyword">return</span> &#123;w: w.innerWidth, h: innerHeight&#125;;</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> d = <span class="built_in">document</span>;</div><div class="line">	<span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">'CSS1Compat'</span>) &#123;</div><div class="line">		<span class="keyword">return</span> &#123;w: d.documentElement.clientWidth,</div><div class="line">				 h: d.documentElement.clientHeight&#125;;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> &#123;w: d.body.clientWidth, h: d.body.clientWidth&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="获取元素在视口中的坐标"><a href="#获取元素在视口中的坐标" class="headerlink" title="获取元素在视口中的坐标"></a>获取元素在视口中的坐标</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = e.getBoundingClientRect();</div><div class="line"><span class="comment">/*所以我们可以这样计算元素的文档坐标*/</span></div><div class="line">functio getDocumentPos() &#123;</div><div class="line">	<span class="keyword">var</span> box = e.getBoundingClientRect();</div><div class="line">	<span class="keyword">var</span> offset = getScrollOffset();</div><div class="line">	<span class="keyword">return</span> &#123;x: box.left + offset.x, y: box.top + offset.y&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="滚动时间和滚动函数"><a href="#滚动时间和滚动函数" class="headerlink" title="滚动时间和滚动函数"></a>滚动时间和滚动函数</h3><p>我们可以这样指定滚动处理函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>滚动函数 scrollTo()可以是浏览器滚动到指定坐标，指定x,和y值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">1000</span>);</div><div class="line"><span class="comment">/*水平方向不滚动，垂直方向滚动1000*/</span></div></pre></td></tr></table></figure>
+<ul>
+<li>scrollView() 在元素上调用将元素滚动到可见区域</li>
+</ul>
+<p>默认将元素上边缘放在视口的上边缘， 传false参数，将元素下边缘放在元素下边缘</p>
+<p>说了这么多说一下应用，通常有这样的场景我们点击某个按钮需要将浏览器滚动到指定元素的位置，这就是导航。有了上面这些知识就可以很容易的实现这个功能。</p>
+<ol>
+<li>计算出元素的文档坐标。</li>
+<li>调用scrollTo(0, box.y),就可以了</li>
+</ol>
+<p>有个问题是scrollTo没有任何滚动动画，滚动效果十分生硬体验不好，我们可以用jquery的滚动库，实现平滑滚动。</p>
+<p>下面是代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 滚动到指定元素</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollToElement</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> queryString = <span class="string">''</span>;</div><div class="line">  <span class="keyword">if</span> (event.target.firstChild.firstChild) &#123;</div><div class="line">    queryString = event.target.firstChild.firstChild.nodeValue;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    queryString = event.target.firstChild.nodeValue;</div><div class="line">  &#125;</div><div class="line">  queryString = queryString.toLowerCase();</div><div class="line">  <span class="comment">// console.log(queryString);</span></div><div class="line">  <span class="keyword">if</span> (queryString === <span class="string">'home'</span>) &#123;</div><div class="line">    $(<span class="string">'body'</span>).getNiceScroll().doScrollPos(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (ISDISPLAY) &#123;</div><div class="line">      toggleSlide();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(queryString);</div><div class="line">  <span class="keyword">var</span> em = <span class="built_in">window</span>.document.querySelectorAll(<span class="string">'.'</span> + queryString)[<span class="number">0</span>];</div><div class="line">  <span class="built_in">console</span>.log(em);</div><div class="line">  <span class="keyword">var</span> box = getElementBoundingInDocument(em);</div><div class="line">  $(<span class="string">'body'</span>).getNiceScroll().doScrollPos(<span class="number">0</span>, box.y);</div><div class="line">  <span class="keyword">if</span> (ISDISPLAY) &#123;</div><div class="line">    toggleSlide();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://estding.com/2017/07/23/JavaScript获取文档尺寸和浏览器滚动/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/22/CSS媒体查询/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS媒体查询</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JavaScript获取文档尺寸和浏览器滚动" data-title="JavaScript获取文档尺寸和浏览器滚动" data-url="http://estding.com/2017/07/23/JavaScript获取文档尺寸和浏览器滚动/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"joydindin"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 EstDing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CentOS7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">linux命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">DevOps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3.0</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NotificationCenter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">callable</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">装饰器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">proxy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">terminal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSNotification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">margin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">transform</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">column-count</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">SWift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Pragma mark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UserDefaults</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">AutoLayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UIColor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Synergy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSLayoutConstraint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">自动布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Notification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS广播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">coding.net</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">package.json文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">黑苹果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Linux 命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">liunx命令</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">ESTDing,&lt;br&gt;测试工程师&lt;br&gt;&lt;br&gt;喜爱前端,&lt;br&gt;搞过iOS,&lt;br&gt;&lt;br&gt;路漫漫,&lt;br&gt;我亦不知疲倦</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

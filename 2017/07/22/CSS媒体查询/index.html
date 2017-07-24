@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://estding.com">
+  <title>CSS媒体查询 | EstDing-技术栈</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="媒体查询是设计响应式网站常用的CSS工具，本文记录下自己在学习CSS媒体查询过程中的心得。
+媒体类型
+
+all 支持所有媒体类型
+screen 屏幕
+print 打印设备
+braille 盲人设备
+embossed 盲文打印机
+handheld 手持小屏设备
+tv 电视设备，低分辨率
+
+
+更多媒体详情 
+here
+引入媒体查询方法*link方法引入
+1&amp;lt;link rel=&quot;styleshee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS媒体查询">
+<meta property="og:url" content="http://estding.com/2017/07/22/CSS媒体查询/index.html">
+<meta property="og:site_name" content="EstDing-技术栈">
+<meta property="og:description" content="媒体查询是设计响应式网站常用的CSS工具，本文记录下自己在学习CSS媒体查询过程中的心得。
+媒体类型
+
+all 支持所有媒体类型
+screen 屏幕
+print 打印设备
+braille 盲人设备
+embossed 盲文打印机
+handheld 手持小屏设备
+tv 电视设备，低分辨率
+
+
+更多媒体详情 
+here
+引入媒体查询方法*link方法引入
+1&amp;lt;link rel=&quot;styleshee">
+<meta property="og:image" content="http://www.z4a.net/images/2017/07/23/media-query-type.png">
+<meta property="og:image" content="http://www.z4a.net/images/2017/07/23/2017-07-2312.40.45.png">
+<meta property="og:image" content="http://www.z4a.net/images/2017/07/23/2017-07-2312.42.25.png">
+<meta property="og:image" content="http://www.z4a.net/images/2017/07/23/2017-07-2312.43.09.png">
+<meta property="og:updated_time" content="2017-07-22T16:45:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS媒体查询">
+<meta name="twitter:description" content="媒体查询是设计响应式网站常用的CSS工具，本文记录下自己在学习CSS媒体查询过程中的心得。
+媒体类型
+
+all 支持所有媒体类型
+screen 屏幕
+print 打印设备
+braille 盲人设备
+embossed 盲文打印机
+handheld 手持小屏设备
+tv 电视设备，低分辨率
+
+
+更多媒体详情 
+here
+引入媒体查询方法*link方法引入
+1&amp;lt;link rel=&quot;styleshee">
+<meta name="twitter:image" content="http://www.z4a.net/images/2017/07/23/media-query-type.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/images/baybay4.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">EstDing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">飞蛾扑火, 钝鸟先飞</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BESTDing" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">EstDing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/images/baybay4.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">EstDing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">飞蛾扑火, 钝鸟先飞</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BESTDing" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-CSS媒体查询" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS媒体查询
+    </h1>
+  
+
+        <a href="/2017/07/22/CSS媒体查询/" class="archive-article-date">
+  	<time datetime="2017-07-22T15:54:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-22</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>媒体查询是设计响应式网站常用的CSS工具，本文记录下自己在学习CSS媒体查询过程中的心得。</p>
+<h3 id="媒体类型"><a href="#媒体类型" class="headerlink" title="媒体类型"></a>媒体类型</h3><blockquote>
+<ul>
+<li>all 支持所有媒体类型</li>
+<li>screen 屏幕</li>
+<li>print 打印设备</li>
+<li>braille 盲人设备</li>
+<li>embossed 盲文打印机</li>
+<li>handheld 手持小屏设备</li>
+<li>tv 电视设备，低分辨率</li>
+</ul>
+</blockquote>
+<p>更多媒体详情 </p>
+<p><a href="https://www.w3.org/TR/CSS2/media.html#media-types" target="_blank" rel="external">here</a></p>
+<h3 id="引入媒体查询方法"><a href="#引入媒体查询方法" class="headerlink" title="引入媒体查询方法"></a>引入媒体查询方法</h3><p>*link方法引入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../css/tv.css"</span> <span class="attr">media</span>=<span class="string">"tv"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>上面指定引入一个css文件用于<code>tv</code>类的媒体类型渲染</p>
+<ul>
+<li>@import引入</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> url(<span class="string">"css/screen.css"</span>) screen;</div><div class="line">@<span class="keyword">import</span> url(<span class="string">"css/tv.css"</span>) tv;</div></pre></td></tr></table></figure>
+<ul>
+<li>@media</li>
+</ul>
+<p>这种方式是比较常用的</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span>  screen and (max-width: <span class="number">992px</span>)  &#123;</div><div class="line">    <span class="selector-class">.social-wrapper</span> <span class="selector-tag">a</span> &#123;</div><div class="line">        <span class="attribute">margin-top</span>: <span class="number">10px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面css样式指定在媒体类型为 <code>screen</code> 宽度小于 <code>992px</code>时应用。</p>
+<h3 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h3><blockquote>
+<ul>
+<li>and 操作符用于合并多个媒体属性或合并媒体类型和媒体属性，相当于js中的<code>&amp;&amp;</code></li>
+</ul>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span>  screen and (max-width: <span class="number">992px</span>)  &#123;</div><div class="line">    <span class="selector-class">.social-wrapper</span> <span class="selector-tag">a</span> &#123;</div><div class="line">        <span class="attribute">margin-top</span>: <span class="number">10px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*和并screen和 max-width只有当二者都为真，媒体查询才返回true*/</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>not 关键字仅能应用于整个查询，而不能单独应用于一个独立的查询。怎么判断独立查询，<code>,</code>号用来分割多个查询，若果有逗号 not作用于最近的一个查询，如果没有逗号， not作用于仅有的一个查询。</li>
+</ul>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> not all and (monochrome) &#123; ... &#125;</div><div class="line"><span class="comment">/*等价于*/</span></div><div class="line">@<span class="keyword">media</span> not (all and (monochrome)) &#123; ... &#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> not screen and (color), print and (color)</div><div class="line">/*等价于*/</div><div class="line">@media (not (screen and (color))), print and (color)</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>only 关键字防止老旧的浏览器不支持带媒体属性的查询而应用到给定的样式，</li>
+</ul>
+</blockquote>
+<p>是不支持媒体查询，也就是防止不支持<code>@media</code>的浏览器，直接应用媒体查询后面的css属性。</p>
+<blockquote>
+<p>,号相当于 <code>or</code>操作符</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> not screen and (color), print and (color)</div><div class="line"></div><div class="line">/*两个查询任意一个为true就返回true*/</div></pre></td></tr></table></figure>
+<h3 id="媒体属性"><a href="#媒体属性" class="headerlink" title="媒体属性"></a>媒体属性</h3><p>css常用的媒体属性</p>
+<p><img src="http://www.z4a.net/images/2017/07/23/media-query-type.png" alt=""></p>
+<p>下面是一个实例，用媒体查询实现一个正常宽度下页面导航按钮在右上方，当屏幕宽度小于<code>900px</code>时折叠起来。</p>
+<p><code>html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">i</span> <span class="attr">id</span>=<span class="string">"switch-slide"</span> <span class="attr">class</span>=<span class="string">"fa fa-bars fa-2x"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav-list"</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Portfolio<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Contact<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">       <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"slid-out"</span> <span class="attr">id</span>=<span class="string">"slid-out"</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Portfolio<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Contact<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">       <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slid-mask"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">14.5px</span>;</div><div class="line">    <span class="attribute">font-family</span>:<span class="string">'Roboto'</span>, sans-serif ;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">    <span class="attribute">position</span>: fixed;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">999</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">64px</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#4db6ac</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav-list</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.header</span> <span class="selector-class">.nav-list</span> <span class="selector-class">.nav-item</span> &#123;</div><div class="line">    <span class="attribute">display</span>: inline-block;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">70px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">64px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav-item</span> <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">text-decoration</span>: none;</div><div class="line">    <span class="attribute">color</span>: white;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">64px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav-item</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#26a69a</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> only screen and (max-width: <span class="number">992px</span>) &#123;</div><div class="line">    <span class="selector-class">.nav-list</span> &#123;</div><div class="line">        <span class="attribute">display</span>: none;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="selector-class">.header</span> <span class="selector-tag">i</span> &#123;</div><div class="line">        <span class="attribute">visibility</span>: inherit <span class="meta">!important</span>;</div><div class="line">        <span class="attribute">left</span>: <span class="number">15px</span>;</div><div class="line">        <span class="attribute">top</span>: <span class="number">18px</span>;</div><div class="line">        <span class="attribute">color</span>: white;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*默认隐藏菜单图标*/</span></div><div class="line"><span class="selector-class">.header</span> <span class="selector-tag">i</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">visibility</span>: hidden;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*左侧导航栏*/</span></div><div class="line"><span class="selector-class">.slid-out</span> &#123;</div><div class="line">    <span class="attribute">position</span>: fixed;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">999</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">left</span>: -<span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">list-style</span>: none;</div><div class="line">    <span class="attribute">background</span>: white;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.slid-out</span> &#123;</div><div class="line">    <span class="attribute">-webkit-animation-duration</span>: .<span class="number">2s</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.slid-out</span> <span class="selector-tag">li</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">64px</span>;</div><div class="line">    <span class="attribute">text-decoration</span>: none;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">64px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.slid-out</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">background</span>: lightgray;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.slid-out</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</div><div class="line">    <span class="attribute">text-decoration</span>: inherit;</div><div class="line">    <span class="attribute">color</span>: black;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.slid-mask</span> &#123;</div><div class="line">    <span class="attribute">position</span>: fixed;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(0,0,0,0.5);</div><div class="line">    <span class="attribute">visibility</span>: hidden;</div><div class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">media</span> only screen and (max-width: <span class="number">992px</span>) &#123;</div><div class="line">    <span class="selector-class">.nav-list</span> &#123;</div><div class="line">        <span class="attribute">display</span>: none;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="selector-class">.header</span> <span class="selector-tag">i</span> &#123;</div><div class="line">        <span class="attribute">visibility</span>: inherit <span class="meta">!important</span>;</div><div class="line">        <span class="attribute">left</span>: <span class="number">15px</span>;</div><div class="line">        <span class="attribute">top</span>: <span class="number">18px</span>;</div><div class="line">        <span class="attribute">color</span>: white;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如下如</p>
+<p>正常</p>
+<p><img src="http://www.z4a.net/images/2017/07/23/2017-07-2312.40.45.png" alt=""></p>
+<p>屏幕宽度小于900px<br><img src="http://www.z4a.net/images/2017/07/23/2017-07-2312.42.25.png" alt=""></p>
+<p>展开</p>
+<p><img src="http://www.z4a.net/images/2017/07/23/2017-07-2312.43.09.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://estding.com/2017/07/22/CSS媒体查询/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/23/JavaScript获取文档尺寸和浏览器滚动/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript获取文档尺寸和浏览器滚动
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/18/JavaScript操作DOM方法总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript操作DOM方法总结 (-)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="CSS媒体查询" data-title="CSS媒体查询" data-url="http://estding.com/2017/07/22/CSS媒体查询/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"joydindin"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 EstDing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CentOS7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">linux命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">DevOps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3.0</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NotificationCenter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">callable</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">装饰器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">proxy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">terminal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSNotification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">margin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">transform</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">column-count</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">SWift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Pragma mark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UserDefaults</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">AutoLayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UIColor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Synergy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSLayoutConstraint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">自动布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Notification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS广播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">coding.net</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">package.json文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">黑苹果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Linux 命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">liunx命令</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">ESTDing,&lt;br&gt;测试工程师&lt;br&gt;&lt;br&gt;喜爱前端,&lt;br&gt;搞过iOS,&lt;br&gt;&lt;br&gt;路漫漫,&lt;br&gt;我亦不知疲倦</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

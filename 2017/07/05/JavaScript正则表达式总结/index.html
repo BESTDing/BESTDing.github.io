@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://estding.com">
+  <title>JavaScript正则表达式总结 | EstDing-技术栈</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="正则表达式基础正则表达式中的转义字符
+\o NUL字符(\u0000)
+\t 制表符(\u0009)
+\n 换行符(\u000A)
+\v 垂直制表符(\u000B)
+\f 换页符(\u000C)
+\r 回车符(\u000D)
+
+另外以下字符在正则表达式中有特殊含义，想要匹配这些字符有的要加上前缀\
+^ $ . * + ? = ! : | \ / ( ) [ ] { }
+字符类
+[....] 匹配方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript正则表达式总结">
+<meta property="og:url" content="http://estding.com/2017/07/05/JavaScript正则表达式总结/index.html">
+<meta property="og:site_name" content="EstDing-技术栈">
+<meta property="og:description" content="正则表达式基础正则表达式中的转义字符
+\o NUL字符(\u0000)
+\t 制表符(\u0009)
+\n 换行符(\u000A)
+\v 垂直制表符(\u000B)
+\f 换页符(\u000C)
+\r 回车符(\u000D)
+
+另外以下字符在正则表达式中有特殊含义，想要匹配这些字符有的要加上前缀\
+^ $ . * + ? = ! : | \ / ( ) [ ] { }
+字符类
+[....] 匹配方">
+<meta property="og:updated_time" content="2017-07-05T07:39:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript正则表达式总结">
+<meta name="twitter:description" content="正则表达式基础正则表达式中的转义字符
+\o NUL字符(\u0000)
+\t 制表符(\u0009)
+\n 换行符(\u000A)
+\v 垂直制表符(\u000B)
+\f 换页符(\u000C)
+\r 回车符(\u000D)
+
+另外以下字符在正则表达式中有特殊含义，想要匹配这些字符有的要加上前缀\
+^ $ . * + ? = ! : | \ / ( ) [ ] { }
+字符类
+[....] 匹配方">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/images/baybay4.png" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">EstDing</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">飞蛾扑火, 钝鸟先飞</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/BESTDing" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">EstDing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/images/baybay4.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">EstDing</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">飞蛾扑火, 钝鸟先飞</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/BESTDing" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-JavaScript正则表达式总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript正则表达式总结
+    </h1>
+  
+
+        <a href="/2017/07/05/JavaScript正则表达式总结/" class="archive-article-date">
+  	<time datetime="2017-07-05T05:23:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="正则表达式基础"><a href="#正则表达式基础" class="headerlink" title="正则表达式基础"></a>正则表达式基础</h3><h4 id="正则表达式中的转义字符"><a href="#正则表达式中的转义字符" class="headerlink" title="正则表达式中的转义字符"></a>正则表达式中的转义字符</h4><ul>
+<li><code>\o</code> NUL字符(\u0000)</li>
+<li><code>\t</code> 制表符(\u0009)</li>
+<li><code>\n</code> 换行符(\u000A)</li>
+<li><code>\v</code> 垂直制表符(\u000B)</li>
+<li><code>\f</code> 换页符(\u000C)</li>
+<li><code>\r</code> 回车符(\u000D)</li>
+</ul>
+<p>另外以下字符在正则表达式中有特殊含义，想要匹配这些字符有的要加上前缀<code>\</code></p>
+<p><code>^ $ . * + ? = ! : | \ / ( ) [ ] { }</code></p>
+<h4 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h4><ul>
+<li><code>[....]</code> 匹配方括号内的任意字符</li>
+<li><code>[^...]</code> 不包括在方括号内的任意字符</li>
+<li><code>.</code> 除换行符和其他Unicode行中支付之外的任意字符</li>
+<li><code>\w</code> 任何ASCII字符组成的单词</li>
+<li><code>\s</code> 任何Unicode空白符</li>
+<li><code>\W</code> 任何不适ASCII字符组成的单词</li>
+<li><code>\S</code> 任何非Unicode空白符的字符</li>
+<li><code>\d</code> 任何ASCII数字</li>
+<li><code>\D</code> 除了ASCII数字之外的任何字符</li>
+<li><code>[\b]</code> 退格直接量</li>
+</ul>
+<h4 id="重复匹配"><a href="#重复匹配" class="headerlink" title="重复匹配"></a>重复匹配</h4><ul>
+<li><code>{n, m}</code> 匹配一项至少n次，但不能超过m次</li>
+<li><code>{n, }</code> 匹配前一项n次或者更多次</li>
+<li><code>{n}</code> 匹配前一项n次</li>
+<li><code>?</code> 匹配前一项0次或者1次</li>
+<li><code>+</code> 匹配一次货多次</li>
+<li><code>*</code> 匹配0次或多次</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\d&#123;<span class="number">3</span>&#125;/ <span class="comment">//匹配3个数字</span></div><div class="line">/\w&#123;<span class="number">3</span>, <span class="number">7</span>&#125;\d?<span class="regexp">/   /</span><span class="regexp">/匹配3到7个单词和一个可选的数字</span></div></pre></td></tr></table></figure>
+<h4 id="选择，分组，引用"><a href="#选择，分组，引用" class="headerlink" title="选择，分组，引用"></a>选择，分组，引用</h4><ul>
+<li><code>|</code>匹配该符号左边或者右边的表达式，匹配顺序从左到右，如果左边的表达式先匹配成功就不会再匹配右边的表达式。</li>
+<li>() 组合将几个单项组合为一项，我们可以在匹配结果中引用各个分组的匹配内容。</li>
+<li>(?:) 只是组合，并不生成引用，也不记忆与该组相匹配的字符</li>
+<li>\n 引用第n个分组匹配的结果，n的计数是从左到右的左括号数， (?: 不计数</li>
+</ul>
+<h4 id="指定位置进行匹配"><a href="#指定位置进行匹配" class="headerlink" title="指定位置进行匹配"></a>指定位置进行匹配</h4><ul>
+<li>^ 匹配字符串的开头，在多行检索中，匹配一行的开头</li>
+<li>$ 匹配字符串的结尾</li>
+<li>\b 匹配一个单词的边界</li>
+<li>\B 匹配非单词的边界位置</li>
+<li>(?=p) 零宽正向先行断言，要求接下来的字符都与p匹配，但不能包括匹配p的那些字符</li>
+<li>(?!p) 零宽负向先行断言，要求接下来的字符不与p匹配</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\bjava\b/ <span class="comment">// 匹配java单词</span></div><div class="line">/\Bscript/ <span class="comment">//与javascript匹配，但是不予script 和scripting匹配</span></div></pre></td></tr></table></figure>
+<h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><ul>
+<li>i 执行不区分大小写的匹配</li>
+<li>g 执行一个全局匹配，找到所有匹配，而不是匹配一个后停止匹配</li>
+<li>多行匹配模式， ^匹配一行的开头和字符串的开头，$匹配行的结束和字符串的结束</li>
+</ul>
+<h4 id="String方法"><a href="#String方法" class="headerlink" title="String方法"></a>String方法</h4><p>string方法是在字符串上调用的支持正则表达式的方法总共有4个</p>
+<p><strong>search()</strong></p>
+<p><code>search()</code>的参数是一个正则表达式，如果不是正则表达式，会调用<code>RegExp()</code>构造函数转化为正则表达式。不支持全局搜索，忽略修饰符<code>g</code><br><code>search()</code>返回第一个匹配子串的位置，没有匹配返回<code>-1</code>,</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'aa_bb_cc'</span>;</div><div class="line"><span class="keyword">var</span> n = s.search(<span class="regexp">/b+/</span>); <span class="comment">//3</span></div></pre></td></tr></table></figure>
+<p><strong>replace()</strong><br><code>replace()</code>用于检索替换操作，第一个参数可以是正则表达式，也可以是字符串，如果是字符串会直接在目标字符串内搜索这个子串并替换第二个参数的字符串。另外如果设置了<code>g</code>修饰符，目标字符串内所有匹配的子串都将被替换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将a全部替换为b不区分大小写</span></div><div class="line"><span class="keyword">var</span> s = aaa_Aa_a_b;</div><div class="line">s.replace(<span class="regexp">/a/gi</span>, <span class="string">'b'</span>);  <span class="comment">//bbb_bb_b_b</span></div><div class="line">s.replace(<span class="regexp">/a+/gi</span>, <span class="string">'b'</span>); <span class="comment">//b_b_b_b</span></div></pre></td></tr></table></figure>
+<p><strong>match()</strong></p>
+<p><code>match()</code>唯一一个参数是一个正则表达式，如果不是正则表达式，首先转换为正则表达式。<br>如果设置了全局修饰符<code>g</code>match()返回一个数组包含所有匹配结果，如果没有设置<code>g</code>修饰符，match()返回一个数组，第一个元素是第一个匹配的结果，其他元素是分组匹配的结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = aaa_Aa_a_b;</div><div class="line">s.match(<span class="regexp">/a(_)/g</span>)   <span class="comment">//['a_', 'a_', 'a_']</span></div><div class="line">s.match(<span class="regexp">/a(_)/</span>)    <span class="comment">//['a_', '_']</span></div></pre></td></tr></table></figure>
+<p><strong>split()</strong></p>
+<p>用于将字符串拆分为一个子串组成的数组，分隔符参数可以为字符串也可以为正则表达式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = aaa_Aa_a_b;</div><div class="line"><span class="keyword">var</span> a1 = s.split(<span class="string">'_'</span>)  <span class="comment">//[aaa, Aa, a, b]</span></div><div class="line"><span class="keyword">var</span> a2 = s.split(<span class="regexp">/a_/</span>) <span class="comment">//[aa, A, '', b]</span></div></pre></td></tr></table></figure>
+<h4 id="RegExp对象"><a href="#RegExp对象" class="headerlink" title="RegExp对象"></a>RegExp对象</h4><ul>
+<li>构造函数 RegExp()接受两个参数，第一个参数是正则表达式两条斜线之间的文本 对于<code>/a_/</code> 就是 <code>&#39;a_&#39;</code>,第二个参数是可选的，修饰符组合</li>
+<li>RegExp对象的属性<ul>
+<li><code>source</code> 只读字符串包含正则表达式文本</li>
+<li><code>global</code> 只读布尔值， 说明是否带有<code>g</code>全局修饰符</li>
+<li><code>ignoreCase</code> 只读布尔值， 说明是否带有<code>i</code>修饰符</li>
+<li>multiline 只读布尔值，是否带有 <code>m修饰符</code></li>
+<li>lastIndex 可读可写的整数， 存储在整个字符串中下一次检索的位置。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'aaa_Aa_a_b'</span>;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'a(_)'</span>, <span class="string">'g'</span>);</div><div class="line"><span class="keyword">var</span> a = f.exec(s); <span class="comment">//f.latIndex 4</span></div><div class="line"><span class="comment">//另外如果f没有设置全局修饰符`g`,则lastIndex始终为0，也就是说下次匹配还是从头开始。</span></div></pre></td></tr></table></figure>
+<ul>
+<li>RegExp对象的方法<ul>
+<li><code>exec()</code>的参数是一个字符串，返回结果是一个数组，第一个元素是匹配结果，之后元素是分组匹配的的结果，<code>index</code>属性是匹配的位置，<code>input</code>属性是正在检索的字符串。</li>
+<li><code>test()</code> 返回结果是一个布尔值，当exec()<br>的返回结果不是null时，返回true.<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'aaa_Aa_a_b'</span>;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'a(_)'</span>, <span class="string">'g'</span>);</div><div class="line"><span class="built_in">RegExp</span>.$<span class="number">1</span> <span class="comment">//引用子串的匹配结果， '_'</span></div><div class="line"><span class="keyword">var</span> a = f.exec(s);  </div><div class="line">a.index <span class="comment">// 2</span></div><div class="line">a.input <span class="comment">//'aaa_Aa_a_b'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="ES6新特性"><a href="#ES6新特性" class="headerlink" title="ES6新特性"></a>ES6新特性</h4><ul>
+<li>构造函数， ES6构造函数可以接受正则表达式作为参数，返回原有正则表达式的一个拷贝。另外如果修改了修饰符，则忽略原有表达式的修饰符。</li>
+<li><code>u</code> 修饰符 </li>
+<li><code>y</code> 修饰符 和g相似，不同的是，要求下次匹配位置必须和lastIndex相同。</li>
+<li>sticky属性，表示是否设置了y修饰符</li>
+<li>flags属性， 返回正则表达式的修饰符</li>
+</ul>
+<h3 id="RegExp-escape"><a href="#RegExp-escape" class="headerlink" title="RegExp.escape()"></a>RegExp.escape()</h3><p>如果字符串包含了正则表达式的一些有特殊意义的字符，则字符串必须经过转义才能传入构造函数，创建正则表达式对象。<br>这个函数只是个提议，并不是标准，可以参考这个实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> matchOperatorsRe = <span class="regexp">/[|\\&#123;&#125;()[\]^$+*?.]/g</span>;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">excapeRegExp</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> str !== <span class="string">'string'</span>) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Expected a string'</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> str.replace(matchOperatorsRe, <span class="string">'\\$&amp;'</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://estding.com/2017/07/05/JavaScript正则表达式总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/13/ES5和ES6类的区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JsvaScript对象学习总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/08/package-json文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">package.json文件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JavaScript正则表达式总结" data-title="JavaScript正则表达式总结" data-url="http://estding.com/2017/07/05/JavaScript正则表达式总结/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"joydindin"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 EstDing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CentOS7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">linux命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">DevOps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3.0</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NotificationCenter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">callable</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">装饰器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">proxy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">terminal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSNotification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">margin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">transform</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">column-count</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">SWift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Pragma mark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UserDefaults</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">AutoLayout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UIColor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Synergy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSLayoutConstraint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">自动布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Notification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS广播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">coding.net</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">package.json文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">黑苹果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">UILabel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Linux 命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">liunx命令</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">ESTDing,&lt;br&gt;测试工程师&lt;br&gt;&lt;br&gt;喜爱前端,&lt;br&gt;搞过iOS,&lt;br&gt;&lt;br&gt;路漫漫,&lt;br&gt;我亦不知疲倦</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -129,6 +129,391 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Swift随机颜色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/23/Swift随机颜色/">Swift随机颜色</a>
+    </h1>
+  
+
+        <a href="/2016/10/23/Swift随机颜色/" class="archive-article-date">
+  	<time datetime="2016-10-23T03:23:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-23</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们利用arc4randomuniform()产生三个随机值，再用UIColor构造方法返回一个随机颜色实例，你可以将下面一段代码拖入代码段以便随时服用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">randomColor</span><span class="params">()</span></span> -&gt; <span class="type">UIColor</span> &#123;</div><div class="line">      <span class="keyword">let</span> red = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">let</span> green = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">let</span> blue = (<span class="type">CGFloat</span>(arc4random_uniform(<span class="number">255</span>)) / <span class="number">255.0</span>)</div><div class="line">      <span class="keyword">return</span> <span class="type">UIColor</span>(red: red, green: green, blue: blue, alpha: <span class="number">1.0</span>)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.z4a.net/image/jlH3f" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/10/23/2016-10-2311.28.43.png" alt="2016-10-2311.28.43.png"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UIColor/">UIColor</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/23/Swift随机颜色/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Swift中的pragmamark" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/17/Swift中的pragmamark/">Swift中的Pragma mark</a>
+    </h1>
+  
+
+        <a href="/2016/10/17/Swift中的pragmamark/" class="archive-article-date">
+  	<time datetime="2016-10-17T14:04:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前写OC时都是用#pragma mark-生成分割线，用#pragma mark 生成函数说明</p>
+<p>在Swift中发现这个语法不管用了，Google了一下发现有了新的用法，</p>
+<p>//// MARK: - 生成分隔线</p>
+<p>// MARK: 说明</p>
+<p><strong>冒号不要丢</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pragma-mark/">Pragma mark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SWift/">SWift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/17/Swift中的pragmamark/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="hexo-iOS学习-NSLayoutConstraint-Swift3" class="article article-type-hexo  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/17/iOS学习-NSLayoutConstraint-Swift3/">iOS学习-NSLayoutConstraint-Swift3</a>
+    </h1>
+  
+
+        <a href="/2016/10/17/iOS学习-NSLayoutConstraint-Swift3/" class="archive-article-date">
+  	<time datetime="2016-10-17T13:25:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>约束是定义两个组件之间的布局关系，必须满足基本的系统布局约束，每个约束都有以下形式</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">item1.attribute1 = multiplier × item2.attribute2 + constant</div></pre></td></tr></table></figure>
+<p>意思就是item1的布局属性等于item2的布局属性*multiplier再加上一个常量</p>
+<p><em>In this equation, attribute1 and attribute2 are the variables that Auto Layout can adjust when solving these constraints. The other values are defined when you create the constraint. For example, If you’re defining the relative position of two buttons, you might say “the leading edge of the second button should be 8 points after the trailing edge of the first button.” The linear equation for this relationship is shown below:</em></p>
+<p><strong>在这个方程中，attribute1和attribute2是Auto Layout在求解这些约束时可以调整的变量。 其他值是在创建约束时定义的。 例如，如果要定义两个按钮的相对位置，可以说“第二个按钮的前缘应该在第一个按钮的后缘之后8个点”。这种关系的线性方程如下所示：</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button2.leading = <span class="number">1.0</span> * button1.trailing + <span class="number">8.0</span></div></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NSLayoutConstraint/">NSLayoutConstraint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动布局/">自动布局</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/17/iOS学习-NSLayoutConstraint-Swift3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS广播NotificationCenter-Swift3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/16/iOS广播NotificationCenter-Swift3/">iOS广播NotificationCenter-Swift3</a>
+    </h1>
+  
+
+        <a href="/2016/10/16/iOS广播NotificationCenter-Swift3/" class="archive-article-date">
+  	<time datetime="2016-10-16T08:50:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>NSNotificationCenter对象（或简称为通知中心）提供用于在程序内广播信息的机制。 NSNotificationCenter对象实质上是一个通知转发表。</p>
+<p><em>Objects register with a notification center to receive notifications (NSNotification objects) using the addObserver(_:selector:name:object:) or addObserver(forName:object:queue:using:) methods. Each invocation of this method specifies a set of notifications. Therefore, objects may register as observers of different notification sets by calling these methods several times.<br>Each running Cocoa program has a default notification center. You typically don’t create your own. An NSNotificationCenter object can deliver notifications only within a single program. If you want to post a notification to other processes or receive notifications from other processes, use an instance of DistributedNotificationCenter.</em></p>
+<p>**类实例使用addObserver（_：selector：name：object :)或addObserver（forName：object：queue：using :)在通知中心注册，接收通知（NSNotification对象）。 每次调用此方法都会指定一组通知。 因此，对象可以通过多次调用这些方法来注册为不同通知集的观察者。</p>
+<p>每个运行的Cocoa程序都有一个默认的通知中心。 您通常不需要自己创建。 NSNotificationCenter对象只能在单个程序中传递通知。 如果要将通知发布到其他进程或从其他进程接收通知，请使用DistributedNotificationCenter的实例。**</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Notification/">Notification</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS广播/">iOS广播</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/16/iOS广播NotificationCenter-Swift3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Swift代码修改Xib或storyboard中添加的自动布局约束" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/16/Swift代码修改Xib或storyboard中添加的自动布局约束/">Swift代码修改Xib或storyboard中添加的自动布局约束</a>
+    </h1>
+  
+
+        <a href="/2016/10/16/Swift代码修改Xib或storyboard中添加的自动布局约束/" class="archive-article-date">
+  	<time datetime="2016-10-16T06:59:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很多次在xib或storyboard中添加了自动布局约束想要修改约束，但是不知道怎么修改，偶然在简书看到一篇文章才知道原来约束也是可以添加为IBoutlet.</p>
+<p><a href="http://www.jianshu.com/p/5ae4d59abc4a">参考文章</a></p>
+<p><strong>登录框根据键盘弹起调整布局</strong></p>
+<p><img src="http://www.z4a.net/images/2016/10/16/2016-10-1611.48.36.png" alt="2016-10-1611.48.36.png"></p>
+<p>由于logo在最上方，只要修改logo的top约束就可以了</p>
+<ul>
+<li>创建logo top约束的IBoutlet</li>
+</ul>
+<p><img src="http://www.z4a.net/images/2016/10/16/2016-10-1611.52.49.png" alt="2016-10-1611.52.49.png"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoLayout/">AutoLayout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/16/Swift代码修改Xib或storyboard中添加的自动布局约束/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Swift学习之UserDefaults" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/16/Swift学习之UserDefaults/">Swift学习之UserDefaults</a>
+    </h1>
+  
+
+        <a href="/2016/10/16/Swift学习之UserDefaults/" class="archive-article-date">
+  	<time datetime="2016-10-16T02:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-16</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>昨天在微博看到下面一段代码，感觉写的很巧妙于是稍微研究了一下<code>UserDefaults</code>这个类。</p>
+<p><img src="http://www.z4a.net/images/2016/10/16/96d92204gw1f8tb4m5obvj20iw09u40i.png" alt="96d92204gw1f8tb4m5obvj20iw09u40i.png"></p>
+<p>官方文档里是这样介绍的</p>
+<p><em>The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an application to customize its behavior to match a user’s preferences. For example, you can allow users to determine what units of measurement your application displays or how often documents are automatically saved. Applications record such preferences by assigning values to a set of parameters in a user’s defaults database. The parameters are referred to as defaults since they’re commonly used to determine an application’s default state at startup or the way it acts by default.</em></p>
+<p><strong>NSUserDefaults 类为与默认系统交互提供了一个编程接口。默认值系统允许应用程序自定义其行为以匹配用户的首选项。例如，您可以允许用户以确定显示那些组件或多久文件会自动保存。应用程序通过将值分配给一组用户的默认数据库参数记录这些用户偏好设置。因为他们常用来确定应用程序在启动时的默认状态或它的默认行为。</strong></p>
+<p><em>At runtime, you use an NSUserDefaults object to read the defaults that your application uses from a user’s defaults database. NSUserDefaults caches the information to avoid having to open the user’s defaults database each time you need a default value. The synchronize() method, which is automatically invoked at periodic intervals, keeps the in-memory cache in sync with a user’s defaults database.</em></p>
+<p><strong>在运行时，您使用NSUserDefaults对象从用户的默认数据库读取应用程序使用的默认值。 NSUserDefaults缓存信息，以避免在每次需要默认值时都必须打开用户的默认数据库。 以周期性间隔自动调用的synchronize（）方法使内存中缓存与用户的默认数据库保持同步。</strong></p>
+<p><em>The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData. For more details, see Preferences and Settings Programming Guide.</em></p>
+<p><strong>NSUserDefaults类提供了方便的方法来访问常见类型，如浮点数，双精度，整数，布尔值和URL。 默认对象必须是属性列表，也就是说，一个实例（或集合的实例组合）：NSData，NSString，NSNumber，NSDate，NSArray或NSDictionary。 如果要存储任何其他类型的对象，通常应该将其存档以创建NSData的实例。 有关详细信息，请参阅首选项和设置编程指南。
+</strong></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UserDefaults/">UserDefaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/16/Swift学习之UserDefaults/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-linux磁盘管理之df和du命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -408,423 +793,6 @@
 
 
   
-    <article id="post-iOS/UILabel详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/24/iOS/UILabel详解/">UILabel详解(Swift).md</a>
-    </h1>
-  
-
-        <a href="/2016/09/24/iOS/UILabel详解/" class="archive-article-date">
-  	<time datetime="2016-09-24T08:47:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-24</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="创建一个UILabel"><a href="#创建一个UILabel" class="headerlink" title="创建一个UILabel"></a>创建一个UILabel</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sLable = <span class="type">UILabel</span>(frame: <span class="type">CGRect</span>(x: <span class="number">100</span>, y: <span class="number">200</span>, width: <span class="number">100</span>, height: <span class="number">30</span>))</div></pre></td></tr></table></figure>
-<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><blockquote>
-<ul>
-<li>text 设置要显示的内容</li>
-<li>lineBreakMode 设置文字显示不全是的模式</li>
-<li>font 设置要显示文本内容</li>
-<li>shadowColor 设置阴影颜色</li>
-<li>numberOfLines 设置文本行数</li>
-<li>textColer 设置文本颜色</li>
-<li>adjustsFontSizeToFitWidth 调整字体大小适应宽度
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UILabel/">UILabel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/iOS/">iOS</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/24/iOS/UILabel详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS/iOS自定义导航栏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/17/iOS/iOS自定义导航栏/">iOS自定义导航栏</a>
-    </h1>
-  
-
-        <a href="/2016/09/17/iOS/iOS自定义导航栏/" class="archive-article-date">
-  	<time datetime="2016-09-17T15:09:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-17</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<ol>
-<li>初始化UINavigationController</li>
-<li>自定义</li>
-</ol>
-</blockquote>
-<h3 id="初始化UINavigationController"><a href="#初始化UINavigationController" class="headerlink" title="初始化UINavigationController"></a>初始化UINavigationController</h3><p>在AppDelegate添加如下代码</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span>: <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> window: <span class="type">UIWindow</span>?</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="comment">// Override point for customization after application launch.</span></div><div class="line">        window = <span class="type">UIWindow</span>(frame: <span class="type">UIScreen</span>.main.bounds)</div><div class="line">        window?.backgroundColor = <span class="type">UIColor</span>.white</div><div class="line">        <span class="keyword">let</span> rootViewController = <span class="type">ViewController</span>()</div><div class="line">        <span class="keyword">let</span> nav = <span class="type">UINavigationController</span>(rootViewController: rootViewController)</div><div class="line">        window?.makeKeyAndVisible()</div><div class="line">        window?.rootViewController = nav</div><div class="line">        rootViewController.view.backgroundColor = <span class="type">UIColor</span>.darkGray</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/iOS/">iOS</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/17/iOS/iOS自定义导航栏/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-brew安装mysql报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/12/brew安装mysql报错/">hexo new draft Mac Homebrew安装mysql报错ERROR 2002 (HY000) Can&#39;t connect to local MySQL server through socket &#39;/tmp/mysql.sock&#39; (2)解决办法</a>
-    </h1>
-  
-
-        <a href="/2016/09/12/brew安装mysql报错/" class="archive-article-date">
-  	<time datetime="2016-09-11T16:14:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-12</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="首先查看mysql有没有启动"><a href="#首先查看mysql有没有启动" class="headerlink" title="首先查看mysql有没有启动"></a>首先查看mysql有没有启动</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql.server start</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Homebrew/">Homebrew</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/mysql/">mysql</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/12/brew安装mysql报错/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-linux/mv命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/11/linux/mv命令/">mv命令</a>
-    </h1>
-  
-
-        <a href="/2016/09/11/linux/mv命令/" class="archive-article-date">
-  	<time datetime="2016-09-11T09:25:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-11</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mv命令是move的缩写，可以用来移动文件或者将文件重命名（move (rename) files），是Linux系统下常用的命令，经常用来备份文件或者目录。</p>
-<blockquote>
-<ol>
-<li>命令格式</li>
-<li>命令参数</li>
-<li>实例</li>
-</ol>
-</blockquote>
-<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><p><code>mv[选项][源文件][目的文件]</code></p>
-<h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h3><blockquote>
-<ul>
-<li>-b ：若需覆盖文件，则覆盖前先行备份。 </li>
-<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</li>
-<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</li>
-<li>-u ：若目标文件已经存在，且 source 比较新，才会更新(update)</li>
-<li>-t  ： –target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。</li>
-</ul>
-</blockquote>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
-<li>重命名文件如果文件存在提示是否覆盖</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv -i <span class="built_in">test</span>1 <span class="built_in">test</span>2</div></pre></td></tr></table></figure>
-<p><img src="http://www.z4a.net/images/2016/09/11/988a076386ab4c2e.png" alt="988a076386ab4c2e.png"> </p>
-<ul>
-<li>移动文件不询问，文件已存在直接覆盖</li>
-</ul>
-<p><a href="http://www.z4a.net/image/TM8IK" target="_blank" rel="external"><img src="http://www.z4a.net/images/2016/09/11/179d85df711c277f.png" alt="179d85df711c277f.png"></a></p>
-<ul>
-<li>移动文件到目录</li>
-</ul>
-<p><img src="http://www.z4a.net/images/2016/09/11/4d2153910ec92cae.png" alt="4d2153910ec92cae.png"></p>
-<ul>
-<li>重命名文件夹</li>
-</ul>
-<p><img src="http://www.z4a.net/images/2016/09/11/b2f880c4e256a2dc.png" alt="b2f880c4e256a2dc.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux命令/">linux命令</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/linux命令/">linux命令</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/11/linux/mv命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-linux/Mac下ssh和scp命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/11/linux/Mac下ssh和scp命令/">Mac下ssh和scp命令</a>
-    </h1>
-  
-
-        <a href="/2016/09/11/linux/Mac下ssh和scp命令/" class="archive-article-date">
-  	<time datetime="2016-09-11T06:07:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-11</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>mac下要使用ssh远程登录需要在共享里勾选远程登录的选项</p>
-<p><img src="http://www.z4a.net/images/2016/09/11/-.png" alt="-.png"></p>
-<ul>
-<li>ssh 链接远程主机格式<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh userName@ip</div><div class="line">//example</div><div class="line">ssh teibunchou@192.168.0.101</div></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-命令/">Linux 命令</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/linux命令/">linux命令</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/11/linux/Mac下ssh和scp命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Synergy配置两台Mac共享一套键盘鼠标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/11/Synergy配置两台Mac共享一套键盘鼠标/">Synergy配置两台Mac共享一套键盘鼠标</a>
-    </h1>
-  
-
-        <a href="/2016/09/11/Synergy配置两台Mac共享一套键盘鼠标/" class="archive-article-date">
-  	<time datetime="2016-09-11T05:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-11</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><blockquote>
-<ul>
-<li>Synergy 1.8.2</li>
-<li>两台运行 mac OS的电脑</li>
-</ul>
-</blockquote>
-<h3 id="设置服务端"><a href="#设置服务端" class="headerlink" title="设置服务端"></a>设置服务端</h3><p><code>**服务端是提供共享键盘鼠标的PC**</code></p>
-<p>如下图</p>
-<p><img src="http://www.z4a.net/images/2016/09/11/431031092fa5aff5.png" alt="431031092fa5aff5.png"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Synergy/">Synergy</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Mac/">Mac</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/11/Synergy配置两台Mac共享一套键盘鼠标/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -883,7 +851,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">DevOps</a>
+                <a href="javascript:void(0)">CentOS7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">linux命令</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -892,6 +864,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">DevOps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -907,19 +883,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">CentOS7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">linux命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -927,11 +891,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">NSNotification</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Swift3</a>
+                <a href="javascript:void(0)">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -947,23 +907,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSNotification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">margin</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">transform</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">column-count</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Swift</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">AutoLayout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -975,7 +939,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">UIColor</a>
+                <a href="javascript:void(0)">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -983,7 +947,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Synergy</a>
+                <a href="javascript:void(0)">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">AutoLayout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -995,19 +963,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Notification</a>
+                <a href="javascript:void(0)">UIColor</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">iOS广播</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
+                <a href="javascript:void(0)">Synergy</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,15 +991,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Notification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS广播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">ul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">df</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">du</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1051,6 +1019,18 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">package.json文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">黑苹果</a>
               </li>
              
@@ -1059,11 +1039,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">UILabel</a>
+                <a href="javascript:void(0)">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Vim</a>
+                <a href="javascript:void(0)">UILabel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1072,14 +1052,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">liunx命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">transform</a>
               </li>
             
             <div class="clearfix"></div>

@@ -129,6 +129,680 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript获取文档尺寸和浏览器滚动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/23/JavaScript获取文档尺寸和浏览器滚动/">JavaScript获取文档尺寸和浏览器滚动</a>
+    </h1>
+  
+
+        <a href="/2017/07/23/JavaScript获取文档尺寸和浏览器滚动/" class="archive-article-date">
+  	<time datetime="2017-07-22T16:49:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-23</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天写了个小东西，正好需要<code>js</code>获取元素尺寸位置，而且用到浏览器滚动。记录一下巩固一下今天学到的知识。</p>
+<h3 id="文档坐标和视口坐标"><a href="#文档坐标和视口坐标" class="headerlink" title="文档坐标和视口坐标"></a>文档坐标和视口坐标</h3><ul>
+<li>视口坐标</li>
+</ul>
+<p>是相对于，浏览器窗口元素的坐标，浏览器的窗口取决于显示器的大小和用户的缩放操作。所以元素相对于视口的坐标是不固定的。</p>
+<ul>
+<li>文档坐标</li>
+</ul>
+<p>文档坐标是元素相对于整个文档的左上角的坐标，这个坐标也是随着浏览器窗口大小改变而改变的。</p>
+<ul>
+<li><p>浏览器滚动</p>
+</li>
+<li><p>水平滚动</p>
+</li>
+</ul>
+<p>浏览器水平滚动的距离 x 总是大于等于0</p>
+<ul>
+<li>垂直滚动</li>
+</ul>
+<p>浏览器在垂直方向滚动的距离 y 总是大于等于0</p>
+<p>我们可以得出这样的结论</p>
+<p><strong>文档坐标 = 视口坐标 + 滚动距离</strong></p>
+<h3 id="获取浏览器滚动距离"><a href="#获取浏览器滚动距离" class="headerlink" title="获取浏览器滚动距离"></a>获取浏览器滚动距离</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getScrollOffset</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (w.pageXOffset) </div><div class="line">	 <span class="keyword">return</span> &#123;x: w.pageXOffset y: w.pageYOffset&#125;;</div><div class="line">	 <span class="keyword">var</span> d = <span class="built_in">window</span>.document;</div><div class="line">	 <span class="comment">/*标准模式下IE*/</span></div><div class="line">	 <span class="keyword">if</span> (<span class="built_in">document</span>.compatMode = <span class="string">'CSS1Coompat'</span>)</div><div class="line">	 	<span class="keyword">return</span> &#123;x: d.documentElement.scrollLeft, y: d.documentElement.scrollTop&#125;</div><div class="line">	 <span class="comment">/*混杂模式IE*/</span></div><div class="line">	 reutn &#123;x: d.body.scrollLeft, y: d.body.scrollTop&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取浏览器窗口的大小"><a href="#获取浏览器窗口的大小" class="headerlink" title="获取浏览器窗口的大小"></a>获取浏览器窗口的大小</h3><p>获取浏览器窗口大小我们可以判定一个元素在不在可是区域<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getViewPortSize</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (w.innerWidth) <span class="keyword">return</span> &#123;w: w.innerWidth, h: innerHeight&#125;;</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> d = <span class="built_in">document</span>;</div><div class="line">	<span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">'CSS1Compat'</span>) &#123;</div><div class="line">		<span class="keyword">return</span> &#123;w: d.documentElement.clientWidth,</div><div class="line">				 h: d.documentElement.clientHeight&#125;;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> &#123;w: d.body.clientWidth, h: d.body.clientWidth&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="获取元素在视口中的坐标"><a href="#获取元素在视口中的坐标" class="headerlink" title="获取元素在视口中的坐标"></a>获取元素在视口中的坐标</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = e.getBoundingClientRect();</div><div class="line"><span class="comment">/*所以我们可以这样计算元素的文档坐标*/</span></div><div class="line">functio getDocumentPos() &#123;</div><div class="line">	<span class="keyword">var</span> box = e.getBoundingClientRect();</div><div class="line">	<span class="keyword">var</span> offset = getScrollOffset();</div><div class="line">	<span class="keyword">return</span> &#123;x: box.left + offset.x, y: box.top + offset.y&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="滚动时间和滚动函数"><a href="#滚动时间和滚动函数" class="headerlink" title="滚动时间和滚动函数"></a>滚动时间和滚动函数</h3><p>我们可以这样指定滚动处理函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>滚动函数 scrollTo()可以是浏览器滚动到指定坐标，指定x,和y值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">1000</span>);</div><div class="line"><span class="comment">/*水平方向不滚动，垂直方向滚动1000*/</span></div></pre></td></tr></table></figure>
+<ul>
+<li>scrollView() 在元素上调用将元素滚动到可见区域</li>
+</ul>
+<p>默认将元素上边缘放在视口的上边缘， 传false参数，将元素下边缘放在元素下边缘</p>
+<p>说了这么多说一下应用，通常有这样的场景我们点击某个按钮需要将浏览器滚动到指定元素的位置，这就是导航。有了上面这些知识就可以很容易的实现这个功能。</p>
+<ol>
+<li>计算出元素的文档坐标。</li>
+<li>调用scrollTo(0, box.y),就可以了</li>
+</ol>
+<p>有个问题是scrollTo没有任何滚动动画，滚动效果十分生硬体验不好，我们可以用jquery的滚动库，实现平滑滚动。</p>
+<p>下面是代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 滚动到指定元素</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollToElement</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> queryString = <span class="string">''</span>;</div><div class="line">  <span class="keyword">if</span> (event.target.firstChild.firstChild) &#123;</div><div class="line">    queryString = event.target.firstChild.firstChild.nodeValue;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    queryString = event.target.firstChild.nodeValue;</div><div class="line">  &#125;</div><div class="line">  queryString = queryString.toLowerCase();</div><div class="line">  <span class="comment">// console.log(queryString);</span></div><div class="line">  <span class="keyword">if</span> (queryString === <span class="string">'home'</span>) &#123;</div><div class="line">    $(<span class="string">'body'</span>).getNiceScroll().doScrollPos(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (ISDISPLAY) &#123;</div><div class="line">      toggleSlide();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(queryString);</div><div class="line">  <span class="keyword">var</span> em = <span class="built_in">window</span>.document.querySelectorAll(<span class="string">'.'</span> + queryString)[<span class="number">0</span>];</div><div class="line">  <span class="built_in">console</span>.log(em);</div><div class="line">  <span class="keyword">var</span> box = getElementBoundingInDocument(em);</div><div class="line">  $(<span class="string">'body'</span>).getNiceScroll().doScrollPos(<span class="number">0</span>, box.y);</div><div class="line">  <span class="keyword">if</span> (ISDISPLAY) &#123;</div><div class="line">    toggleSlide();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/23/JavaScript获取文档尺寸和浏览器滚动/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSS媒体查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/22/CSS媒体查询/">CSS媒体查询</a>
+    </h1>
+  
+
+        <a href="/2017/07/22/CSS媒体查询/" class="archive-article-date">
+  	<time datetime="2017-07-22T15:54:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-22</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>媒体查询是设计响应式网站常用的CSS工具，本文记录下自己在学习CSS媒体查询过程中的心得。</p>
+<h3 id="媒体类型"><a href="#媒体类型" class="headerlink" title="媒体类型"></a>媒体类型</h3><blockquote>
+<ul>
+<li>all 支持所有媒体类型</li>
+<li>screen 屏幕</li>
+<li>print 打印设备</li>
+<li>braille 盲人设备</li>
+<li>embossed 盲文打印机</li>
+<li>handheld 手持小屏设备</li>
+<li>tv 电视设备，低分辨率</li>
+</ul>
+</blockquote>
+<p>更多媒体详情 </p>
+<p><a href="https://www.w3.org/TR/CSS2/media.html#media-types" target="_blank" rel="external">here</a></p>
+<h3 id="引入媒体查询方法"><a href="#引入媒体查询方法" class="headerlink" title="引入媒体查询方法"></a>引入媒体查询方法</h3><p>*link方法引入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../css/tv.css"</span> <span class="attr">media</span>=<span class="string">"tv"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>上面指定引入一个css文件用于<code>tv</code>类的媒体类型渲染</p>
+<ul>
+<li>@import引入</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> url(<span class="string">"css/screen.css"</span>) screen;</div><div class="line">@<span class="keyword">import</span> url(<span class="string">"css/tv.css"</span>) tv;</div></pre></td></tr></table></figure>
+<ul>
+<li>@media</li>
+</ul>
+<p>这种方式是比较常用的</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span>  screen and (max-width: <span class="number">992px</span>)  &#123;</div><div class="line">    <span class="selector-class">.social-wrapper</span> <span class="selector-tag">a</span> &#123;</div><div class="line">        <span class="attribute">margin-top</span>: <span class="number">10px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面css样式指定在媒体类型为 <code>screen</code> 宽度小于 <code>992px</code>时应用。</p>
+<h3 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h3><blockquote>
+<ul>
+<li>and 操作符用于合并多个媒体属性或合并媒体类型和媒体属性，相当于js中的<code>&amp;&amp;</code></li>
+</ul>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span>  screen and (max-width: <span class="number">992px</span>)  &#123;</div><div class="line">    <span class="selector-class">.social-wrapper</span> <span class="selector-tag">a</span> &#123;</div><div class="line">        <span class="attribute">margin-top</span>: <span class="number">10px</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*和并screen和 max-width只有当二者都为真，媒体查询才返回true*/</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>not 关键字仅能应用于整个查询，而不能单独应用于一个独立的查询。怎么判断独立查询，<code>,</code>号用来分割多个查询，若果有逗号 not作用于最近的一个查询，如果没有逗号， not作用于仅有的一个查询。</li>
+</ul>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> not all and (monochrome) &#123; ... &#125;</div><div class="line"><span class="comment">/*等价于*/</span></div><div class="line">@<span class="keyword">media</span> not (all and (monochrome)) &#123; ... &#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> not screen and (color), print and (color)</div><div class="line">/*等价于*/</div><div class="line">@media (not (screen and (color))), print and (color)</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>only 关键字防止老旧的浏览器不支持带媒体属性的查询而应用到给定的样式，</li>
+</ul>
+</blockquote>
+<p>是不支持媒体查询，也就是防止不支持<code>@media</code>的浏览器，直接应用媒体查询后面的css属性。</p>
+<blockquote>
+<p>,号相当于 <code>or</code>操作符</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> not screen and (color), print and (color)</div><div class="line"></div><div class="line">/*两个查询任意一个为true就返回true*/</div></pre></td></tr></table></figure>
+<h3 id="媒体属性"><a href="#媒体属性" class="headerlink" title="媒体属性"></a>媒体属性</h3><p>css常用的媒体属性</p>
+<p><img src="http://www.z4a.net/images/2017/07/23/media-query-type.png" alt=""></p>
+<p>下面是一个实例，用媒体查询实现一个正常宽度下页面导航按钮在右上方，当屏幕宽度小于<code>900px</code>时折叠起来。</p>
+<p><code>html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">i</span> <span class="attr">id</span>=<span class="string">"switch-slide"</span> <span class="attr">class</span>=<span class="string">"fa fa-bars fa-2x"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav-list"</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Portfolio<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Contact<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">       <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"slid-out"</span> <span class="attr">id</span>=<span class="string">"slid-out"</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Portfolio<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Contact<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">       <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slid-mask"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">14.5px</span>;</div><div class="line">    <span class="attribute">font-family</span>:<span class="string">'Roboto'</span>, sans-serif ;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">    <span class="attribute">position</span>: fixed;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">999</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">64px</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#4db6ac</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav-list</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.header</span> <span class="selector-class">.nav-list</span> <span class="selector-class">.nav-item</span> &#123;</div><div class="line">    <span class="attribute">display</span>: inline-block;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">70px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">64px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav-item</span> <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">text-decoration</span>: none;</div><div class="line">    <span class="attribute">color</span>: white;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">64px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav-item</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#26a69a</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> only screen and (max-width: <span class="number">992px</span>) &#123;</div><div class="line">    <span class="selector-class">.nav-list</span> &#123;</div><div class="line">        <span class="attribute">display</span>: none;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="selector-class">.header</span> <span class="selector-tag">i</span> &#123;</div><div class="line">        <span class="attribute">visibility</span>: inherit <span class="meta">!important</span>;</div><div class="line">        <span class="attribute">left</span>: <span class="number">15px</span>;</div><div class="line">        <span class="attribute">top</span>: <span class="number">18px</span>;</div><div class="line">        <span class="attribute">color</span>: white;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*默认隐藏菜单图标*/</span></div><div class="line"><span class="selector-class">.header</span> <span class="selector-tag">i</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">visibility</span>: hidden;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*左侧导航栏*/</span></div><div class="line"><span class="selector-class">.slid-out</span> &#123;</div><div class="line">    <span class="attribute">position</span>: fixed;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">999</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">left</span>: -<span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">list-style</span>: none;</div><div class="line">    <span class="attribute">background</span>: white;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.slid-out</span> &#123;</div><div class="line">    <span class="attribute">-webkit-animation-duration</span>: .<span class="number">2s</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.slid-out</span> <span class="selector-tag">li</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">64px</span>;</div><div class="line">    <span class="attribute">text-decoration</span>: none;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">64px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.slid-out</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">background</span>: lightgray;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.slid-out</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</div><div class="line">    <span class="attribute">text-decoration</span>: inherit;</div><div class="line">    <span class="attribute">color</span>: black;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.slid-mask</span> &#123;</div><div class="line">    <span class="attribute">position</span>: fixed;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(0,0,0,0.5);</div><div class="line">    <span class="attribute">visibility</span>: hidden;</div><div class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">media</span> only screen and (max-width: <span class="number">992px</span>) &#123;</div><div class="line">    <span class="selector-class">.nav-list</span> &#123;</div><div class="line">        <span class="attribute">display</span>: none;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="selector-class">.header</span> <span class="selector-tag">i</span> &#123;</div><div class="line">        <span class="attribute">visibility</span>: inherit <span class="meta">!important</span>;</div><div class="line">        <span class="attribute">left</span>: <span class="number">15px</span>;</div><div class="line">        <span class="attribute">top</span>: <span class="number">18px</span>;</div><div class="line">        <span class="attribute">color</span>: white;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如下如</p>
+<p>正常</p>
+<p><img src="http://www.z4a.net/images/2017/07/23/2017-07-2312.40.45.png" alt=""></p>
+<p>屏幕宽度小于900px<br><img src="http://www.z4a.net/images/2017/07/23/2017-07-2312.42.25.png" alt=""></p>
+<p>展开</p>
+<p><img src="http://www.z4a.net/images/2017/07/23/2017-07-2312.43.09.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/22/CSS媒体查询/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-JavaScript操作DOM方法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/18/JavaScript操作DOM方法总结/">JavaScript操作DOM方法总结 (-)</a>
+    </h1>
+  
+
+        <a href="/2017/07/18/JavaScript操作DOM方法总结/" class="archive-article-date">
+  	<time datetime="2017-07-18T13:47:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="选取文档元素"><a href="#选取文档元素" class="headerlink" title="选取文档元素"></a>选取文档元素</h3><blockquote>
+<ul>
+<li>通过<code>id</code>选取元素</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementByID(<span class="string">'titleHead'</span>);</div><div class="line"><span class="comment">//获取id为titleHead的元素</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>通过name属性选取元素</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getEleementsByName(<span class="string">'titleHead'</span>);</div><div class="line"><span class="comment">//获取名字为`titleHead`的元素</span></div></pre></td></tr></table></figure>
+<p>有个限制<code>name属性</code>只对少数HTML元素有效包括表单 表单元素 <code>&lt;iframe&gt;</code> <code>&lt;img&gt;</code>元素,另外这个方法是定义在<code>HTMLDocument</code>类上。<br>如果创建一个元素<code>form</code>, <code>&lt;img&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;applet&gt;</code>有name属性，会自动创建<code>document</code>对象对应name属性值为该元素，如果有多个</p>
+<blockquote>
+<ul>
+<li>通过标签名选取元素</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> emArr = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"span"</span>);</div><div class="line"><span class="comment">//获取所有span标签元素， 返回的是一个NodeList对象</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>通过css类选取元素</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> em = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"className"</span>);</div><div class="line"><span class="comment">//也可以像下面这样</span></div><div class="line"><span class="keyword">var</span> em2 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"className1 className2"</span>);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>通过css选择器</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ems = <span class="built_in">document</span>.querySelectorAll(<span class="string">".class"</span>);<span class="comment">//接受一个字符串的css选择器返回一个NodeList对象，</span></div><div class="line"><span class="keyword">var</span> ems = <span class="built_in">document</span>.querySelector();<span class="comment">//同样接受一个字符串css选择器，返回第一个匹配的元素。</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"para"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"para"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"para"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> em = <span class="built_in">document</span>.getElementsByName(<span class="string">'forme'</span>);</div><div class="line">            <span class="built_in">console</span>.log(em);</div><div class="line">            <span class="built_in">console</span>.log(<span class="built_in">document</span>.forme);</div><div class="line">            <span class="keyword">var</span> ps = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.para'</span>);</div><div class="line">            <span class="built_in">console</span>.log(ps);  <span class="comment">//[p.para, p.para, p.para]</span></div><div class="line">            <span class="keyword">var</span> firstP = <span class="built_in">document</span>.querySelector(<span class="string">'.para'</span>);</div><div class="line">            <span class="built_in">console</span>.log(firstP); <span class="comment">// &lt;p class="1"&gt;1&lt;/p&gt;</span></div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Node对象的属性"><a href="#Node对象的属性" class="headerlink" title="Node对象的属性"></a>Node对象的属性</h3><blockquote>
+<ul>
+<li>parentNode 该节点的父节点，Document对象的应该是null.</li>
+<li>childNodes 只读NodeList对象， 该节点的子节点的实时表示</li>
+<li>fistChild, lastChild中的第一个和最后一个</li>
+<li>nextSibling, previoursSibling 该节点的兄弟节点中前一个和下一个。</li>
+<li>nodeType 节点的类型， <code>9</code>document 1代表Element, 3代表Text节点，8代表Comment节点， 11代表DocumentFragment节点</li>
+</ul>
+</blockquote>
+<p>这里说一下对<code>Text</code>节点的理解，一个Element节点只要包含文本就包含一个Text子节点，看一下下面这个列子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.childNodes)<span class="comment">//[text]</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--修改一下--&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.childNodes)<span class="comment">//[text, span]</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--再修改一下--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span>3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.childNodes)<span class="comment">//[text, span, text]</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--再修改一下--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.childNodes)<span class="comment">//[text, span, text]</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--由此可见空格也可以产生text节点--&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>text节点或comment节点的文本内容</li>
+<li>nodeName 元素标签名</li>
+</ul>
+</blockquote>
+<h3 id="作为元素数-Element对象-的文档"><a href="#作为元素数-Element对象-的文档" class="headerlink" title="作为元素数(Element对象)的文档"></a>作为元素数(Element对象)的文档</h3><p>看下面这个列子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="keyword">var</span> spa = pem.firstChild; <span class="comment">//我们想要获取span `Element`节点但是现在却获取的是一个`text`节点</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>我们可以使用忽略元素内容的ElementAPI</p>
+<blockquote>
+<ul>
+<li>children 只包含Element对象</li>
+<li>firstElementChild, lastElementChild,代表第一个Element节点和最后一个Element子节点</li>
+<li>nextElementSibling previousElementSibling, 前一个，下一个兄弟Element节点</li>
+<li>childElementCount 子元素的数量</li>
+</ul>
+</blockquote>
+<h3 id="获取元素的内容"><a href="#获取元素的内容" class="headerlink" title="获取元素的内容"></a>获取元素的内容</h3><blockquote>
+<ul>
+<li>innerHTML</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;<span class="number">1</span>&lt;span&gt;<span class="number">2</span>&lt;<span class="regexp">/span&gt;&lt;/</span>p&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.innerHTML); <span class="comment">//1&lt;span&gt;2&lt;span&gt;&lt;/p&gt; 不包含自身开始结束标签</span></div><div class="line">	<span class="built_in">console</span>.log(pem.outerHTML); <span class="comment">//&lt;p&gt;1&lt;span&gt;2&lt;/span&gt;&lt;/p&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>textContent, innerText获取元素的文本内容</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;<span class="number">1</span>&lt;span&gt;<span class="number">2</span>&lt;<span class="regexp">/span&gt;3&lt;/</span>p&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.textContetn); <span class="comment">//12</span></div><div class="line">	<span class="built_in">console</span>.log(pem.innerText); <span class="comment">//12</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">//将制定元素的后代Text节点的文本连接在一起</span></div></pre></td></tr></table></figure>
+<h3 id="增，删"><a href="#增，删" class="headerlink" title="增，删"></a>增，删</h3><blockquote>
+<ul>
+<li>创建节点</li>
+</ul>
+</blockquote>
+<p>创建ELement节点使用<code>document.createElement()</code>给方法传入标签名,/创建Text节点用<code>document.createTextNode</code>，传入字符串文本</p>
+<p>复制已存在的节点，<code>Node.cloneNode(node)</code>返回该节点一个全新副本,注意这个方法是在节点实例上调用，不是<code>document</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pNode = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</div><div class="line">pNode.innerHTML = <span class="string">'&lt;span&gt;2222&lt;/span&gt;'</span></div><div class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">'text node content'</span>);</div><div class="line"><span class="built_in">console</span>.log(pNode); <span class="comment">// &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;</span></div><div class="line"><span class="built_in">console</span>.log(textNode); <span class="comment">//"text node content"</span></div><div class="line"><span class="built_in">console</span>.log(pNode.cloneNode(<span class="literal">true</span>)); <span class="comment">//&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>插入节点 appendChild(), insertBefore()</li>
+</ul>
+</blockquote>
+<p><code>appendChild()</code>是在需要插入节点上调用，如果插入成功这个节点将成为被插入节点的父节点。即被插入节点是最后一个子节点。<br><code>insertBefore()</code>传入两个参数，第一个待插入节点，第二个目标节点，待插入节点将在目标节点前面插入，二者是兄弟关系。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">	#insertAction &#123;</div><div class="line">		width: 25px;</div><div class="line">		height: 25px;</div><div class="line">		background: white;</div><div class="line">		border-radius: 2px;</div><div class="line">		border 1px solid blue</div><div class="line">	&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"insertAction"</span>&gt;</span>插入节点<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">'append'</span>&gt;</span>将在这里利用appendChild插入一个节点<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"insert"</span>&gt;</span>将在这里利用insertBefore插入一个节点 <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">'sib'</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">insertNode</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">var</span> appendEm = querySelectorAll(<span class="string">'#append'</span>)[<span class="number">0</span>];</div><div class="line">		<span class="keyword">var</span> insertEm = querySelectorAll(<span class="string">'#insert'</span>)[<span class="number">0</span>];</div><div class="line">		<span class="keyword">var</span> sibEm = querySelectorAll(<span class="string">'#sib'</span>)[<span class="number">0</span>];</div><div class="line">		<span class="keyword">var</span> newAppenEm = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>);</div><div class="line">		newAppenEm.textContent = <span class="string">'这是通过append插入的节点'</span>;</div><div class="line">		<span class="keyword">var</span> newInsertEm = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>);</div><div class="line">		newInsertEm.textContent = <span class="string">'这是通过Inset插入的节点'</span>;</div><div class="line">		<span class="comment">//插入</span></div><div class="line">		appendEm.appendChild(newAppenEm);</div><div class="line">		insertEm.insertBefore(newInsertEm, sibEm);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="comment">//添加点击事件</span></div><div class="line">		<span class="keyword">var</span> link = <span class="built_in">document</span>.querySelectorAll(<span class="string">'#insertAction'</span>)[<span class="number">0</span>];</div><div class="line">		link.onClick = insertNode;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		addEvent();</div><div class="line">	&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>removeChild() 删除节点和替换节点 replaceChild()</li>
+</ul>
+</blockquote>
+<p>removeChild()在其父节点上调用， replaceChild()在父节点调用，第一个参数新节点， 第二个参数是需要代替的节点</p>
+<p>修改一下上面的代码</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">	 a &#123;</div><div class="line">		width: 25px;</div><div class="line">		height: 25px;</div><div class="line">		background: white;</div><div class="line">		border-radius: 2px;</div><div class="line">		border 1px solid blue</div><div class="line">	&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;a id="insertAction"&gt;插入节点&lt;/a&gt;</div><div class="line">&lt;a id="remove"&gt;移除节点&lt;/a&gt;</div><div class="line">&lt;a id="repalce"&gt;替换节点&lt;/a&gt;</div><div class="line">&lt;p id='append'&gt;将在这里利用appendChild插入一个节点&lt;/p&gt;</div><div class="line">&lt;p id="insert"&gt;将在这里利用insertBefore插入一个节点 &lt;span id='sib'&gt;2&lt;/span&gt;&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">	var newAppenEm = document.createElement('span');</div><div class="line">	newAppenEm.textContent = '这是通过append插入的节点';</div><div class="line">	var newInsertEm = document.createElement('span');</div><div class="line">	newInsertEm.textContent = '这是通过Inset插入的节点';</div><div class="line">	var appendEm = querySelectorAll('#append')[0];</div><div class="line">	var insertEm = querySelectorAll('#insert')[0];</div><div class="line">		</div><div class="line">	function insertNode() &#123;</div><div class="line">		var sibEm = querySelectorAll('#sib')[0];</div><div class="line">		//插入</div><div class="line">		appendEm.appendChild(newAppenEm);</div><div class="line">		insertEm.insertBefore(newInsertEm, sibEm);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	function removeNode() &#123;</div><div class="line">		appendEm.removeChild(newAppenEm);</div><div class="line">		insertEm.removeChild(newInsertEm)</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	function replaceNode() &#123;</div><div class="line">		appendEm.replaceChild(newInsertEm, newAppenEm);</div><div class="line">		//insertEm.replaceChild(newAppenEm, newInsertEM); 不能同时替换</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	function addEvent() &#123;</div><div class="line">		//添加点击事件</div><div class="line">		var linkList = document.querySelectorAll('a');</div><div class="line">		var add = linkList[0];</div><div class="line">		var remove = linkList[1];</div><div class="line">		var replace = linkList[2];</div><div class="line">		add.onclick = insertNode;</div><div class="line">		remove.onclick = removeNode;</div><div class="line">		replace.onclick = replaceNode;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	window.onload = function() &#123;</div><div class="line">		addEvent();</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/18/JavaScript操作DOM方法总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-ES5和ES6类的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/13/ES5和ES6类的区别/">JsvaScript对象学习总结</a>
+    </h1>
+  
+
+        <a href="/2017/07/13/ES5和ES6类的区别/" class="archive-article-date">
+  	<time datetime="2017-07-13T08:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>JS</code>类和对象概念和方法一直掌握的不够牢固，本文结合 es5和es6做一下总结，旨在强化记忆和学习</p>
+<h4 id="如何创建一个对象"><a href="#如何创建一个对象" class="headerlink" title="如何创建一个对象"></a>如何创建一个对象</h4><blockquote>
+<p>字面量</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;&#125;; <span class="comment">//创建一个空对象</span></div><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">	x: <span class="number">1</span>,</div><div class="line">	y: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//创建一个带有属性的对象</span></div><div class="line"><span class="comment">//通过字面量创建的对象和 new Object()一样继承自Object.prototype</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>new 运算符</p>
+</blockquote>
+<p>通过在<code>new</code>后跟构造函数创建一个对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//创建一个空对象</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>Object.create()</p>
+</blockquote>
+<p><code>Object.create()</code>接受 两个参数，第一个是需要传入的原型对象必须，第二个参数用来描述需要创建对象的属性可选</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">	x: <span class="number">1</span>,</div><div class="line">	y: <span class="string">'z'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> oChild = <span class="built_in">Object</span>.create(o); <span class="comment">//创建一个对象继承o</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> oChild2 = <span class="built_in">Object</span>.create(o, &#123;</div><div class="line">	x: <span class="number">10</span>,</div><div class="line">	print: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">	&#125;</div><div class="line"> &#125;);</div><div class="line"> <span class="comment">//创建一个对象除了继承属性，还包括自有属性的队形</span></div></pre></td></tr></table></figure>
+<p><code>Object.create()</code>实际上是<code>道格拉斯</code>提倡的原型继承，给定一个原型对象，创建一个基于原型的对象，在扩展对象。</p>
+<p>实现代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span>  F = <span class="keyword">new</span> <span class="built_in">Function</span>();</div><div class="line">	F.prototype = o;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="对象属性特性"><a href="#对象属性特性" class="headerlink" title="对象属性特性"></a>对象属性特性</h3><p>对于数据属性有以下特性</p>
+<ul>
+<li>value 数据属性的值</li>
+<li>writable 数据属相可写性</li>
+<li>enumerable 数据属相可枚举属性</li>
+<li><p>configurable 数据属性可配置属性</p>
+<p>对于存取器属相有一下特性</p>
+</li>
+<li><p>get get方法</p>
+</li>
+<li>set set方法</li>
+<li>enumerable 可枚举属性</li>
+<li><p>configurable 可配置属性</p>
+<p>可以通过调用Object.getOwnPropertyDescriptor() 可以获得对象上某个属性的特性描述符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">	x: <span class="number">1</span>,</div><div class="line">	<span class="comment">//存取器属性</span></div><div class="line">	</div><div class="line">	get name() &#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">'Tom'</span>;</div><div class="line">	&#125;,</div><div class="line">	set name(value) &#123;</div><div class="line">		consoloe.log(<span class="string">`<span class="subst">$&#123;value&#125;</span> set value`</span>)</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDesriptor(o, <span class="string">'x'</span>));</div><div class="line"><span class="comment">//获取o对象x属性的特性描述符Object &#123;value: 1, writable: true, enumerable: true, configurable: true&#125;</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDesriptor(o, <span class="string">'name'</span>));</div><div class="line"><span class="comment">//获取存取器属性的特性描述符Object &#123;get: , set: , enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p> 由此可见通过字面量定义的对象的数据属性的 <code>writable</code> <code>enumerable</code> <code>configurable</code>都是为<code>true</code>;<br> 存取器属性的 <code>enumerable</code> <code>configurable</code>默认也为<code>true</code></p>
+<p> 接着上面的代码，我用<code>Object.defineProperty()</code>为对象定义新属性，或者修改现有属性</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//定义个新属性 </span></div><div class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'y'</span>, &#123;</div><div class="line">	value: <span class="number">3</span>,</div><div class="line">	writeable: <span class="literal">true</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(o, <span class="string">'y'</span>));</div><div class="line"><span class="comment">//Object &#123;value: 3, writable: true, enumerable: false, configurable: false&#125;</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(o.y);</div></pre></td></tr></table></figure>
+<p>新创建的属性的描述符，默认是false,这和字面量定义不太一样</p>
+<p>另外还有 <code>Object.definProperties()</code>可以一次定义多个属性，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.definProperties(&#123;&#125;, &#123;</div><div class="line">	x: &#123;value: <span class="number">1</span>, writable: <span class="literal">true</span>&#125;,</div><div class="line">	y: &#123;value: <span class="number">2</span>, writable: <span class="literal">false</span>&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><p>JavaScript中的继承是通过原型链实现的，假如有一个类的原型是另一个类的实例，那么这个类的实例有一个<code>__proto__</code>属性指向原型就是父类的实例，而这个原型也有一个<code>__proto__</code>属性指向自己的原型。这样就形成原型链，画个图更好理解点。</p>
+<p><strong>原型继承</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ES5写法</span></div><div class="line"><span class="comment">//创建父类A</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.x = x;</div><div class="line">	<span class="keyword">this</span>.str = <span class="string">'this is parent class'</span>;</div><div class="line">&#125;</div><div class="line">A.prototype = &#123;</div><div class="line">	print: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.str);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">A.prototype.constructor = A;</div><div class="line"><span class="comment">//创建子类B</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.y = y</div><div class="line">&#125;</div><div class="line">B.prototype = <span class="keyword">new</span> A(<span class="number">2</span>);</div><div class="line">B.prototype.constructor = B;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A(<span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B(<span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">//2</span></div><div class="line"><span class="built_in">console</span>.log(b.y); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(b.str); <span class="comment">//this is parent class;</span></div><div class="line"><span class="comment">//x , str 属性是从A的实例(也就是B的原型)继承过来的</span></div><div class="line">b.print(); <span class="comment">//this is parent class b&#123;y: 2&#125;</span></div><div class="line"><span class="comment">//print()方法是从父类的父类继承过来的，也就是A的原型</span></div><div class="line"><span class="comment">//在子类实例上调用继承的方法`this`绑定的是子类实例，在上面通过b调用print(),首先会查找print方法在A.prototype上找到方法后并调用，之后查找str属性，在B.prototype上找到str属性并输出。</span></div></pre></td></tr></table></figure>
+<p>以上就是原型链继承，原型链继承有两个问题</p>
+<ol>
+<li>如果原型中包含引用类型的属性，所有类实例共享这个属性，一个实例修改会影响其他实例。</li>
+</ol>
+<p><strong>借用构造函数继承</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.x = x;</div><div class="line">	<span class="keyword">this</span>.str = <span class="string">'this is parent class'</span>;</div><div class="line">&#125;</div><div class="line">A.prototype = &#123;</div><div class="line">	print: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.str);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">A.prototype.constructor = A;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">	<span class="comment">//借用父类A的构造函数</span></div><div class="line">	A.call(<span class="keyword">this</span>, <span class="number">1</span>);</div><div class="line">	<span class="keyword">this</span>.y = y</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B(<span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(b.y); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(b.str); <span class="comment">// this is parent class</span></div><div class="line"></div><div class="line"><span class="comment">//我们借用父类的构造函数，绑定this所以说这种继承并不是真正的从父类继承属性，我们只是借用了父类的构造函数，所以这种继承也叫伪造对象，但是我们的目的达到了，我们不需要再编写重复的`this.x = x; this.str = '';`</span></div></pre></td></tr></table></figure>
+<p>借用构造函数解决了原型链继承问题，但是有么有发现我们并没有调用b.print(),我们只是继承了属性并没有继承方法，方法定义在父类的原型上。</p>
+<p><strong>组合继承</strong></p>
+<p>顾名思义组合继承就是结合<code>借用构造函数</code>和<code>原型链继承</code>两种方法的优点的一种类的继承方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.x = x;</div><div class="line">	<span class="keyword">this</span>.str = <span class="string">'this is parent class'</span>;</div><div class="line">&#125;</div><div class="line">A.prototype = &#123;</div><div class="line">	print: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.str);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">A.prototype.constructor = A;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">	<span class="comment">//借用父类A的构造函数</span></div><div class="line">	A.call(<span class="keyword">this</span>, <span class="number">1</span>);</div><div class="line">	<span class="keyword">this</span>.y = y</div><div class="line">&#125;</div><div class="line"></div><div class="line">B.prototype = <span class="keyword">new</span> A();</div><div class="line">B.prototype.construct = B;</div><div class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(b.y); <span class="comment">// 2</span></div><div class="line">b.print(); <span class="comment">// this is  parent class</span></div></pre></td></tr></table></figure>
+<p>这样我们即继承了属性又继承了方法，其实方法也是属性，这样说为了区分。</p>
+<p>说到这里我们看一下es6的继承</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es6继承</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">	<span class="keyword">constructor</span>(x) &#123;</div><div class="line">		<span class="keyword">this</span>.x = x;</div><div class="line">		<span class="keyword">this</span>.str = <span class="string">'this is parent class'</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	print() &#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.str);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</div><div class="line">	<span class="keyword">constructor</span>(x, y) &#123;</div><div class="line">        <span class="keyword">super</span>(x);   <span class="comment">//es6规定必须调用父类构造函数</span></div><div class="line">		<span class="keyword">this</span>.y = y;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> B(<span class="number">1</span>, <span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(b.y); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(b.str); <span class="comment">// this is parent class</span></div><div class="line">b.print(); <span class="comment">// this is parent class</span></div></pre></td></tr></table></figure>
+<p>我们看子类调用了父类的构造函数是不是和上面借用构造函数相似,其实本质上<code>es6</code>的继承就是es5的组合继承，<code>class</code>和<code>extend</code>两个关键字只是语法糖</p>
+<p>在es6中有两条继承链，一是构造函数的继承，二是原型的继承</p>
+<p>子类的<code>__proto__</code>总是指向父类即<code>B.__proto__ === A</code>, 原型继承即方法的继承， <code>B.prototype.__proto__ === A.prototype</code>就是我们第一步讲的原型链。<br>方法的继承没什么卵用，实际上我们还要通过super()手动调用父类的构造方法。所以es6 <code>class</code>和<code>extend</code>实质上就是es5的组合继承。</p>
+<p><strong>有一点不同</strong></p>
+<p>es5中我们以这种形式调用父类的构造函数<code>A.call(this, x)</code>可见我们先创建子类实例然后复制父类属性。但是es6 中我们先调用<code>super()</code>创建父类的实例(其实也不是什么父类的实例了自我理解就是一个空对象)然后在添加子类的自定义属性。现在假设有如下继承链<code>A-&gt;B-&gt;C-&gt;D</code> 我们现在想创建一个D的实例，那我们调用D的构造函数，D的构造函数又会调用C的构造函数，以此类推最先在A上创建this对象，然后添加属性，可见<code>es6</code>的继承是自上而下的，最顶层的祖先的属性最先被添加。(其实es5组合继承也是自顶向下的这样才符合常理嘛唯一的不同就是创建this的先后了)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/13/ES5和ES6类的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-JavaScript正则表达式总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/05/JavaScript正则表达式总结/">JavaScript正则表达式总结</a>
+    </h1>
+  
+
+        <a href="/2017/07/05/JavaScript正则表达式总结/" class="archive-article-date">
+  	<time datetime="2017-07-05T05:23:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="正则表达式基础"><a href="#正则表达式基础" class="headerlink" title="正则表达式基础"></a>正则表达式基础</h3><h4 id="正则表达式中的转义字符"><a href="#正则表达式中的转义字符" class="headerlink" title="正则表达式中的转义字符"></a>正则表达式中的转义字符</h4><ul>
+<li><code>\o</code> NUL字符(\u0000)</li>
+<li><code>\t</code> 制表符(\u0009)</li>
+<li><code>\n</code> 换行符(\u000A)</li>
+<li><code>\v</code> 垂直制表符(\u000B)</li>
+<li><code>\f</code> 换页符(\u000C)</li>
+<li><code>\r</code> 回车符(\u000D)</li>
+</ul>
+<p>另外以下字符在正则表达式中有特殊含义，想要匹配这些字符有的要加上前缀<code>\</code></p>
+<p><code>^ $ . * + ? = ! : | \ / ( ) [ ] { }</code></p>
+<h4 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h4><ul>
+<li><code>[....]</code> 匹配方括号内的任意字符</li>
+<li><code>[^...]</code> 不包括在方括号内的任意字符</li>
+<li><code>.</code> 除换行符和其他Unicode行中支付之外的任意字符</li>
+<li><code>\w</code> 任何ASCII字符组成的单词</li>
+<li><code>\s</code> 任何Unicode空白符</li>
+<li><code>\W</code> 任何不适ASCII字符组成的单词</li>
+<li><code>\S</code> 任何非Unicode空白符的字符</li>
+<li><code>\d</code> 任何ASCII数字</li>
+<li><code>\D</code> 除了ASCII数字之外的任何字符</li>
+<li><code>[\b]</code> 退格直接量</li>
+</ul>
+<h4 id="重复匹配"><a href="#重复匹配" class="headerlink" title="重复匹配"></a>重复匹配</h4><ul>
+<li><code>{n, m}</code> 匹配一项至少n次，但不能超过m次</li>
+<li><code>{n, }</code> 匹配前一项n次或者更多次</li>
+<li><code>{n}</code> 匹配前一项n次</li>
+<li><code>?</code> 匹配前一项0次或者1次</li>
+<li><code>+</code> 匹配一次货多次</li>
+<li><code>*</code> 匹配0次或多次</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\d&#123;<span class="number">3</span>&#125;/ <span class="comment">//匹配3个数字</span></div><div class="line">/\w&#123;<span class="number">3</span>, <span class="number">7</span>&#125;\d?<span class="regexp">/   /</span><span class="regexp">/匹配3到7个单词和一个可选的数字</span></div></pre></td></tr></table></figure>
+<h4 id="选择，分组，引用"><a href="#选择，分组，引用" class="headerlink" title="选择，分组，引用"></a>选择，分组，引用</h4><ul>
+<li><code>|</code>匹配该符号左边或者右边的表达式，匹配顺序从左到右，如果左边的表达式先匹配成功就不会再匹配右边的表达式。</li>
+<li>() 组合将几个单项组合为一项，我们可以在匹配结果中引用各个分组的匹配内容。</li>
+<li>(?:) 只是组合，并不生成引用，也不记忆与该组相匹配的字符</li>
+<li>\n 引用第n个分组匹配的结果，n的计数是从左到右的左括号数， (?: 不计数</li>
+</ul>
+<h4 id="指定位置进行匹配"><a href="#指定位置进行匹配" class="headerlink" title="指定位置进行匹配"></a>指定位置进行匹配</h4><ul>
+<li>^ 匹配字符串的开头，在多行检索中，匹配一行的开头</li>
+<li>$ 匹配字符串的结尾</li>
+<li>\b 匹配一个单词的边界</li>
+<li>\B 匹配非单词的边界位置</li>
+<li>(?=p) 零宽正向先行断言，要求接下来的字符都与p匹配，但不能包括匹配p的那些字符</li>
+<li>(?!p) 零宽负向先行断言，要求接下来的字符不与p匹配</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\bjava\b/ <span class="comment">// 匹配java单词</span></div><div class="line">/\Bscript/ <span class="comment">//与javascript匹配，但是不予script 和scripting匹配</span></div></pre></td></tr></table></figure>
+<h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><ul>
+<li>i 执行不区分大小写的匹配</li>
+<li>g 执行一个全局匹配，找到所有匹配，而不是匹配一个后停止匹配</li>
+<li>多行匹配模式， ^匹配一行的开头和字符串的开头，$匹配行的结束和字符串的结束</li>
+</ul>
+<h4 id="String方法"><a href="#String方法" class="headerlink" title="String方法"></a>String方法</h4><p>string方法是在字符串上调用的支持正则表达式的方法总共有4个</p>
+<p><strong>search()</strong></p>
+<p><code>search()</code>的参数是一个正则表达式，如果不是正则表达式，会调用<code>RegExp()</code>构造函数转化为正则表达式。不支持全局搜索，忽略修饰符<code>g</code><br><code>search()</code>返回第一个匹配子串的位置，没有匹配返回<code>-1</code>,</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'aa_bb_cc'</span>;</div><div class="line"><span class="keyword">var</span> n = s.search(<span class="regexp">/b+/</span>); <span class="comment">//3</span></div></pre></td></tr></table></figure>
+<p><strong>replace()</strong><br><code>replace()</code>用于检索替换操作，第一个参数可以是正则表达式，也可以是字符串，如果是字符串会直接在目标字符串内搜索这个子串并替换第二个参数的字符串。另外如果设置了<code>g</code>修饰符，目标字符串内所有匹配的子串都将被替换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将a全部替换为b不区分大小写</span></div><div class="line"><span class="keyword">var</span> s = aaa_Aa_a_b;</div><div class="line">s.replace(<span class="regexp">/a/gi</span>, <span class="string">'b'</span>);  <span class="comment">//bbb_bb_b_b</span></div><div class="line">s.replace(<span class="regexp">/a+/gi</span>, <span class="string">'b'</span>); <span class="comment">//b_b_b_b</span></div></pre></td></tr></table></figure>
+<p><strong>match()</strong></p>
+<p><code>match()</code>唯一一个参数是一个正则表达式，如果不是正则表达式，首先转换为正则表达式。<br>如果设置了全局修饰符<code>g</code>match()返回一个数组包含所有匹配结果，如果没有设置<code>g</code>修饰符，match()返回一个数组，第一个元素是第一个匹配的结果，其他元素是分组匹配的结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = aaa_Aa_a_b;</div><div class="line">s.match(<span class="regexp">/a(_)/g</span>)   <span class="comment">//['a_', 'a_', 'a_']</span></div><div class="line">s.match(<span class="regexp">/a(_)/</span>)    <span class="comment">//['a_', '_']</span></div></pre></td></tr></table></figure>
+<p><strong>split()</strong></p>
+<p>用于将字符串拆分为一个子串组成的数组，分隔符参数可以为字符串也可以为正则表达式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = aaa_Aa_a_b;</div><div class="line"><span class="keyword">var</span> a1 = s.split(<span class="string">'_'</span>)  <span class="comment">//[aaa, Aa, a, b]</span></div><div class="line"><span class="keyword">var</span> a2 = s.split(<span class="regexp">/a_/</span>) <span class="comment">//[aa, A, '', b]</span></div></pre></td></tr></table></figure>
+<h4 id="RegExp对象"><a href="#RegExp对象" class="headerlink" title="RegExp对象"></a>RegExp对象</h4><ul>
+<li>构造函数 RegExp()接受两个参数，第一个参数是正则表达式两条斜线之间的文本 对于<code>/a_/</code> 就是 <code>&#39;a_&#39;</code>,第二个参数是可选的，修饰符组合</li>
+<li>RegExp对象的属性<ul>
+<li><code>source</code> 只读字符串包含正则表达式文本</li>
+<li><code>global</code> 只读布尔值， 说明是否带有<code>g</code>全局修饰符</li>
+<li><code>ignoreCase</code> 只读布尔值， 说明是否带有<code>i</code>修饰符</li>
+<li>multiline 只读布尔值，是否带有 <code>m修饰符</code></li>
+<li>lastIndex 可读可写的整数， 存储在整个字符串中下一次检索的位置。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'aaa_Aa_a_b'</span>;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'a(_)'</span>, <span class="string">'g'</span>);</div><div class="line"><span class="keyword">var</span> a = f.exec(s); <span class="comment">//f.latIndex 4</span></div><div class="line"><span class="comment">//另外如果f没有设置全局修饰符`g`,则lastIndex始终为0，也就是说下次匹配还是从头开始。</span></div></pre></td></tr></table></figure>
+<ul>
+<li>RegExp对象的方法<ul>
+<li><code>exec()</code>的参数是一个字符串，返回结果是一个数组，第一个元素是匹配结果，之后元素是分组匹配的的结果，<code>index</code>属性是匹配的位置，<code>input</code>属性是正在检索的字符串。</li>
+<li><code>test()</code> 返回结果是一个布尔值，当exec()<br>的返回结果不是null时，返回true.<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'aaa_Aa_a_b'</span>;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'a(_)'</span>, <span class="string">'g'</span>);</div><div class="line"><span class="built_in">RegExp</span>.$<span class="number">1</span> <span class="comment">//引用子串的匹配结果， '_'</span></div><div class="line"><span class="keyword">var</span> a = f.exec(s);  </div><div class="line">a.index <span class="comment">// 2</span></div><div class="line">a.input <span class="comment">//'aaa_Aa_a_b'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="ES6新特性"><a href="#ES6新特性" class="headerlink" title="ES6新特性"></a>ES6新特性</h4><ul>
+<li>构造函数， ES6构造函数可以接受正则表达式作为参数，返回原有正则表达式的一个拷贝。另外如果修改了修饰符，则忽略原有表达式的修饰符。</li>
+<li><code>u</code> 修饰符 </li>
+<li><code>y</code> 修饰符 和g相似，不同的是，要求下次匹配位置必须和lastIndex相同。</li>
+<li>sticky属性，表示是否设置了y修饰符</li>
+<li>flags属性， 返回正则表达式的修饰符</li>
+</ul>
+<h3 id="RegExp-escape"><a href="#RegExp-escape" class="headerlink" title="RegExp.escape()"></a>RegExp.escape()</h3><p>如果字符串包含了正则表达式的一些有特殊意义的字符，则字符串必须经过转义才能传入构造函数，创建正则表达式对象。<br>这个函数只是个提议，并不是标准，可以参考这个实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> matchOperatorsRe = <span class="regexp">/[|\\&#123;&#125;()[\]^$+*?.]/g</span>;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">excapeRegExp</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> str !== <span class="string">'string'</span>) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Expected a string'</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> str.replace(matchOperatorsRe, <span class="string">'\\$&amp;'</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/05/JavaScript正则表达式总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-package-json文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/package-json文件/">package.json文件</a>
+    </h1>
+  
+
+        <a href="/2017/04/08/package-json文件/" class="archive-article-date">
+  	<time datetime="2017-04-08T10:13:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-08</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在的前端项目根目录下都会有一个<code>package.json</code>里面定义了项目的名称、版本、依赖等，<code>npm install</code>根据这个文件自动配置依赖。</p>
+<p>下面一个实际的<code>package.json</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"sell"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">"sell app"</span>,</div><div class="line">  <span class="string">"author"</span>: <span class="string">"BESTDing &lt;estding0@gmail.com&gt;"</span>,</div><div class="line">  <span class="string">"private"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"dev"</span>: <span class="string">"node build/dev-server.js"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"node build/build.js"</span>,</div><div class="line">    <span class="string">"lint"</span>: <span class="string">"eslint --ext .js,.vue src"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"dependencies"</span>: &#123;</div><div class="line">    <span class="string">"vue"</span>: <span class="string">"^2.2.2"</span>,</div><div class="line">    <span class="string">"vue-router"</span>: <span class="string">"^2.3.0"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"devDependencies"</span>: &#123;</div><div class="line">    <span class="string">"autoprefixer"</span>: <span class="string">"^6.7.2"</span>,</div><div class="line">    <span class="string">"babel-core"</span>: <span class="string">"^6.22.1"</span>,</div><div class="line">    <span class="string">"babel-eslint"</span>: <span class="string">"^7.1.1"</span>,</div><div class="line">    <span class="string">"babel-loader"</span>: <span class="string">"^6.2.10"</span>,</div><div class="line">    <span class="string">"babel-plugin-transform-runtime"</span>: <span class="string">"^6.22.0"</span>,</div><div class="line">    <span class="string">"babel-preset-env"</span>: <span class="string">"^1.2.1"</span>,</div><div class="line">    <span class="string">"babel-preset-stage-2"</span>: <span class="string">"^6.22.0"</span>,</div><div class="line">    <span class="string">"babel-register"</span>: <span class="string">"^6.22.0"</span>,</div><div class="line">    <span class="string">"chalk"</span>: <span class="string">"^1.1.3"</span>,</div><div class="line">    <span class="string">"connect-history-api-fallback"</span>: <span class="string">"^1.3.0"</span>,</div><div class="line">    <span class="string">"copy-webpack-plugin"</span>: <span class="string">"^4.0.1"</span>,</div><div class="line">    <span class="string">"css-loader"</span>: <span class="string">"^0.26.1"</span>,</div><div class="line">    <span class="string">"eslint"</span>: <span class="string">"^3.14.1"</span>,</div><div class="line">    <span class="string">"eslint-friendly-formatter"</span>: <span class="string">"^2.0.7"</span>,</div><div class="line">    <span class="string">"eslint-loader"</span>: <span class="string">"^1.6.1"</span>,</div><div class="line">    <span class="string">"eslint-plugin-html"</span>: <span class="string">"^2.0.0"</span>,</div><div class="line">    <span class="string">"eslint-config-standard"</span>: <span class="string">"^6.2.1"</span>,</div><div class="line">    <span class="string">"eslint-plugin-promise"</span>: <span class="string">"^3.4.0"</span>,</div><div class="line">    <span class="string">"eslint-plugin-standard"</span>: <span class="string">"^2.0.1"</span>,</div><div class="line">    <span class="string">"eventsource-polyfill"</span>: <span class="string">"^0.9.6"</span>,</div><div class="line">    <span class="string">"express"</span>: <span class="string">"^4.14.1"</span>,</div><div class="line">    <span class="string">"extract-text-webpack-plugin"</span>: <span class="string">"^2.0.0"</span>,</div><div class="line">    <span class="string">"file-loader"</span>: <span class="string">"^0.10.0"</span>,</div><div class="line">    <span class="string">"friendly-errors-webpack-plugin"</span>: <span class="string">"^1.1.3"</span>,</div><div class="line">    <span class="string">"html-webpack-plugin"</span>: <span class="string">"^2.28.0"</span>,</div><div class="line">    <span class="string">"http-proxy-middleware"</span>: <span class="string">"^0.17.3"</span>,</div><div class="line">    <span class="string">"webpack-bundle-analyzer"</span>: <span class="string">"^2.2.1"</span>,</div><div class="line">    <span class="string">"semver"</span>: <span class="string">"^5.3.0"</span>,</div><div class="line">    <span class="string">"opn"</span>: <span class="string">"^4.0.2"</span>,</div><div class="line">    <span class="string">"optimize-css-assets-webpack-plugin"</span>: <span class="string">"^1.3.0"</span>,</div><div class="line">    <span class="string">"ora"</span>: <span class="string">"^1.1.0"</span>,</div><div class="line">    <span class="string">"rimraf"</span>: <span class="string">"^2.6.0"</span>,</div><div class="line">    <span class="string">"url-loader"</span>: <span class="string">"^0.5.7"</span>,</div><div class="line">    <span class="string">"vue-loader"</span>: <span class="string">"^11.1.4"</span>,</div><div class="line">    <span class="string">"vue-style-loader"</span>: <span class="string">"^2.0.0"</span>,</div><div class="line">    <span class="string">"vue-template-compiler"</span>: <span class="string">"^2.2.4"</span>,</div><div class="line">    <span class="string">"webpack"</span>: <span class="string">"^2.2.1"</span>,</div><div class="line">    <span class="string">"webpack-dev-middleware"</span>: <span class="string">"^1.10.0"</span>,</div><div class="line">    <span class="string">"webpack-hot-middleware"</span>: <span class="string">"^2.16.1"</span>,</div><div class="line">    <span class="string">"webpack-merge"</span>: <span class="string">"^2.6.1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"engines"</span>: &#123;</div><div class="line">    <span class="string">"node"</span>: <span class="string">"&gt;= 4.0.0"</span>,</div><div class="line">    <span class="string">"npm"</span>: <span class="string">"&gt;= 3.0.0"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"browserslist"</span>: [</div><div class="line">    <span class="string">"&gt; 1%"</span>,</div><div class="line">    <span class="string">"last 2 versions"</span>,</div><div class="line">    <span class="string">"not ie &lt;= 8"</span></div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>name 项目的名称，必须</li>
+<li>version 项目版本 A.B.C（大版本.次要版本.小版本）</li>
+</ul>
+</blockquote>
+<p>这里顺便对这个 A.B.C版本号格式的做一下说明</p>
+<p><em>A 表示大版本号，一般当软件整体重写，或出现不向后兼容的改变时，增加A，A为零时表示软件还在开发阶段。B 表示功能更新，出现新功能时增加BC 表示小修改，如修复bug，只要有修改就增加C除了版本号之外还会有一些修饰的词，比如：alpha: 内部版本beta: 测试版rc: 即将作为正式版发布lts: 长期维护</em></p>
+<h4 id="script"><a href="#script" class="headerlink" title="script"></a>script</h4><p><code>scripts</code>指定了运行脚本命令的npm命令行缩写，比如<code>start</code>指定了运行<code>npm run start</code>时，所要执行的命令。</p>
+<p>上面贴出的<code>package.json</code>文件就分别定义了 <code>npm run dev</code>, <code>npm run build</code>, <code>npm run lint</code>文件。</p>
+<h4 id="dependencies字段，devDependencies字段"><a href="#dependencies字段，devDependencies字段" class="headerlink" title="dependencies字段，devDependencies字段"></a>dependencies字段，devDependencies字段</h4><p>前者指定项目生产环境的依赖模块，后者指定开发环境的依赖模块。</p>
+<p>格式大致如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dependencies": &#123;</div><div class="line">    "vue": "^2.2.2",</div><div class="line">    "vue-router": "^2.3.0"</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>指定版本的规则如下</p>
+<blockquote>
+<ul>
+<li>指定版本：比如1.2.2，遵循“大版本.次要版本.小版本”的格式规定，安装时只安装指定版本。</li>
+<li>波浪号（tilde）+指定版本：比如~1.2.2，表示安装1.2.x的最新版本（不低于1.2.2），但是不安装1.3.x，也就是说安装时不改变大版本号和次要版本号。</li>
+<li>插入号（caret）+指定版本：比如ˆ1.2.2，表示安装1.x.x的最新版本（不低于1.2.2），但是不安装2.x.x，也就是说安装时不改变大版本号。需要注意的是，如果大版本号为0，则插入号的行为与波浪号相同，这是因为此时处于开发阶段，即使是次要版本号变动，也可能带来程序的不兼容。</li>
+<li>latest：安装最新版本。</li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/package-json文件/">package.json文件</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/node/">node</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/08/package-json文件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-CSS之column-count" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -375,353 +1049,6 @@
 
 
   
-    <article id="post-JavaScript操作符" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/05/JavaScript操作符/">JavaScript操作符</a>
-    </h1>
-  
-
-        <a href="/2017/02/05/JavaScript操作符/" class="archive-article-date">
-  	<time datetime="2017-02-05T12:36:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><p>操作符在应用于对象时,响应的操作符通常会调用对象的valueof()和(或)toString()方法，以便取得可以操作的值。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/05/JavaScript操作符/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/05/leetcode20/">leetcode20</a>
-    </h1>
-  
-
-        <a href="/2017/02/05/leetcode20/" class="archive-article-date">
-  	<time datetime="2017-02-05T12:08:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>leetcode20</p>
-<p><strong>题目</strong></p>
-<h5 id="Valid-Parentheses"><a href="#Valid-Parentheses" class="headerlink" title="Valid Parentheses"></a>Valid Parentheses</h5><p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
-<p>The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.</p>
-<p>括号匹配的问题，利用栈的结构</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> isValid = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> stack = [s[<span class="number">0</span>]];</div><div class="line">    <span class="keyword">var</span> left = [<span class="string">'('</span>, <span class="string">'['</span>, <span class="string">'&#123;'</span>];</div><div class="line">    <span class="keyword">var</span> right = [<span class="string">')'</span>, <span class="string">']'</span>, <span class="string">'&#125;'</span>];</div><div class="line">    <span class="keyword">if</span> (s.length % <span class="number">2</span> !== <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; s.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (right.indexOf(s[i]) !== <span class="number">-1</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (stack[stack.length - <span class="number">1</span>] !== left[right.indexOf(s[i])]) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                stack.pop();</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            stack.push(s[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (stack.length === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(isValid(<span class="string">''</span>));</div><div class="line"><span class="built_in">console</span>.log(isValid(<span class="string">'(&#123;[]&#125;)'</span>));</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/算法/">算法</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/05/leetcode20/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode21" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/05/leetcode21/">leetcode21</a>
-    </h1>
-  
-
-        <a href="/2017/02/05/leetcode21/" class="archive-article-date">
-  	<time datetime="2017-02-05T12:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>leetcode21</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/算法/">算法</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/05/leetcode21/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-JavaScript数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/JavaScript数据类型/">JavaScript数据类型</a>
-    </h1>
-  
-
-        <a href="/2017/01/20/JavaScript数据类型/" class="archive-article-date">
-  	<time datetime="2017-01-20T15:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="5种基本类型"><a href="#5种基本类型" class="headerlink" title="5种基本类型"></a>5种基本类型</h4><blockquote>
-<ul>
-<li>Undefined</li>
-<li>Null</li>
-<li>Boolean</li>
-<li>Number</li>
-<li>String</li>
-</ul>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/20/JavaScript数据类型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode19" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/15/leetcode19/">leetcode19</a>
-    </h1>
-  
-
-        <a href="/2017/01/15/leetcode19/" class="archive-article-date">
-  	<time datetime="2017-01-15T09:14:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-15</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>leetcode19</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/算法/">算法</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/15/leetcode19/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode17" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/08/leetcode17/">leetcode17</a>
-    </h1>
-  
-
-        <a href="/2017/01/08/leetcode17/" class="archive-article-date">
-  	<time datetime="2017-01-08T13:22:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-08</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是leetcode17的JS实现，运用递归的思想，刚学JS代码比较挫</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/算法/">算法</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/08/leetcode17/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -780,7 +1107,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">DevOps</a>
+                <a href="javascript:void(0)">CentOS7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">linux命令</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -789,6 +1120,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">DevOps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -804,19 +1139,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">CentOS7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">linux命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -824,11 +1147,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">NSNotification</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Swift3</a>
+                <a href="javascript:void(0)">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -844,23 +1163,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">NSNotification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Swift3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">margin</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">transform</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">column-count</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Swift</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">AutoLayout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -872,7 +1195,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">UIColor</a>
+                <a href="javascript:void(0)">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -880,7 +1203,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Synergy</a>
+                <a href="javascript:void(0)">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">AutoLayout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -892,19 +1219,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Notification</a>
+                <a href="javascript:void(0)">UIColor</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">iOS广播</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
+                <a href="javascript:void(0)">Synergy</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -920,15 +1247,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Notification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS广播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">ul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">df</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">du</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -948,6 +1275,18 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">df</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">du</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">package.json文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">黑苹果</a>
               </li>
              
@@ -956,11 +1295,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">UILabel</a>
+                <a href="javascript:void(0)">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Vim</a>
+                <a href="javascript:void(0)">UILabel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -969,14 +1308,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">liunx命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">transform</a>
               </li>
             
             <div class="clearfix"></div>
