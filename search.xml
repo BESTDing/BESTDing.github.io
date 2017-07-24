@@ -135,6 +135,7 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getEleementsByName(<span class="string">'titleHead'</span>);</div><div class="line"><span class="comment">//获取名字为`titleHead`的元素</span></div></pre></td></tr></table></figure>
 <p>有个限制<code>name属性</code>只对少数HTML元素有效包括表单 表单元素 <code>&lt;iframe&gt;</code> <code>&lt;img&gt;</code>元素,另外这个方法是定义在<code>HTMLDocument</code>类上。<br>如果创建一个元素<code>form</code>, <code>&lt;img&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;applet&gt;</code>有name属性，会自动创建<code>document</code>对象对应name属性值为该元素，如果有多个</p>
+<a id="more"></a>
 <blockquote>
 <ul>
 <li>通过标签名选取元素</li>

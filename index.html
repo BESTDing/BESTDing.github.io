@@ -293,89 +293,7 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getEleementsByName(<span class="string">'titleHead'</span>);</div><div class="line"><span class="comment">//获取名字为`titleHead`的元素</span></div></pre></td></tr></table></figure>
 <p>有个限制<code>name属性</code>只对少数HTML元素有效包括表单 表单元素 <code>&lt;iframe&gt;</code> <code>&lt;img&gt;</code>元素,另外这个方法是定义在<code>HTMLDocument</code>类上。<br>如果创建一个元素<code>form</code>, <code>&lt;img&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;applet&gt;</code>有name属性，会自动创建<code>document</code>对象对应name属性值为该元素，如果有多个</p>
-<blockquote>
-<ul>
-<li>通过标签名选取元素</li>
-</ul>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> emArr = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"span"</span>);</div><div class="line"><span class="comment">//获取所有span标签元素， 返回的是一个NodeList对象</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>通过css类选取元素</li>
-</ul>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> em = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"className"</span>);</div><div class="line"><span class="comment">//也可以像下面这样</span></div><div class="line"><span class="keyword">var</span> em2 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"className1 className2"</span>);</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>通过css选择器</li>
-</ul>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ems = <span class="built_in">document</span>.querySelectorAll(<span class="string">".class"</span>);<span class="comment">//接受一个字符串的css选择器返回一个NodeList对象，</span></div><div class="line"><span class="keyword">var</span> ems = <span class="built_in">document</span>.querySelector();<span class="comment">//同样接受一个字符串css选择器，返回第一个匹配的元素。</span></div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"para"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"para"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"para"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> em = <span class="built_in">document</span>.getElementsByName(<span class="string">'forme'</span>);</div><div class="line">            <span class="built_in">console</span>.log(em);</div><div class="line">            <span class="built_in">console</span>.log(<span class="built_in">document</span>.forme);</div><div class="line">            <span class="keyword">var</span> ps = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.para'</span>);</div><div class="line">            <span class="built_in">console</span>.log(ps);  <span class="comment">//[p.para, p.para, p.para]</span></div><div class="line">            <span class="keyword">var</span> firstP = <span class="built_in">document</span>.querySelector(<span class="string">'.para'</span>);</div><div class="line">            <span class="built_in">console</span>.log(firstP); <span class="comment">// &lt;p class="1"&gt;1&lt;/p&gt;</span></div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="Node对象的属性"><a href="#Node对象的属性" class="headerlink" title="Node对象的属性"></a>Node对象的属性</h3><blockquote>
-<ul>
-<li>parentNode 该节点的父节点，Document对象的应该是null.</li>
-<li>childNodes 只读NodeList对象， 该节点的子节点的实时表示</li>
-<li>fistChild, lastChild中的第一个和最后一个</li>
-<li>nextSibling, previoursSibling 该节点的兄弟节点中前一个和下一个。</li>
-<li>nodeType 节点的类型， <code>9</code>document 1代表Element, 3代表Text节点，8代表Comment节点， 11代表DocumentFragment节点</li>
-</ul>
-</blockquote>
-<p>这里说一下对<code>Text</code>节点的理解，一个Element节点只要包含文本就包含一个Text子节点，看一下下面这个列子</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.childNodes)<span class="comment">//[text]</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--修改一下--&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.childNodes)<span class="comment">//[text, span]</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--再修改一下--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span>3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.childNodes)<span class="comment">//[text, span, text]</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--再修改一下--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.childNodes)<span class="comment">//[text, span, text]</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--由此可见空格也可以产生text节点--&gt;</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>text节点或comment节点的文本内容</li>
-<li>nodeName 元素标签名</li>
-</ul>
-</blockquote>
-<h3 id="作为元素数-Element对象-的文档"><a href="#作为元素数-Element对象-的文档" class="headerlink" title="作为元素数(Element对象)的文档"></a>作为元素数(Element对象)的文档</h3><p>看下面这个列子</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="keyword">var</span> spa = pem.firstChild; <span class="comment">//我们想要获取span `Element`节点但是现在却获取的是一个`text`节点</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>我们可以使用忽略元素内容的ElementAPI</p>
-<blockquote>
-<ul>
-<li>children 只包含Element对象</li>
-<li>firstElementChild, lastElementChild,代表第一个Element节点和最后一个Element子节点</li>
-<li>nextElementSibling previousElementSibling, 前一个，下一个兄弟Element节点</li>
-<li>childElementCount 子元素的数量</li>
-</ul>
-</blockquote>
-<h3 id="获取元素的内容"><a href="#获取元素的内容" class="headerlink" title="获取元素的内容"></a>获取元素的内容</h3><blockquote>
-<ul>
-<li>innerHTML</li>
-</ul>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;<span class="number">1</span>&lt;span&gt;<span class="number">2</span>&lt;<span class="regexp">/span&gt;&lt;/</span>p&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.innerHTML); <span class="comment">//1&lt;span&gt;2&lt;span&gt;&lt;/p&gt; 不包含自身开始结束标签</span></div><div class="line">	<span class="built_in">console</span>.log(pem.outerHTML); <span class="comment">//&lt;p&gt;1&lt;span&gt;2&lt;/span&gt;&lt;/p&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>textContent, innerText获取元素的文本内容</li>
-</ul>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;<span class="number">1</span>&lt;span&gt;<span class="number">2</span>&lt;<span class="regexp">/span&gt;3&lt;/</span>p&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></div><div class="line">	<span class="keyword">var</span> pem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</div><div class="line">	<span class="built_in">console</span>.log(pem.textContetn); <span class="comment">//12</span></div><div class="line">	<span class="built_in">console</span>.log(pem.innerText); <span class="comment">//12</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">//将制定元素的后代Text节点的文本连接在一起</span></div></pre></td></tr></table></figure>
-<h3 id="增，删"><a href="#增，删" class="headerlink" title="增，删"></a>增，删</h3><blockquote>
-<ul>
-<li>创建节点</li>
-</ul>
-</blockquote>
-<p>创建ELement节点使用<code>document.createElement()</code>给方法传入标签名,/创建Text节点用<code>document.createTextNode</code>，传入字符串文本</p>
-<p>复制已存在的节点，<code>Node.cloneNode(node)</code>返回该节点一个全新副本,注意这个方法是在节点实例上调用，不是<code>document</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pNode = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</div><div class="line">pNode.innerHTML = <span class="string">'&lt;span&gt;2222&lt;/span&gt;'</span></div><div class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">'text node content'</span>);</div><div class="line"><span class="built_in">console</span>.log(pNode); <span class="comment">// &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;</span></div><div class="line"><span class="built_in">console</span>.log(textNode); <span class="comment">//"text node content"</span></div><div class="line"><span class="built_in">console</span>.log(pNode.cloneNode(<span class="literal">true</span>)); <span class="comment">//&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>插入节点 appendChild(), insertBefore()</li>
-</ul>
-</blockquote>
-<p><code>appendChild()</code>是在需要插入节点上调用，如果插入成功这个节点将成为被插入节点的父节点。即被插入节点是最后一个子节点。<br><code>insertBefore()</code>传入两个参数，第一个待插入节点，第二个目标节点，待插入节点将在目标节点前面插入，二者是兄弟关系。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">	#insertAction &#123;</div><div class="line">		width: 25px;</div><div class="line">		height: 25px;</div><div class="line">		background: white;</div><div class="line">		border-radius: 2px;</div><div class="line">		border 1px solid blue</div><div class="line">	&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"insertAction"</span>&gt;</span>插入节点<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">'append'</span>&gt;</span>将在这里利用appendChild插入一个节点<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"insert"</span>&gt;</span>将在这里利用insertBefore插入一个节点 <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">'sib'</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">insertNode</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">var</span> appendEm = querySelectorAll(<span class="string">'#append'</span>)[<span class="number">0</span>];</div><div class="line">		<span class="keyword">var</span> insertEm = querySelectorAll(<span class="string">'#insert'</span>)[<span class="number">0</span>];</div><div class="line">		<span class="keyword">var</span> sibEm = querySelectorAll(<span class="string">'#sib'</span>)[<span class="number">0</span>];</div><div class="line">		<span class="keyword">var</span> newAppenEm = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>);</div><div class="line">		newAppenEm.textContent = <span class="string">'这是通过append插入的节点'</span>;</div><div class="line">		<span class="keyword">var</span> newInsertEm = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>);</div><div class="line">		newInsertEm.textContent = <span class="string">'这是通过Inset插入的节点'</span>;</div><div class="line">		<span class="comment">//插入</span></div><div class="line">		appendEm.appendChild(newAppenEm);</div><div class="line">		insertEm.insertBefore(newInsertEm, sibEm);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="comment">//添加点击事件</span></div><div class="line">		<span class="keyword">var</span> link = <span class="built_in">document</span>.querySelectorAll(<span class="string">'#insertAction'</span>)[<span class="number">0</span>];</div><div class="line">		link.onClick = insertNode;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		addEvent();</div><div class="line">	&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>removeChild() 删除节点和替换节点 replaceChild()</li>
-</ul>
-</blockquote>
-<p>removeChild()在其父节点上调用， replaceChild()在父节点调用，第一个参数新节点， 第二个参数是需要代替的节点</p>
-<p>修改一下上面的代码</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">	 a &#123;</div><div class="line">		width: 25px;</div><div class="line">		height: 25px;</div><div class="line">		background: white;</div><div class="line">		border-radius: 2px;</div><div class="line">		border 1px solid blue</div><div class="line">	&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;a id="insertAction"&gt;插入节点&lt;/a&gt;</div><div class="line">&lt;a id="remove"&gt;移除节点&lt;/a&gt;</div><div class="line">&lt;a id="repalce"&gt;替换节点&lt;/a&gt;</div><div class="line">&lt;p id='append'&gt;将在这里利用appendChild插入一个节点&lt;/p&gt;</div><div class="line">&lt;p id="insert"&gt;将在这里利用insertBefore插入一个节点 &lt;span id='sib'&gt;2&lt;/span&gt;&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">	var newAppenEm = document.createElement('span');</div><div class="line">	newAppenEm.textContent = '这是通过append插入的节点';</div><div class="line">	var newInsertEm = document.createElement('span');</div><div class="line">	newInsertEm.textContent = '这是通过Inset插入的节点';</div><div class="line">	var appendEm = querySelectorAll('#append')[0];</div><div class="line">	var insertEm = querySelectorAll('#insert')[0];</div><div class="line">		</div><div class="line">	function insertNode() &#123;</div><div class="line">		var sibEm = querySelectorAll('#sib')[0];</div><div class="line">		//插入</div><div class="line">		appendEm.appendChild(newAppenEm);</div><div class="line">		insertEm.insertBefore(newInsertEm, sibEm);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	function removeNode() &#123;</div><div class="line">		appendEm.removeChild(newAppenEm);</div><div class="line">		insertEm.removeChild(newInsertEm)</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	function replaceNode() &#123;</div><div class="line">		appendEm.replaceChild(newInsertEm, newAppenEm);</div><div class="line">		//insertEm.replaceChild(newAppenEm, newInsertEM); 不能同时替换</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	function addEvent() &#123;</div><div class="line">		//添加点击事件</div><div class="line">		var linkList = document.querySelectorAll('a');</div><div class="line">		var add = linkList[0];</div><div class="line">		var remove = linkList[1];</div><div class="line">		var replace = linkList[2];</div><div class="line">		add.onclick = insertNode;</div><div class="line">		remove.onclick = removeNode;</div><div class="line">		replace.onclick = replaceNode;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	window.onload = function() &#123;</div><div class="line">		addEvent();</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-
+        
       
 
       
@@ -920,11 +838,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Homebrew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">mac</a>
+                <a href="javascript:void(0)">DevOps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -936,7 +850,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">DevOps</a>
+                <a href="javascript:void(0)">Homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -956,15 +874,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">装饰器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">callable</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">源码</a>
+                <a href="javascript:void(0)">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -973,6 +887,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Swift3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1028,6 +946,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Synergy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">mysql</a>
               </li>
              
@@ -1048,7 +970,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Synergy</a>
+                <a href="javascript:void(0)">Notification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">iOS广播</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1060,15 +986,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Notification</a>
+                <a href="javascript:void(0)">df</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">iOS广播</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">ul</a>
+                <a href="javascript:void(0)">du</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1076,11 +998,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">df</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">du</a>
+                <a href="javascript:void(0)">ul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1116,11 +1034,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">liunx命令</a>
+                <a href="javascript:void(0)">Linux 命令</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Linux 命令</a>
+                <a href="javascript:void(0)">liunx命令</a>
               </li>
             
             <div class="clearfix"></div>
